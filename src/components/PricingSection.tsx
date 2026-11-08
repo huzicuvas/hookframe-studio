@@ -29,15 +29,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
     {
       id: 'first-ad-test',
       name: 'First Ad — Test',
-      price: '$75',
+      price: '$50',
       pricePrefix: 'Pay on approval',
-      duration: '15 sec',
+      duration: '10 sec',
       versionSpec: '1 test ad',
       badge: 'Try us first',
       isPopular: true,
       tagline: 'One test ad to see the quality first. You get a watermarked preview, and you only pay if you love it.',
       included: [
-        '1 test video ad, 15 seconds',
+        '1 test video ad, 10 seconds',
         'Watermarked preview first',
         'Pay only if you love it',
         '1 revision included',
@@ -45,33 +45,114 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
         'Full commercial usage rights after payment',
       ],
       ctaLabel: 'Start with a test ad',
-      mailtoSubject: 'Test ad — $75 pay on approval',
+      mailtoSubject: 'Test ad — $50 pay on approval',
     },
     {
-      id: 'video-ads-by-length',
-      name: 'Video Ads by Length',
-      price: 'From $50',
+      id: '15-sec-video',
+      name: '15 Second Video',
+      price: '$75',
       pricePrefix: 'Fixed Price',
-      duration: '5–30 sec',
-      versionSpec: 'Priced by length',
-      badge: 'Short ads',
+      duration: '15 sec',
+      versionSpec: '1 version',
+      badge: 'Short ad',
       isPopular: false,
-      tagline: 'One video ad, priced by runtime — the longer the ad, the more it costs. Every length includes voiceover, sound design and both cuts.',
-      priceList: [
-        { label: '5–10 sec', price: '$50' },
-        { label: '10–15 sec', price: '$75' },
-        { label: '15–20 sec', price: '$99' },
-        { label: '20–30 sec', price: '$149' },
-      ],
+      tagline: 'Short video ad for TikTok, Reels and Shorts — fifteen seconds.',
       included: [
         '1 final version',
+        '15 second runtime',
         'Full AI voiceover & sound design',
         '9:16 vertical & 16:9 horizontal cuts',
         'Full commercial usage rights',
         '48-hour delivery turnaround',
       ],
       ctaLabel: 'Order a video ad',
-      mailtoSubject: 'Order a video ad — priced by length',
+      mailtoSubject: 'Order a 15 second video ad — $75',
+    },
+    {
+      id: '20-sec-video',
+      name: '20 Second Video',
+      price: '$99',
+      pricePrefix: 'Fixed Price',
+      duration: '20 sec',
+      versionSpec: '1 version',
+      badge: 'Short ad',
+      isPopular: false,
+      tagline: 'Short video ad for TikTok, Reels and Shorts — twenty seconds.',
+      included: [
+        '1 final version',
+        '20 second runtime',
+        'Full AI voiceover & sound design',
+        '9:16 vertical & 16:9 horizontal cuts',
+        'Full commercial usage rights',
+        '48-hour delivery turnaround',
+      ],
+      ctaLabel: 'Order a video ad',
+      mailtoSubject: 'Order a 20 second video ad — $99',
+    },
+    {
+      id: '30-sec-video',
+      name: '30 Second Video',
+      price: '$149',
+      pricePrefix: 'Fixed Price',
+      duration: '30 sec',
+      versionSpec: '1 version',
+      badge: 'Longer ad',
+      isPopular: false,
+      tagline: 'A full thirty-second video ad — more time for the story, the product and the call to action.',
+      included: [
+        '1 final version',
+        '30 second runtime',
+        'Full AI voiceover & sound design',
+        '9:16 vertical & 16:9 horizontal cuts',
+        'Full commercial usage rights',
+        '48-hour delivery turnaround',
+      ],
+      ctaLabel: 'Order a video ad',
+      mailtoSubject: 'Order a 30 second video ad — $149',
+    },
+    {
+      id: 'poster-ad',
+      name: 'Poster Ad',
+      price: '$30',
+      pricePrefix: 'Fixed Price',
+      duration: '1 poster',
+      versionSpec: '$20 with any video',
+      badge: 'Still',
+      isPopular: false,
+      tagline: 'A still poster ad for feeds and stories — one design, in social and print-ready sizes.',
+      included: [
+        '1 poster design',
+        'Social + print-ready sizes',
+        '1 revision included',
+        '48-hour delivery turnaround',
+        'Full commercial usage rights',
+      ],
+      ctaLabel: 'Order a poster',
+      mailtoSubject: 'Order a poster ad — $30',
+    },
+    {
+      id: 'cgi-video',
+      name: 'CGI Video',
+      price: 'From $175',
+      pricePrefix: 'Fixed Price',
+      duration: '15–30 sec',
+      versionSpec: '3D product video',
+      badge: '3D CGI',
+      isPopular: false,
+      tagline: 'A 3D CGI product video — the product built in 3D, with fluid, splash and cinematic motion.',
+      priceList: [
+        { label: '15 sec', price: '$175' },
+        { label: '30 sec', price: '$299' },
+      ],
+      included: [
+        'Raytraced 3D product modeling',
+        'Fluid, splash & cinematic motion',
+        '9:16 vertical & 16:9 horizontal cuts',
+        'Full commercial usage rights',
+        '48–72 hour delivery turnaround',
+      ],
+      ctaLabel: 'Order a CGI video',
+      mailtoSubject: 'Order a CGI video',
     },
   ];
 
@@ -133,7 +214,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
               <span className="text-neutral-400">No agency retainers required.</span>
             </h2>
             <p className="text-sm sm:text-base text-neutral-400">
-              First time here? Start with a $75 test ad and pay only after you approve the preview. Video ads from $50, posters from $30. Every video is delivered in vertical 9:16 and horizontal 16:9, with sound design, ad-ready exports, and full commercial usage rights.
+              First time here? Start with a $50 test ad and pay only after you approve the preview. Video ads from $50, posters from $30. Every video is delivered in vertical 9:16 and horizontal 16:9, with sound design, ad-ready exports, and full commercial usage rights.
             </p>
           </div>
 
@@ -144,10 +225,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
           </div>
         </div>
 
-        {/* Fixed-Price Cards: short ads, 30 seconds max */}
+        {/* Fixed-Price Cards: one card per tier, in ascending order */}
         <div
           id="pricing-grid"
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4.5 max-w-3xl mx-auto items-stretch"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4.5 max-w-6xl mx-auto items-stretch"
         >
           {pricingTiers.map((tier) => (
             <div
@@ -312,14 +393,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
           ))}
         </div>
 
-        {/* Poster, CGI & pack discounts — fixed prices */}
+        {/* Pack discounts — fixed prices */}
         <div className="mt-6 max-w-5xl mx-auto">
           <div className="rounded-3xl bg-neutral-900/60 border border-neutral-800 px-6 py-4 text-center text-xs font-mono text-neutral-300">
-            <span className="text-white font-bold">Poster ad $30</span> ($20 with any video)
-            <span className="text-neutral-600 mx-2">•</span>
-            <span className="text-white font-bold">CGI 15s $175</span> · CGI 30s $299
-            <span className="text-neutral-600 mx-2">•</span>
-            3 videos <span className="text-white font-bold">10% off</span> · 5 videos <span className="text-white font-bold">15% off</span>
+            Packs: 3 videos <span className="text-white font-bold">10% off</span> · 5 videos <span className="text-white font-bold">15% off</span>
           </div>
         </div>
 

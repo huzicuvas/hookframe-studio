@@ -69,7 +69,7 @@ const STARTER_PROMPTS = [
   },
   {
     label: 'What does it cost?',
-    prompt: 'Can you explain Hook Frames Studio\'s pricing: first ad $75 (pay on approval), video ads by length (5-10s $50, 10-15s $75, 15-20s $99, 20-30s $149), poster $30, CGI 15s $175 / 30s $299, Hook Variation Pack 3 hooks $189 / 5 hooks $299, Custom Brand Pack $249 (UGC testimonial + CGI product + poster), and over 30 seconds or monthly work on quotation?',
+    prompt: 'Can you explain Hook Frames Studio\'s pricing: first ad $50 (pay on approval, 10 seconds), 15 second video $75, 20 second video $99, 30 second video $149, poster $30, CGI 15s $175 / 30s $299, Hook Variation Pack 3 hooks $189 / 5 hooks $299, Custom Brand Pack $249 (UGC testimonial + CGI product + poster), and over 30 seconds or monthly work on quotation?',
     mode: 'pricing' as ChatMode,
   },
   {
@@ -87,7 +87,7 @@ const STARTER_PROMPTS = [
 const INITIAL_MESSAGE: ChatMessage = {
   id: 'init-1',
   role: 'assistant',
-  content: `Hi, this is the Hook Frames Studio assistant. Ask about what we make, how long it takes, or what it costs.\n\n- **What we make:** UGC creator ads, 3D CGI ads, poster ads, hook packs and custom brand packs\n- **How we make it:** No film crew, 48-hour turnaround\n- **How much it costs:** First ad $75, pay on approval. Video ads $50–$149 by length, posters $30, CGI from $175. Hook Variation Pack from $189, Custom Brand Pack $249. Over 30 seconds and monthly work are quoted. Full commercial usage rights included.\n\nPick a topic below, or type your question.`,
+  content: `Hi, this is the Hook Frames Studio assistant. Ask about what we make, how long it takes, or what it costs.\n\n- **What we make:** UGC creator ads, 3D CGI ads, poster ads, hook packs and custom brand packs\n- **How we make it:** No film crew, 48-hour turnaround\n- **How much it costs:** First ad $50, pay on approval (10 seconds). Then 15s $75, 20s $99, 30s $149. Posters $30, CGI from $175. Hook Variation Pack from $189, Custom Brand Pack $249. Over 30 seconds and monthly work are quoted. Full commercial usage rights included.\n\nPick a topic below, or type your question.`,
   timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
   modelUsed: 'gemini-3.7-flash',
   modeUsed: 'faq',
