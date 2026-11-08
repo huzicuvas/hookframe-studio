@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Mail, ArrowUpRight, Menu, X, Video, Grid } from 'lucide-react';
+import { Sparkles, ArrowUpRight, Menu, X, Video, Grid } from 'lucide-react';
 import { HookFramesLogo } from './HookFramesLogo';
 
 interface NavbarProps {
@@ -86,21 +86,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           ))}
         </nav>
 
-        {/* Action Button & Cluster Status */}
+        {/* Status pill — the only email action lives in the contact section */}
         <div className="hidden md:flex items-center gap-4">
           <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 px-3 py-1.5 rounded-full">
             <span className="w-2 h-2 rounded-full bg-green-500" />
             <span className="text-[11px] font-semibold text-neutral-300">AI pipeline ready</span>
           </div>
-
-          <a
-            href="mailto:kiramorganai@gmail.com?subject=Ad%20Content%20Inquiry%20-%20Hook%20Frames%20Studio&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20looking%20to%20produce%20ad%20creatives%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(15-30s%20/%2030-60s%20/%2060s%20/%20Hook%20Pack%20/%20Poster%20/%20Custom):%20%0AEstimated%20Timeline:%20%0A"
-            id="nav-cta-mailto"
-            className="group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-xs font-bold hover:bg-blue-500 hover:text-white transition-colors duration-200 shadow-md active:scale-95"
-          >
-            <span>Start a Project</span>
-            <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
         </div>
 
         {/* Mobile menu button */}
@@ -143,13 +134,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="w-2 h-2 rounded-full bg-green-500" />
               <span>AI pipeline online · 48h turnaround</span>
             </div>
-            <a
-              href="mailto:kiramorganai@gmail.com?subject=Ad%20Content%20Inquiry%20-%20Hook%20Frames%20Studio"
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              <span>Start a Project</span>
-            </a>
           </div>
         </div>
       )}

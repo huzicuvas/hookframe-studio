@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Filter, Video, Search, Mail, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, Filter, Video, Search } from 'lucide-react';
 import { PORTFOLIO_VIDEOS } from '../data/portfolioData';
 import { CategoryType, VideoItem } from '../types';
 import { VideoCard } from './VideoCard';
@@ -60,14 +60,8 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
             <HookFramesLogo size="sm" />
           </div>
 
-          {/* Quick Action */}
-          <a
-            href="mailto:kiramorganai@gmail.com?subject=New%20Ad%20Creative%20Inquiry%20from%20Gallery&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20browsing%20your%20creative%20gallery%20and%20want%20to%20produce%20ads%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AProduct%20Link:%20%0A"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-blue-500 text-black hover:text-white text-xs font-bold transition-colors shadow-md active:scale-95"
-          >
-            <span>Start a Project</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          {/* Spacer to keep the logo centred — email lives only in the contact section */}
+          <div aria-hidden="true" className="hidden sm:block w-[148px]" />
         </div>
       </header>
 
@@ -161,7 +155,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
         {/* Gallery Videos Grid (No item limit) */}
         <div
           id="gallery-grid-items"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {filteredVideos.map((video) => (
             <VideoCard
@@ -193,15 +187,16 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
         <div className="mt-16 bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1 text-center sm:text-left">
             <h3 className="text-xl font-bold text-white">Have a custom ad concept or specific product angle?</h3>
-            <p className="text-xs sm:text-sm text-neutral-400">Send us your product URL and we'll make the ad for your campaign.</p>
+            <p className="text-xs sm:text-sm text-neutral-400">See the pricing on the home page and email us from there.</p>
           </div>
-          <a
-            href="mailto:kiramorganai@gmail.com?subject=Custom%20Ad%20Format%20Inquiry%20-%20Hook%20Frames%20Studio&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20interested%20in%20creating%20performance%20video%20ads%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AProduct%20Link:%20%0ADesired%20Format:%20%0A"
+          <button
+            type="button"
+            onClick={onNavigateHome}
             className="shrink-0 px-6 py-3.5 rounded-full bg-white hover:bg-blue-500 text-black hover:text-white text-xs font-bold transition-colors shadow-lg active:scale-95 flex items-center gap-2"
           >
-            <Mail className="w-4 h-4" />
-            <span>Email kiramorganai@gmail.com</span>
-          </a>
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to Home</span>
+          </button>
         </div>
       </main>
     </div>

@@ -47,12 +47,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery }) => {
             <a href="#workflow" className="hover:text-white transition-colors">Workflow</a>
             <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
             <a href="#contact" className="hover:text-white transition-colors">Pricing & Quotes</a>
-            <a
-              href="mailto:kiramorganai@gmail.com"
-              className="text-white hover:text-blue-400 font-bold transition-colors"
-            >
-              kiramorganai@gmail.com
-            </a>
           </div>
 
           {/* Back to top button */}

@@ -132,13 +132,13 @@ export default function App() {
               onSelectFeaturedVideo={handleSelectFeaturedVideo}
             />
 
-            {/* Homepage Portfolio Grid (Exactly 4 videos in 2x2 with View Full Gallery CTA) */}
+            {/* Homepage Portfolio Grid (First 6 videos, 3-column V/H/V pattern, with View Full Gallery CTA) */}
             <PortfolioGrid
               onSelectVideo={(video) => setSelectedVideo(video)}
               onNavigateToGallery={navigateToGallery}
             />
 
-            {/* Formats Section */}
+            {/* Combined About & Specialized Services Section + About the Team */}
             <AboutServicesCombined />
 
             {/* 48h Production Workflow */}

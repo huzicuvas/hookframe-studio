@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
-import { Mail, Copy, Check, ArrowRight, Sparkles, Send, Clock, ShieldCheck, Zap, Layers } from 'lucide-react';
+import React from 'react';
+import { Mail, Sparkles, Send, Clock, ShieldCheck, Zap, Layers } from 'lucide-react';
 
 export const Contact: React.FC = () => {
-  const [copied, setCopied] = useState(false);
   const email = 'kiramorganai@gmail.com';
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
 
   const standardTiers = [
     {
@@ -127,8 +120,8 @@ export const Contact: React.FC = () => {
             Select a tier below to start immediately, or email us directly with your product link. First ad? Try the $50 test ad — pay only after you approve the preview. Delivery in 48 hours, full commercial rights included.
           </p>
 
-          {/* Primary Mailto Action & Copy Button */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto">
+          {/* Primary Mailto Action — the one way to email us */}
+          <div className="mt-8 flex items-center justify-center max-w-md mx-auto">
             <a
               href={`mailto:${email}?subject=New%20Ad%20Creative%20Inquiry%20-%20Hook%20Frames%20Studio&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2015s%20UGC%20/%2020s%20UGC%20/%2030s%20UGC%20/%20Poster%20/%20CGI%2015s%20/%20CGI%2030s%20/%20Hook%20Pack%203%20/%20Hook%20Pack%205%20/%20Custom%20Pack%20/%20Over%2030s%20or%20monthly):%20%0ATarget%20Launch%20Date:%20%0A`}
               id="contact-mailto-btn"
@@ -137,26 +130,6 @@ export const Contact: React.FC = () => {
               <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               <span>Email {email}</span>
             </a>
-
-            {/* Quick 1-Click Email Copy */}
-            <button
-              type="button"
-              id="copy-email-btn"
-              onClick={copyToClipboard}
-              className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-4 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-neutral-700 text-xs font-mono font-medium transition-colors active:scale-95"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 text-green-400" />
-                  <span className="text-green-400 font-semibold">Email copied</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-neutral-400" />
-                  <span>{email}</span>
-                </>
-              )}
-            </button>
           </div>
 
           {/* Quick-Tier Pricing Presets (Single Source of Pricing Info) */}
@@ -192,10 +165,6 @@ export const Contact: React.FC = () => {
                       {tier.specs}
                     </p>
                   </div>
-                  <div className="mt-3 flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-neutral-400 group-hover:text-white transition-colors">
-                    <span className="truncate">Pre-fill email inquiry</span>
-                    <ArrowRight className="w-3 h-3 shrink-0 transition-transform group-hover:translate-x-0.5" />
-                  </div>
                 </a>
               ))}
             </div>
@@ -223,10 +192,6 @@ export const Contact: React.FC = () => {
                 <p className="text-[11px] sm:text-xs text-neutral-400 font-mono">
                   {customTier.specs}
                 </p>
-                <div className="mt-2.5 flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-neutral-400 group-hover:text-white transition-colors">
-                  <span>Pre-fill email inquiry</span>
-                  <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
-                </div>
               </a>
             </div>
           </div>

@@ -13,8 +13,8 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
   onSelectVideo,
   onNavigateToGallery,
 }) => {
-  // Homepage displays exactly the first 4 curated videos in a 2x2 grid
-  const homepageVideos = PORTFOLIO_VIDEOS.slice(0, 4);
+  // Homepage displays the first 6 curated videos in a 3-column V/H/V pattern
+  const homepageVideos = PORTFOLIO_VIDEOS.slice(0, 6);
 
   const handleGalleryClick = (e: React.MouseEvent) => {
     if (onNavigateToGallery) {
@@ -53,10 +53,10 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           </div>
         </div>
 
-        {/* Exactly 4 videos in a 2x2 Grid */}
+        {/* 6 videos in 3 columns: vertical, horizontal, vertical — repeated */}
         <div
           id="portfolio-grid-items"
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
         >
           {homepageVideos.map((video) => (
             <VideoCard
