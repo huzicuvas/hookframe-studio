@@ -218,11 +218,13 @@ export const PricingSection: React.FC = () => {
                 }`}
               />
 
-              {/* Featured Badge */}
+              {/* Featured Badge — inside the card (the card clips anything above its top edge) */}
               {card.isPopular && card.badge && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 px-3 py-0.5 rounded-full bg-blue-500 text-white text-[11px] font-bold shadow-md flex items-center gap-1 whitespace-nowrap">
-                  <Zap className="w-3 h-3 fill-white" />
-                  <span>{card.badge}</span>
+                <div className="flex justify-center mb-3">
+                  <span className="px-3 py-0.5 rounded-full bg-blue-500 text-white text-[11px] font-bold shadow-md flex items-center gap-1 whitespace-nowrap">
+                    <Zap className="w-3 h-3 fill-white" />
+                    <span>{card.badge}</span>
+                  </span>
                 </div>
               )}
 
