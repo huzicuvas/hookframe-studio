@@ -33,12 +33,12 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
     <div
       id={`video-card-${video.id}`}
       onClick={() => onSelect(video)}
-      className="portfolio-card group relative flex flex-col bg-neutral-900 rounded-3xl border border-neutral-800 hover:border-neutral-700 overflow-hidden cursor-pointer transition-colors duration-300 shadow-xl"
+      className="portfolio-card relative flex flex-col bg-neutral-900 rounded-3xl border border-neutral-800 overflow-hidden cursor-pointer shadow-xl"
     >
       {/* Card Media / Stylized Blueprint Canvas */}
       <div className="relative aspect-[9/13] w-full overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 flex flex-col justify-between p-4 border-b border-neutral-800/80">
         {/* Background Pattern Grid */}
-        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
         {/* Loading Skeleton Placeholder (pulsing gray placeholder matching aspect ratio) */}
         {!imageLoaded && (
@@ -56,7 +56,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             alt={video.title}
             loading="lazy"
             onLoad={() => setImageLoaded(true)}
-            className={`absolute inset-0 w-full h-full object-cover transition-[opacity,filter] duration-500 brightness-90 group-hover:brightness-100 ${
+            className={`absolute inset-0 w-full h-full object-cover transition-[opacity,filter] duration-500 brightness-90 ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           />
@@ -112,10 +112,10 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
 
         {/* Center Blueprint Emblem & Play Icon */}
         <div className="relative z-10 flex flex-col items-center justify-center my-auto py-4">
-          <div className="w-12 h-12 rounded-2xl bg-neutral-950/80 backdrop-blur-md border border-neutral-700/80 text-white flex items-center justify-center shadow-2xl group-hover:border-blue-500/50 transition-colors duration-200">
+          <div className="w-12 h-12 rounded-2xl bg-neutral-950/80 backdrop-blur-md border border-neutral-700/80 text-white flex items-center justify-center shadow-2xl">
             <Play className="w-5 h-5 fill-white text-white ml-0.5" />
           </div>
-          <span className="text-[10px] font-mono text-neutral-500 mt-2 group-hover:text-neutral-300 transition-colors">
+          <span className="text-[10px] font-mono text-neutral-500 mt-2">
             9:16 feed frame
           </span>
         </div>
@@ -139,7 +139,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
               Slot ready
             </span>
           </div>
-          <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
+          <h3 className="text-sm font-bold text-white leading-snug">
             {video.title}
           </h3>
           <p className="text-xs text-neutral-400 italic line-clamp-2 font-normal">
@@ -152,7 +152,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           <span className="text-[10px] font-mono text-neutral-400 bg-neutral-950 px-2 py-0.5 rounded-full border border-neutral-800/60">
             {video.tags[0]}
           </span>
-          <span className="text-[11px] font-bold text-neutral-300 group-hover:text-white flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+          <span className="text-[11px] font-bold text-neutral-300 flex items-center gap-1">
             Preview style <ExternalLink className="w-3 h-3 text-blue-400" />
           </span>
         </div>
