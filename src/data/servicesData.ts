@@ -1,0 +1,52 @@
+import { ServiceItem } from '../types';
+
+export const SERVICES_DATA: ServiceItem[] = [
+  {
+    id: 'ugc-ads',
+    number: '01',
+    title: 'UGC-Style Ads',
+    oneLiner: 'Creator-style videos and customer testimonials with realistic AI actors.',
+    description: 'Creator-style videos for TikTok, Instagram Reels and Meta ads — no casting, no creator delays.',
+    deliverables: [
+      'Authentic phone-held POV and selfie angles',
+      'Realistic multilingual AI voiceovers with emotional pacing',
+      'Dynamic on-screen captions & sound design',
+      'Optimized for TikTok, Instagram Reels & YouTube Shorts',
+    ],
+    turnaround: '24–48 Hours',
+    badge: 'UGC',
+    iconName: 'UserCheck',
+  },
+  {
+    id: 'cgi-ads',
+    number: '02',
+    title: 'CGI Product Ads',
+    oneLiner: 'Photorealistic 3D product visuals, dynamic fluid simulations, and floating exploded assemblies.',
+    description: 'Turn 2D packaging or CAD models into 4K CGI motion ads with fluid simulations, macro textures and studio lighting.',
+    deliverables: [
+      'Raytraced 3D product modeling & textures',
+      'Fluid, particle, splash & smoke simulations',
+      'Exploded architectural mechanical assemblies',
+      'Studio-grade volumetric lighting & cinematic camera passes',
+    ],
+    turnaround: '48–72 Hours',
+    badge: '3D CGI',
+    iconName: 'Sparkles',
+  },
+  {
+    id: 'poster-ads',
+    number: '03',
+    title: 'Poster Ads',
+    oneLiner: 'Still ads for feeds, stores and launches. One image, one message.',
+    description: 'Still ads built from your product shots — for feeds, stories, stores and launch announcements.',
+    deliverables: [
+      'Feed, story and print sizes from one design',
+      'Product cut-outs on studio backgrounds',
+      'Headline and price callouts',
+      'Print-ready and web exports',
+    ],
+    turnaround: '48 Hours',
+    badge: 'Still',
+    iconName: 'Layers',
+  },
+];
