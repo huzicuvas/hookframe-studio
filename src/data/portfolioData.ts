@@ -22,7 +22,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '4.3%',
       roas: '3.9x',
     },
-    tags: ['UGC Creator', 'TikTok / Reels', 'Problem-Agitate', 'Sample Style'],
+    tags: ['UGC Creator', 'TikTok / Reels', 'Problem-Agitate', 'Sample style'],
   },
   {
     id: 'sample-style-3d-cgi-hardware',
@@ -40,7 +40,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '5.2%',
       roas: '4.6x',
     },
-    tags: ['3D CGI', 'Exploded View', 'Tech Gadget', 'Sample Style'],
+    tags: ['3D CGI', 'Exploded View', 'Tech Gadget', 'Sample style'],
   },
   {
     id: 'sample-style-fast-cut-beverage',
@@ -58,7 +58,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '3.8%',
       roas: '3.5x',
     },
-    tags: ['Kinetic Cuts', 'Beverage Splash', 'Routine POV', 'Sample Style'],
+    tags: ['Kinetic Cuts', 'Beverage Splash', 'Routine POV', 'Sample style'],
   },
   {
     id: 'sample-style-b2b-saas-workflow',
@@ -76,7 +76,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '4.7%',
       roas: '4.1x',
     },
-    tags: ['SaaS Demo', 'Desk POV', 'Workflow Hook', 'Sample Style'],
+    tags: ['SaaS Demo', 'Desk POV', 'Workflow Hook', 'Sample style'],
   },
   {
     id: 'sample-style-3d-fluid-splash',
@@ -94,7 +94,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '6.4%',
       roas: '5.3x',
     },
-    tags: ['Fluid Sim', '3D Packaging', 'Macro Texture', 'Sample Style'],
+    tags: ['Fluid Sim', '3D Packaging', 'Macro Texture', 'Sample style'],
   },
   {
     id: 'sample-style-asmr-unboxing',
@@ -112,7 +112,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '4.9%',
       roas: '4.4x',
     },
-    tags: ['ASMR Audio', 'Unboxing', 'Tactile Macro', 'Sample Style'],
+    tags: ['ASMR Audio', 'Unboxing', 'Tactile Macro', 'Sample style'],
   },
   {
     id: 'sample-style-founder-story-direct',
@@ -130,7 +130,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '4.1%',
       roas: '3.8x',
     },
-    tags: ['Founder POV', 'Brand Story', 'Direct Pitch', 'Sample Style'],
+    tags: ['Founder POV', 'Brand Story', 'Direct Pitch', 'Sample style'],
   },
   {
     id: 'sample-style-split-screen-comparison',
@@ -148,6 +148,6 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '5.0%',
       roas: '4.5x',
     },
-    tags: ['Split Screen', 'Comparison', 'Visual Proof', 'Sample Style'],
+    tags: ['Split Screen', 'Comparison', 'Visual Proof', 'Sample style'],
   },
 ];

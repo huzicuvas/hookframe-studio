@@ -33,7 +33,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
     {
       id: '15-30-sec-video',
       name: '15-30 Second Video',
-      price: '$45',
+      price: '$75',
       pricePrefix: 'Fixed Price',
       duration: '15–30 sec',
       versionSpec: '1 version',
@@ -54,8 +54,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
     {
       id: '30-60-sec-video',
       name: '30-60 Second Video',
-      price: '$100',
-      pricePrefix: 'Fixed Price',
+      price: 'Get a Quote',
+      pricePrefix: 'Custom Quote',
       duration: '30–60 sec',
       versionSpec: '1 version',
       badge: 'Mid-Form',
@@ -76,8 +76,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
     {
       id: '60-sec-video',
       name: '60 Second Video',
-      price: '$140',
-      pricePrefix: 'Fixed Price',
+      price: 'Get a Quote',
+      pricePrefix: 'Custom Quote',
       duration: '60 sec',
       versionSpec: '1 version',
       badge: 'Deep Narrative',
@@ -173,7 +173,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
           </div>
         </div>
 
-        {/* 5 Pricing Cards Grid - Lowest to Highest */}
+        {/* Pricing Cards Grid - Lowest to Highest */}
         <div
           id="pricing-grid"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4.5 items-stretch"

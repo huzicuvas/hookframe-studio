@@ -69,7 +69,7 @@ const STARTER_PROMPTS = [
   },
   {
     label: 'What does it cost?',
-    prompt: 'Can you explain Hook Frames Studio\'s pricing: first ad $75 (pay on approval), 15-30s ($45), 30-60s ($100), 60s ($140), Hook Variation Pack (Quote), and Custom Brand Package (Quote)?',
+    prompt: 'Can you explain Hook Frames Studio\'s pricing: first ad $75 (pay on approval), 15-30s ($75), 30-60s (Quote), 60s (Quote), Hook Variation Pack (Quote), and Custom Brand Package (Quote)?',
     mode: 'pricing' as ChatMode,
   },
   {
@@ -87,7 +87,7 @@ const STARTER_PROMPTS = [
 const INITIAL_MESSAGE: ChatMessage = {
   id: 'init-1',
   role: 'assistant',
-  content: `Hi, this is the Hook Frames Studio assistant. Ask about what we make, how long it takes, or what it costs.\n\n- **What we make:** UGC creator ads, 3D CGI ads, poster ads and hook packs\n- **How we make it:** No film crew, 48-hour turnaround\n- **How much it costs:** First ad $75, pay on approval. Then $45 for 15-30s, $100 for 30-60s, $140 for 60s, hook packs and custom quotes. Full commercial usage rights included.\n\nPick a topic below, or type your question.`,
+  content: `Hi, this is the Hook Frames Studio assistant. Ask about what we make, how long it takes, or what it costs.\n\n- **What we make:** UGC creator ads, 3D CGI ads, poster ads and hook packs\n- **How we make it:** No film crew, 48-hour turnaround\n- **How much it costs:** First ad $75, pay on approval. Then $75 for 15-30s. Anything over 30 seconds, hook packs and custom packages are quoted. Full commercial usage rights included.\n\nPick a topic below, or type your question.`,
   timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
   modelUsed: 'gemini-3.7-flash',
   modeUsed: 'faq',
