@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, ArrowUpRight, Mail, Video, Sparkles } from 'lucide-react';
+import { ArrowUp, ArrowUpRight } from 'lucide-react';
 import { HookFramesLogo } from './HookFramesLogo';
 
 interface FooterProps {
@@ -21,35 +21,30 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery }) => {
   return (
     <footer
       id="footer"
-      className="bg-[#0A0A0B] border-t border-neutral-800/80 py-12 text-neutral-400 text-sm"
+      className="bg-[#0A0A0B] border-t border-neutral-800/80 py-8 text-neutral-400 text-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Footer CTA band — the third call to action (scrolls to the contact section) */}
-        <div className="mb-10 rounded-3xl border border-blue-500/30 bg-neutral-900 p-8 sm:p-10 shadow-2xl shadow-blue-500/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Let's make your next ad.
-            </h3>
-            <p className="text-sm text-neutral-400 font-mono">
-              48-hour turnaround · Full commercial rights · First ad pay on approval
-            </p>
-          </div>
+        {/* Footer CTA — one button only (scrolls to the contact section) */}
+        <div className="mb-8 flex flex-col items-center text-center">
           <a
             href="#contact"
-            id="footer-cta-start-project"
-            className="group shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-black text-sm font-bold hover:bg-blue-500 hover:text-white transition-colors duration-200 shadow-lg active:scale-95"
+            id="footer-cta-next-ad"
+            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black text-base sm:text-lg font-bold hover:bg-blue-500 hover:text-white transition-colors duration-200 shadow-lg active:scale-95"
           >
-            <span>Start a Project</span>
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <span>Let's make your next ad.</span>
+            <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
+          <p className="mt-3 text-xs text-neutral-500 font-mono">
+            First ad pay on approval.
+          </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-neutral-800/80">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-neutral-800/80">
           {/* Logo & Tagline */}
           <div className="space-y-2">
             <HookFramesLogo size="sm" />
             <p className="text-xs text-neutral-500 max-w-sm">
-              Ad content for brands, delivered fast. UGC, CGI and poster ads for Meta, TikTok and YouTube Shorts.
+              UGC, CGI and poster ads for Meta, TikTok and YouTube Shorts.
             </p>
           </div>
 
@@ -82,17 +77,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery }) => {
         </div>
 
         {/* Bottom copyright line */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
-          <div>
-            © {new Date().getFullYear()} Hook Frames Studio. All rights reserved.
-          </div>
-          <div className="flex items-center gap-4 text-neutral-500">
-            <span>UGC Avatars</span>
-            <span>•</span>
-            <span>3D CGI Simulations</span>
-            <span>•</span>
-            <span>Hook Variations</span>
-          </div>
+        <div className="pt-6 text-center text-xs text-neutral-500 font-mono">
+          © {new Date().getFullYear()} Hook Frames Studio. All rights reserved.
         </div>
       </div>
     </footer>
