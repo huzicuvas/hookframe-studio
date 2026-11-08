@@ -148,7 +148,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           <span className="text-[10px] font-mono text-neutral-500">
             {video.category}
           </span>
-          <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
+          <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug line-clamp-3">
             {video.title}
           </h3>
         </div>
