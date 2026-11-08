@@ -87,8 +87,10 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           </div>
         )}
 
-        {/* Bottom overlay: ratio pill, category, title, hook, footer */}
-        <div className="relative z-10 shrink-0 bg-gradient-to-t from-black/85 via-black/55 to-transparent px-3 pb-3 pt-8">
+        {/* Bottom overlay: ratio pill, category, title, hook (videos only — the
+            preview's poster tiles show no hook, which leaves room for a large frame),
+            footer. Kept tight so the poster frame has room to be big. */}
+        <div className="relative z-10 shrink-0 bg-gradient-to-t from-black/85 via-black/55 to-transparent px-3 pb-2 pt-2">
           <span className="text-[10px] font-mono text-neutral-300 bg-black/70 px-2 py-0.5 rounded-full border border-neutral-700/80 whitespace-nowrap">
             {isPoster ? `${video.aspectRatio} Poster` : video.aspectRatio}
           </span>
@@ -97,11 +99,13 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors leading-snug line-clamp-3">
               {video.title}
             </h3>
-            <p className="text-xs text-neutral-400 italic line-clamp-2">
-              "{video.hookHeadline}"
-            </p>
+            {!isPoster && (
+              <p className="text-xs text-neutral-400 italic line-clamp-2">
+                {video.hookHeadline}
+              </p>
+            )}
           </div>
-          <div className="flex items-center justify-between gap-2 pt-2">
+          <div className="flex items-center justify-between gap-2 pt-1">
             <span className="text-[10px] font-mono text-neutral-300 bg-neutral-950/80 px-2 py-0.5 rounded-full border border-neutral-800/60 whitespace-nowrap shrink-0">
               {video.tags[0]}
             </span>
