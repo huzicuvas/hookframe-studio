@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, ExternalLink, Share2, Check } from 'lucide-react';
+import { Play, ExternalLink, Share2, Check, Image } from 'lucide-react';
 import { VideoItem } from '../types';
 
 interface VideoCardProps {
@@ -11,15 +11,19 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
   const [imageLoaded, setImageLoaded] = useState(!video.thumbnailUrl);
   const [copied, setCopied] = useState(false);
 
-  // True media shape per item: vertical 9:16, wide 16:9, poster 4:5, square 1:1
-  const mediaAspectClass =
+  const isPoster = video.kind === 'poster';
+
+  // True media shape per item: vertical 9:16, wide 16:9, poster 4:5, square 1:1.
+  // The frame is sized to fit inside the bento tile and zooms on hover, so the
+  // zoom stays visible even on empty placeholders.
+  const frameSizeClass =
     video.aspectRatio === '16:9'
-      ? 'aspect-video'
+      ? 'aspect-video w-full max-h-full'
       : video.aspectRatio === '4:5'
-        ? 'aspect-[4/5]'
+        ? 'aspect-[4/5] h-full max-w-full'
         : video.aspectRatio === '1:1'
-          ? 'aspect-square'
-          : 'aspect-[9/13]';
+          ? 'aspect-square h-full max-w-full'
+          : 'aspect-[9/16] h-full max-w-full';
   const frameLabel =
     video.aspectRatio === '16:9'
       ? '16:9 horizontal frame'
@@ -51,10 +55,10 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
     <div
       id={`video-card-${video.id}`}
       onClick={() => onSelect(video)}
-      className="portfolio-card group relative flex flex-col bg-neutral-900 rounded-3xl border border-neutral-800 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden cursor-pointer transition-all duration-300 shadow-xl"
+      className="portfolio-card group relative flex flex-col h-full bg-neutral-900 rounded-3xl border border-neutral-800 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden cursor-pointer transition-all duration-300 shadow-xl"
     >
       {/* Card Media / Stylized Blueprint Canvas */}
-      <div className={`relative ${mediaAspectClass} w-full overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 flex flex-col justify-between p-4 border-b border-neutral-800/80`}>
+      <div className="relative flex-1 min-h-0 w-full overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 flex flex-col justify-between p-4 border-b border-neutral-800/80">
         {/* Background Pattern Grid */}
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
 
@@ -81,7 +85,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
         )}
 
         {/* Top Badges & Share Button Overlay */}
-        <div className="relative z-10 flex items-center justify-between">
+        <div className="relative z-10 flex items-center justify-between shrink-0">
           {/* Sample Style Tag */}
           <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/40 text-[10px] font-bold text-blue-300 flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
@@ -89,9 +93,15 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           </span>
 
           <div className="flex items-center gap-1.5">
-            <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono text-neutral-400 border border-neutral-800">
-              {video.duration}
-            </span>
+            {isPoster ? (
+              <span className="px-2 py-0.5 rounded-full bg-blue-500/20 backdrop-blur-md text-[10px] font-bold text-blue-300 border border-blue-500/40">
+                Poster
+              </span>
+            ) : (
+              <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono text-neutral-400 border border-neutral-800">
+                {video.duration}
+              </span>
+            )}
 
             {/* Share / Copy Direct Link Button Overlay */}
             <div className="relative">
@@ -128,21 +138,33 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           </div>
         </div>
 
-        {/* Center Blueprint Emblem & Play Icon */}
-        <div className="relative z-10 flex flex-col items-center justify-center my-auto py-4">
-          <div className="w-12 h-12 rounded-2xl bg-neutral-950/80 backdrop-blur-md border border-neutral-700/80 text-white flex items-center justify-center shadow-2xl group-hover:border-blue-500/60 group-hover:shadow-blue-500/20 transition-all duration-200">
-            <Play className="w-5 h-5 fill-white text-white ml-0.5" />
+        {/* Centre true-shape frame — shown while the tile is an empty placeholder;
+            once a real thumbnail is wired in, the image fills the media area instead */}
+        {!video.thumbnailUrl && (
+          <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center py-3">
+            <div className={`flex flex-col items-center justify-center gap-2 rounded-2xl border border-neutral-700/80 bg-neutral-950/60 transition-transform duration-300 group-hover:scale-[1.06] ${frameSizeClass}`}>
+              {isPoster ? (
+                <Image className="w-6 h-6 text-neutral-400" />
+              ) : (
+                <Play className="w-6 h-6 fill-white text-white ml-0.5" />
+              )}
+              <span className="text-[10px] font-mono text-neutral-500 group-hover:text-neutral-300 transition-colors">
+                {frameLabel}
+              </span>
+            </div>
           </div>
-          <span className="text-[10px] font-mono text-neutral-500 mt-2 group-hover:text-neutral-300 transition-colors">
-            {frameLabel}
-          </span>
-        </div>
+        )}
 
         {/* Bottom Format Pill */}
-        <div className="relative z-10 flex items-center justify-between text-[10px] font-mono">
+        <div className="relative z-10 flex items-center justify-between text-[10px] font-mono shrink-0">
           <span className="text-neutral-400 bg-black/70 px-2 py-0.5 rounded-full border border-neutral-800">
             {video.aspectRatio}
           </span>
+          {isPoster && (
+            <span className="text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/30 font-bold">
+              Poster Ad
+            </span>
+          )}
         </div>
       </div>
 

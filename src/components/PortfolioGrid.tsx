@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Grid } from 'lucide-react';
-import { PORTFOLIO_VIDEOS } from '../data/portfolioData';
+import { PORTFOLIO_VIDEOS, BENTO_PLACEMENT } from '../data/portfolioData';
 import { VideoItem } from '../types';
 import { VideoCard } from './VideoCard';
 
@@ -13,8 +13,9 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
   onSelectVideo,
   onNavigateToGallery,
 }) => {
-  // Homepage displays the first 6 curated videos in a 3-column V/H/V pattern
-  const homepageVideos = PORTFOLIO_VIDEOS.slice(0, 6);
+  // Homepage shows all 8 sample ads in the bento grid — the rectangle only
+  // works complete, so there is no 6-tile cut any more.
+  const homepageVideos = PORTFOLIO_VIDEOS;
 
   const handleGalleryClick = (e: React.MouseEvent) => {
     if (onNavigateToGallery) {
@@ -53,13 +54,13 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           </div>
         </div>
 
-        {/* 6 videos in a masonry layout: each card keeps its own height, so the wide and poster cards never stretch with an empty gap */}
+        {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tiles on the outer edges, wide tiles on top, posters in a repeating pattern */}
         <div
           id="portfolio-grid-items"
-          className="columns-1 sm:columns-2 lg:columns-3 gap-6 max-w-6xl mx-auto"
+          className="grid grid-cols-2 lg:grid-cols-6 auto-rows-[190px] lg:auto-rows-[280px] gap-6 max-w-6xl mx-auto"
         >
-          {homepageVideos.map((video) => (
-            <div key={video.id} className="mb-6 break-inside-avoid">
+          {homepageVideos.map((video, index) => (
+            <div key={video.id} className={BENTO_PLACEMENT[index]}>
               <VideoCard
                 video={video}
                 onSelect={onSelectVideo}
@@ -68,7 +69,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           ))}
         </div>
 
-        {/* View Full Gallery CTA Button below the 2x2 grid */}
+        {/* View Full Gallery CTA Button below the bento grid */}
         <div className="mt-12 text-center">
           <a
             href="/gallery"

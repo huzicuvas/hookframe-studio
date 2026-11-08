@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Filter, Video, Search } from 'lucide-react';
-import { PORTFOLIO_VIDEOS } from '../data/portfolioData';
+import { PORTFOLIO_VIDEOS, BENTO_PLACEMENT } from '../data/portfolioData';
 import { CategoryType, VideoItem } from '../types';
 import { VideoCard } from './VideoCard';
 import { HookFramesLogo } from './HookFramesLogo';
@@ -35,6 +35,10 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
       video.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
+
+  // The bento rectangle only works with the full set — a filter or search
+  // falls back to a plain uniform grid so there are never holes in the layout.
+  const isFullSet = activeCategory === 'All' && searchQuery.trim() === '';
 
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
@@ -152,13 +156,17 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           </div>
         </div>
 
-        {/* Gallery Videos (masonry — each card keeps its own height, no stretched gaps) */}
+        {/* Gallery videos — bento grid for the full set, plain uniform grid when filtered or searched */}
         <div
           id="gallery-grid-items"
-          className="columns-1 sm:columns-2 lg:columns-3 gap-6"
+          className={
+            isFullSet
+              ? 'grid grid-cols-2 lg:grid-cols-6 auto-rows-[190px] lg:auto-rows-[280px] gap-6'
+              : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[320px] gap-6'
+          }
         >
-          {filteredVideos.map((video) => (
-            <div key={video.id} className="mb-6 break-inside-avoid">
+          {filteredVideos.map((video, index) => (
+            <div key={video.id} className={isFullSet ? BENTO_PLACEMENT[index] : ''}>
               <VideoCard
                 video={video}
                 onSelect={onSelectVideo}

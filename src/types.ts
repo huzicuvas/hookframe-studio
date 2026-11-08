@@ -9,6 +9,7 @@ export interface VideoItem {
   videoUrl: string;
   duration: string;
   aspectRatio: '9:16' | '1:1' | '16:9' | '4:5';
+  kind?: 'video' | 'poster'; // poster tiles show a static poster frame, not a play button
   hookHeadline: string;
   description: string;
   metrics?: {

@@ -51,6 +51,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     videoUrl: '',
     duration: '0:15',
     aspectRatio: '4:5',
+    kind: 'poster',
     hookHeadline: '"Why 30,000 coffee drinkers switched to morning jitter-free focus..."',
     description: 'Fast-paced kinetic typography, fluid dynamic splashes, morning routine POV, and energetic sound design.',
     metrics: {
@@ -58,7 +59,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '3.8%',
       roas: '3.5x',
     },
-    tags: ['Kinetic Cuts', 'Beverage Splash', 'Routine POV', 'Sample style'],
+    tags: ['Poster Ad', 'Beverage Splash', 'Routine POV', 'Sample style'],
   },
   {
     id: 'sample-style-b2b-saas-workflow',
@@ -68,7 +69,8 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     thumbnailUrl: '',
     videoUrl: '',
     duration: '0:25',
-    aspectRatio: '9:16',
+    aspectRatio: '4:5',
+    kind: 'poster',
     hookHeadline: '"I used to waste 14 hours a week until our team started using this..."',
     description: 'Authentic desk setup POV with dynamic screen insert overlays, user testimonial delivery, and frictionless signup CTA.',
     metrics: {
@@ -76,7 +78,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '4.7%',
       roas: '4.1x',
     },
-    tags: ['SaaS Demo', 'Desk POV', 'Workflow Hook', 'Sample style'],
+    tags: ['Poster Ad', 'Desk POV', 'Workflow Hook', 'Sample style'],
   },
   {
     id: 'sample-style-3d-fluid-splash',
@@ -122,7 +124,8 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     thumbnailUrl: '',
     videoUrl: '',
     duration: '0:28',
-    aspectRatio: '9:16',
+    aspectRatio: '4:5',
+    kind: 'poster',
     hookHeadline: '"We built this in our garage because every alternative broke in 3 months..."',
     description: 'Direct-to-camera storytelling with documentary B-roll cutaways, sketch overlay graphics, and trust-building social proof.',
     metrics: {
@@ -130,7 +133,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '4.1%',
       roas: '3.8x',
     },
-    tags: ['Founder POV', 'Brand Story', 'Direct Pitch', 'Sample style'],
+    tags: ['Poster Ad', 'Brand Story', 'Direct Pitch', 'Sample style'],
   },
   {
     id: 'sample-style-split-screen-comparison',
@@ -140,7 +143,8 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     thumbnailUrl: '',
     videoUrl: '',
     duration: '0:16',
-    aspectRatio: '9:16',
+    aspectRatio: '1:1',
+    kind: 'poster',
     hookHeadline: '"Left: Regular department store brand vs. Right: 100% bio-active formula."',
     description: 'High-contrast split-screen demonstrating instant absorption, ingredient transparency, and real-time visual proof.',
     metrics: {
@@ -148,6 +152,24 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       ctr: '5.0%',
       roas: '4.5x',
     },
-    tags: ['Split Screen', 'Comparison', 'Visual Proof', 'Sample style'],
+    tags: ['Poster Ad', 'Comparison', 'Visual Proof', 'Sample style'],
   },
+];
+
+/**
+ * Bento grid placement (one class string per tile, in portfolio order).
+ * Desktop: 6 columns x 2 rows — two mirrored blocks, tall tiles on the outer
+ * edges, wide tiles on top, posters in a repeating pattern.
+ * Mobile: 2 columns x 5 rows — tall tile top-left, wide strip at the bottom.
+ * Shared by the homepage grid and the gallery page.
+ */
+export const BENTO_PLACEMENT: string[] = [
+  'col-start-1 row-start-1 row-span-2 lg:col-start-1 lg:row-start-1 lg:row-span-2',
+  'col-start-2 row-start-1 lg:col-start-2 lg:col-span-2 lg:row-start-1',
+  'col-start-2 row-start-2 lg:col-start-2 lg:row-start-2',
+  'col-start-1 row-start-3 lg:col-start-3 lg:row-start-2',
+  'col-start-2 row-start-3 lg:col-start-4 lg:col-span-2 lg:row-start-1',
+  'col-start-1 row-start-4 lg:col-start-4 lg:row-start-2',
+  'col-start-2 row-start-4 lg:col-start-5 lg:row-start-2',
+  'col-start-1 col-span-2 row-start-5 lg:col-start-6 lg:col-span-1 lg:row-start-1 lg:row-span-2',
 ];
