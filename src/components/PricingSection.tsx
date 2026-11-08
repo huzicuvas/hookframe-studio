@@ -1,418 +1,374 @@
 import React from 'react';
-import { Check, Zap, ArrowRight, Clock, ShieldCheck, Mail } from 'lucide-react';
+import { Check, Zap, ArrowRight, Mail } from 'lucide-react';
 
-interface PricingSectionProps {
-  onSelectTier?: (tierName: string) => void;
+const recipientEmail = 'kiramorganai@gmail.com';
+
+const mailto = (subject: string, body: string) =>
+  `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+interface PriceRow {
+  label: string;
+  price: string;
+  subject: string;
+  body: string;
 }
 
-export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) => {
-  const recipientEmail = 'kiramorganai@gmail.com';
+interface PricingCard {
+  id: string;
+  name: string;
+  price: string;
+  priceSub: string;
+  badge?: string;
+  isPopular: boolean;
+  tagline: string;
+  priceRows?: PriceRow[];
+  included: string[];
+  ctaLabel: string;
+  ctaSubject: string;
+  ctaBody: string;
+}
 
-  interface PricingTier {
-    id: string;
-    name: string;
-    price: string;
-    pricePrefix: string;
-    duration: string;
-    versionSpec: string;
-    badge: string;
-    isPopular: boolean;
-    tagline: string;
-    included: string[];
-    ctaLabel: string;
-    mailtoSubject: string;
-    priceList?: { label: string; price: string }[];
-  }
+// Three cards, matching the approved preview: test ad, UGC by length, CGI & posters.
+// The length rows are mailto links, so each price pre-fills its own email.
+const pricingCards: PricingCard[] = [
+  {
+    id: 'first-ad-test',
+    name: 'First Ad — Test',
+    price: '$50',
+    priceSub: '10-second ad',
+    isPopular: false,
+    tagline:
+      'Your first ad, risk-free. UGC or CGI — your pick. You only pay after you approve it.',
+    included: [
+      '10-second video (UGC or CGI)',
+      'Watermarked preview first',
+      '1 revision included',
+      '48-hour delivery',
+      'Pay on approval',
+    ],
+    ctaLabel: 'Start with a test ad',
+    ctaSubject: 'Test ad — $50 pay on approval',
+    ctaBody:
+      'Hi Hook Frames Studio Team,%0A%0AWe want to start with a $50 test ad (pay on approval, 10 seconds, UGC or CGI — our pick).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+  },
+  {
+    id: 'ugc-video-ads',
+    name: 'UGC Video Ads',
+    price: 'from $75',
+    priceSub: 'Per video',
+    badge: 'Most popular',
+    isPopular: true,
+    tagline:
+      'Real creator videos, hook-first, built for TikTok, Reels and Shorts.',
+    priceRows: [
+      {
+        label: '15-second video',
+        price: '$75',
+        subject: 'Order a 15 second UGC video ad — $75',
+        body: 'Hi Hook Frames Studio Team,%0A%0AWe want to order a 15 second UGC video ad for our brand ($75 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+      },
+      {
+        label: '20-second video',
+        price: '$99',
+        subject: 'Order a 20 second UGC video ad — $99',
+        body: 'Hi Hook Frames Studio Team,%0A%0AWe want to order a 20 second UGC video ad for our brand ($99 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+      },
+      {
+        label: '30-second video',
+        price: '$149',
+        subject: 'Order a 30 second UGC video ad — $149',
+        body: 'Hi Hook Frames Studio Team,%0A%0AWe want to order a 30 second UGC video ad for our brand ($149 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+      },
+    ],
+    included: [
+      '9:16 vertical + 16:9 cut',
+      'Hook-first script',
+      '48-hour delivery',
+    ],
+    ctaLabel: 'Pick a length',
+    ctaSubject: 'Order a UGC video ad',
+    ctaBody:
+      'Hi Hook Frames Studio Team,%0A%0AWe want to order a UGC video ad.%0A%0ALength (15s $75 / 20s $99 / 30s $149): %0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+  },
+  {
+    id: 'cgi-poster-ads',
+    name: 'CGI & Poster Ads',
+    price: 'from $30',
+    priceSub: 'Per ad',
+    isPopular: false,
+    tagline: '3D product films and scroll-stopping posters.',
+    priceRows: [
+      {
+        label: 'CGI 15-second',
+        price: '$175',
+        subject: 'Order a CGI video — 15 seconds $175',
+        body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a 15 second CGI video ($175).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
+      },
+      {
+        label: 'CGI 30-second',
+        price: '$299',
+        subject: 'Order a CGI video — 30 seconds $299',
+        body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a 30 second CGI video ($299).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
+      },
+      {
+        label: 'Poster ad',
+        price: '$30',
+        subject: 'Order a poster ad — $30',
+        body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a poster ad ($30, or $20 with any video).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
+      },
+      {
+        label: 'Poster with any video',
+        price: '$20',
+        subject: 'Order a poster ad — $30 (with a video $20)',
+        body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a poster ad with a video ($20 with any video).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
+      },
+    ],
+    included: ['Studio-quality 3D render', '48-hour delivery'],
+    ctaLabel: 'Get a CGI or poster',
+    ctaSubject: 'Order a CGI or poster ad',
+    ctaBody:
+      'Hi Hook Frames Studio Team,%0A%0AWe would like to order a CGI video or poster ad.%0A%0AChoice (CGI 15s $175 / CGI 30s $299 / Poster $30 / Poster with video $20): %0A%0ABrand Name: %0AProduct / Website Link: %0A',
+  },
+];
 
-  // Fixed-price cards: short ads only, 30 seconds max.
-  const pricingTiers: PricingTier[] = [
-    {
-      id: 'first-ad-test',
-      name: 'First Ad — Test',
-      price: '$50',
-      pricePrefix: 'Pay on approval',
-      duration: '10 sec',
-      versionSpec: '1 test ad',
-      badge: 'Try us first',
-      isPopular: true,
-      tagline: 'One test ad to see the quality first. You get a watermarked preview, and you only pay if you love it.',
-      included: [
-        '1 test video ad, 10 seconds',
-        'Watermarked preview first',
-        'Pay only if you love it',
-        '1 revision included',
-        '48-hour delivery turnaround',
-        'Full commercial usage rights after payment',
-      ],
-      ctaLabel: 'Start with a test ad',
-      mailtoSubject: 'Test ad — $50 pay on approval',
-    },
-    {
-      id: '15-sec-video',
-      name: '15 Second Video',
-      price: '$75',
-      pricePrefix: 'Fixed Price',
-      duration: '15 sec',
-      versionSpec: '1 version',
-      badge: 'Short ad',
-      isPopular: false,
-      tagline: 'Short video ad for TikTok, Reels and Shorts — fifteen seconds.',
-      included: [
-        '1 final version',
-        '15 second runtime',
-        'Full AI voiceover & sound design',
-        '9:16 vertical & 16:9 horizontal cuts',
-        'Full commercial usage rights',
-        '48-hour delivery turnaround',
-      ],
-      ctaLabel: 'Order a video ad',
-      mailtoSubject: 'Order a 15 second video ad — $75',
-    },
-    {
-      id: '20-sec-video',
-      name: '20 Second Video',
-      price: '$99',
-      pricePrefix: 'Fixed Price',
-      duration: '20 sec',
-      versionSpec: '1 version',
-      badge: 'Short ad',
-      isPopular: false,
-      tagline: 'Short video ad for TikTok, Reels and Shorts — twenty seconds.',
-      included: [
-        '1 final version',
-        '20 second runtime',
-        'Full AI voiceover & sound design',
-        '9:16 vertical & 16:9 horizontal cuts',
-        'Full commercial usage rights',
-        '48-hour delivery turnaround',
-      ],
-      ctaLabel: 'Order a video ad',
-      mailtoSubject: 'Order a 20 second video ad — $99',
-    },
-    {
-      id: '30-sec-video',
-      name: '30 Second Video',
-      price: '$149',
-      pricePrefix: 'Fixed Price',
-      duration: '30 sec',
-      versionSpec: '1 version',
-      badge: 'Longer ad',
-      isPopular: false,
-      tagline: 'A full thirty-second video ad — more time for the story, the product and the call to action.',
-      included: [
-        '1 final version',
-        '30 second runtime',
-        'Full AI voiceover & sound design',
-        '9:16 vertical & 16:9 horizontal cuts',
-        'Full commercial usage rights',
-        '48-hour delivery turnaround',
-      ],
-      ctaLabel: 'Order a video ad',
-      mailtoSubject: 'Order a 30 second video ad — $149',
-    },
-    {
-      id: 'poster-ad',
-      name: 'Poster Ad',
-      price: '$30',
-      pricePrefix: 'Fixed Price',
-      duration: '1 poster',
-      versionSpec: '$20 with any video',
-      badge: 'Still',
-      isPopular: false,
-      tagline: 'A still poster ad for feeds and stories — one design, in social and print-ready sizes.',
-      included: [
-        '1 poster design',
-        'Social + print-ready sizes',
-        '1 revision included',
-        '48-hour delivery turnaround',
-        'Full commercial usage rights',
-      ],
-      ctaLabel: 'Order a poster',
-      mailtoSubject: 'Order a poster ad — $30',
-    },
-    {
-      id: 'cgi-video',
-      name: 'CGI Video',
-      price: 'From $175',
-      pricePrefix: 'Fixed Price',
-      duration: '15–30 sec',
-      versionSpec: '3D product video',
-      badge: '3D CGI',
-      isPopular: false,
-      tagline: 'A 3D CGI product video — the product built in 3D, with fluid, splash and cinematic motion.',
-      priceList: [
-        { label: '15 sec', price: '$175' },
-        { label: '30 sec', price: '$299' },
-      ],
-      included: [
-        'Raytraced 3D product modeling',
-        'Fluid, splash & cinematic motion',
-        '9:16 vertical & 16:9 horizontal cuts',
-        'Full commercial usage rights',
-        '48–72 hour delivery turnaround',
-      ],
-      ctaLabel: 'Order a CGI video',
-      mailtoSubject: 'Order a CGI video',
-    },
-  ];
+const packCards = [
+  {
+    id: 'hook-variation-pack',
+    name: 'Hook Variation Pack',
+    price: '3 hooks $189 · 5 hooks $299',
+    tagline: 'Same ad, new hooks — test what grabs attention.',
+    included: [
+      '3 hooks — $189',
+      '5 hooks — $299',
+      'Extra hook — +$50',
+      'Made for Meta & TikTok A/B testing',
+    ],
+    ctaLabel: 'Order the pack',
+    ctaSubject: 'Order Hook Variation Pack — 3 hooks $189',
+    ctaBody:
+      'Hi Hook Frames Studio Team,%0A%0AWe want to order a Hook Pack with 3 opening hooks ($189).%0A%0ABrand Name: %0AProduct Link: %0ATarget Ad Platform (Meta / TikTok): %0A',
+  },
+  {
+    id: 'custom-brand-pack',
+    name: 'Custom Brand Pack',
+    price: '$249',
+    tagline: 'One of each: UGC, CGI and a poster.',
+    included: [
+      '1 UGC testimonial (15s)',
+      '1 CGI product ad (15s)',
+      '1 poster ad',
+      'Extras: poster $20 / UGC $60 / CGI $150',
+    ],
+    ctaLabel: 'Order the pack',
+    ctaSubject: 'Order Custom Brand Pack — $249',
+    ctaBody:
+      'Hi Hook Frames Studio Team,%0A%0AWe want to order a Custom Brand Pack ($249: 1 UGC testimonial video 15s + 1 CGI product video 15s + 1 poster ad).%0A%0ABrand Name: %0AProduct / Website Link: %0AExtras needed (poster $20 / UGC $60 / CGI $150): %0A',
+  },
+];
 
-  // Packs with fixed prices: variations and bundles.
-  const quoteBars = [
-    {
-      id: 'hook-variation-pack',
-      name: 'Hook Variation Pack',
-      price: '$189',
-      pricePrefix: 'From $189',
-      badge: 'Hook pack',
-      tagline: 'Same ad, different opening hooks — made for A/B testing. 3 hooks (3× 15s videos) for $189, or 5 hooks for $299. Extra hook +$50.',
-      included: [
-        '3 videos, 15 seconds each',
-        '3 different opening hooks',
-        '5-hook pack $299',
-        'Extra hook +$50',
-        'Made for Meta & TikTok A/B testing',
-      ],
-      ctaLabel: 'Order the pack',
-      mailtoSubject: 'Order Hook Variation Pack — 3 hooks $189',
-    },
-    {
-      id: 'custom-brand-pack',
-      name: 'Custom Brand Pack',
-      price: '$249',
-      pricePrefix: 'Fixed Price',
-      badge: 'Bundle',
-      tagline: 'One UGC testimonial video, one CGI product video, and one poster — made to work together for one launch.',
-      included: [
-        '1 UGC testimonial video (15s)',
-        '1 CGI product video (15s)',
-        '1 poster ad',
-        'Extra poster $20 · extra UGC $60 · extra CGI $150',
-      ],
-      ctaLabel: 'Order the pack',
-      mailtoSubject: 'Order Custom Brand Pack — $249',
-    },
-  ];
-
+export const PricingSection: React.FC = () => {
   return (
     <section
       id="pricing"
-      className="py-16 bg-[#0A0A0B] border-t border-neutral-800/80"
+      className="py-16 sm:py-20 bg-[#0A0A0B] border-t border-neutral-800/80"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-              <span>Transparent pricing</span>
-            </div>
-            <h2
-              id="pricing-title"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight"
-            >
-              Simple, transparent ad pricing. <br />
-              <span className="text-neutral-400">No agency retainers required.</span>
-            </h2>
-            <p className="text-sm sm:text-base text-neutral-400">
-              First time here? Start with a $50 test ad and pay only after you approve the preview. Video ads from $50, posters from $30. Every video is delivered in vertical 9:16 and horizontal 16:9, with sound design, ad-ready exports, and full commercial usage rights.
-            </p>
+        {/* Section Header — centred, like the approved preview */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <span>Transparent pricing</span>
           </div>
-
-          {/* Guarantee Pill */}
-          <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-full self-start md:self-auto">
-            <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
-            <span>Commercial Rights Included • Fast 48h Turnaround</span>
-          </div>
+          <h2
+            id="pricing-title"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mt-4"
+          >
+            PRICING
+          </h2>
+          <p className="text-sm sm:text-base text-neutral-400 mt-3">
+            One price per ad. No hidden fees, no surprises.
+          </p>
+          <p className="text-xs font-mono text-neutral-500 mt-2">
+            First ad is pay on approval · 48-hour delivery · Full commercial
+            rights
+          </p>
         </div>
 
-        {/* Fixed-Price Cards: one card per tier, in ascending order */}
+        {/* Three cards — blue glow at the bottom of each, middle card featured */}
         <div
           id="pricing-grid"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4.5 max-w-6xl mx-auto items-stretch"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto items-stretch"
         >
-          {pricingTiers.map((tier) => (
+          {pricingCards.map((card) => (
             <div
-              key={tier.id}
-              id={`pricing-card-${tier.id}`}
-              className={`relative flex flex-col justify-between rounded-3xl p-6 transition-colors duration-300 shadow-xl ${
-                tier.isPopular
-                  ? 'bg-neutral-900 border-2 border-blue-500/80 shadow-blue-500/10'
-                  : 'bg-neutral-900 border border-neutral-800 hover:border-neutral-700'
+              key={card.id}
+              id={`pricing-card-${card.id}`}
+              className={`relative flex flex-col rounded-3xl bg-neutral-900 border p-6 sm:p-7 overflow-hidden shadow-xl ${
+                card.isPopular
+                  ? 'border-blue-500/60 shadow-blue-500/10 lg:-translate-y-2'
+                  : 'border-neutral-800'
               }`}
             >
+              {/* Blue glow wash at the bottom — strongest on the featured card */}
+              <div
+                className={`pointer-events-none absolute inset-x-0 bottom-0 ${
+                  card.isPopular
+                    ? 'h-56 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.55),transparent_70%)]'
+                    : 'h-44 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.35),transparent_70%)]'
+                }`}
+              />
+
               {/* Featured Badge */}
-              {tier.isPopular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-blue-500 text-white text-[11px] font-bold shadow-md flex items-center gap-1">
+              {card.isPopular && card.badge && (
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 px-3 py-0.5 rounded-full bg-blue-500 text-white text-[11px] font-bold shadow-md flex items-center gap-1 whitespace-nowrap">
                   <Zap className="w-3 h-3 fill-white" />
-                  <span>{tier.badge}</span>
+                  <span>{card.badge}</span>
                 </div>
               )}
 
-              <div className="space-y-5">
-                {/* Header & Duration */}
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-bold text-white tracking-tight leading-snug">
-                      {tier.name}
-                    </h3>
-                    {!tier.isPopular && (
-                      <span className="text-[10px] font-mono text-neutral-400 px-2 py-0.5 rounded-full bg-neutral-950 border border-neutral-800">
-                        {tier.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Duration & Version Tag */}
-                  <div className="flex flex-col gap-1">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-neutral-950 border border-neutral-800 text-xs font-mono text-blue-300 w-fit">
-                      <Clock className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                      <span>{tier.duration}</span>
-                    </div>
-                    <span className="text-[11px] font-mono text-neutral-400 pl-0.5">
-                      {tier.versionSpec}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-neutral-400 leading-relaxed min-h-[48px]">
-                    {tier.tagline}
-                  </p>
-                </div>
-
-                {/* Price Display */}
-                <div className="py-3.5 border-y border-neutral-800/80">
-                  <span className="text-[10px] font-mono text-neutral-500 block">
-                    {tier.pricePrefix}
-                  </span>
-                  {tier.priceList ? (
-                    <div className="mt-2 space-y-1.5">
-                      {tier.priceList.map((row) => (
-                        <div key={row.label} className="flex items-center justify-between text-xs">
-                          <span className="text-neutral-400">{row.label}</span>
-                          <span className="font-mono font-bold text-white">{row.price}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="flex items-baseline gap-1 mt-0.5">
-                      <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
-                        {tier.price}
-                      </span>
-                      {tier.price.startsWith('$') && (
-                        <span className="text-xs text-neutral-500 font-mono">/ cut</span>
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                {/* What's Included */}
-                <div className="space-y-2">
-                  <span className="text-[10px] font-mono text-neutral-500 block">
-                    What's included:
-                  </span>
-                  <ul className="space-y-1.5">
-                    {tier.included.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-1.5 text-xs text-neutral-300 leading-tight">
-                        <Check className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Action Button: Mailto to kiramorganai@gmail.com */}
-              <div className="mt-6 pt-4 border-t border-neutral-800/80">
-                <a
-                  href={`mailto:${recipientEmail}?subject=${encodeURIComponent(tier.mailtoSubject)}&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20interested%20in%20the%20${encodeURIComponent(tier.name)}%20tier.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0ATarget%20Platform%20(Meta/TikTok/Shorts):%20%0ANotes%20or%20Angle%20Ideas:%20%0A`}
-                  id={`cta-tier-${tier.id}`}
-                  className={`w-full py-3 px-3.5 rounded-full text-xs font-bold flex items-center justify-center gap-2 transition-colors duration-200 active:scale-95 ${
-                    tier.isPopular
-                      ? 'bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/20'
-                      : 'bg-neutral-800 hover:bg-neutral-700 text-white border border-neutral-700/60'
-                  }`}
-                >
-                  <Mail className="w-3.5 h-3.5" />
-                  <span>{tier.ctaLabel}</span>
-                  <ArrowRight className="w-3 h-3" />
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Long Bars: fixed-price packs */}
-        <div className="mt-6 space-y-4 max-w-5xl mx-auto">
-          {quoteBars.map((bar) => (
-            <div
-              key={bar.id}
-              id={`pricing-bar-${bar.id}`}
-              className="flex flex-col md:flex-row md:items-center justify-between gap-5 rounded-3xl bg-neutral-900 border border-neutral-800 p-6 shadow-xl"
-            >
-              <div className="space-y-2.5 flex-1">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-base font-bold text-white tracking-tight leading-snug">
-                    {bar.name}
-                  </h3>
-                  <span className="text-[10px] font-mono text-neutral-400 px-2 py-0.5 rounded-full bg-neutral-950 border border-neutral-800">
-                    {bar.badge}
-                  </span>
-                </div>
-                <p className="text-xs text-neutral-400 leading-relaxed">
-                  {bar.tagline}
+              <div className="relative z-10 flex flex-col flex-1">
+                <h3 className="text-lg font-bold text-white tracking-tight">
+                  {card.name}
+                </h3>
+                <p className="text-sm text-neutral-400 leading-relaxed mt-1.5 min-h-[42px]">
+                  {card.tagline}
                 </p>
-                <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
-                  {bar.included.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-1.5 text-xs text-neutral-300 leading-tight">
-                      <Check className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
+
+                {/* Price */}
+                <div className="mt-5">
+                  <span className="text-4xl font-extrabold text-white tracking-tight">
+                    {card.price}
+                  </span>
+                  <span className="text-xs text-neutral-500 font-mono ml-2">
+                    {card.priceSub}
+                  </span>
+                </div>
+
+                {/* Price rows — each one is a mailto that pre-fills its own email */}
+                {card.priceRows && (
+                  <div className="mt-4 space-y-1">
+                    {card.priceRows.map((row) => (
+                      <a
+                        key={row.label}
+                        href={mailto(row.subject, row.body)}
+                        className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm border border-transparent hover:bg-blue-500/10 hover:border-blue-500/30 transition-colors"
+                      >
+                        <span className="text-neutral-300">{row.label}</span>
+                        <span className="font-mono font-bold text-white">
+                          {row.price}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                {/* What's included */}
+                <ul className="mt-4 space-y-2">
+                  {card.included.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-sm text-neutral-300 leading-snug"
+                    >
+                      <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              <div className="flex items-center gap-4 shrink-0">
-                <div className="text-right">
-                  <span className="text-[10px] font-mono text-neutral-500 block">
-                    {bar.pricePrefix}
-                  </span>
-                  <span className="text-xl font-extrabold text-white tracking-tight font-mono">
-                    {bar.price}
-                  </span>
+                {/* CTA — white pill, like the preview */}
+                <div className="mt-auto pt-6">
+                  <a
+                    href={mailto(card.ctaSubject, card.ctaBody)}
+                    id={`cta-tier-${card.id}`}
+                    className="w-full py-3 px-4 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold flex items-center justify-center gap-2 transition-colors"
+                  >
+                    <span>{card.ctaLabel}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
-                <a
-                  href={`mailto:${recipientEmail}?subject=${encodeURIComponent(bar.mailtoSubject)}&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20interested%20in%20the%20${encodeURIComponent(bar.name)}.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0ATarget%20Platform%20(Meta/TikTok/Shorts):%20%0ANotes%20or%20Angle%20Ideas:%20%0A`}
-                  id={`cta-tier-${bar.id}`}
-                  className="py-3 px-5 rounded-full text-xs font-bold flex items-center justify-center gap-2 transition-colors duration-200 active:scale-95 bg-neutral-800 hover:bg-neutral-700 text-white border border-neutral-700/60"
-                >
-                  <Mail className="w-3.5 h-3.5" />
-                  <span>{bar.ctaLabel}</span>
-                  <ArrowRight className="w-3 h-3" />
-                </a>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Pack discounts — fixed prices */}
+        {/* Pack cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto mt-6">
+          {packCards.map((pack) => (
+            <div
+              key={pack.id}
+              id={`pricing-card-${pack.id}`}
+              className="relative flex flex-col rounded-3xl bg-neutral-900 border border-neutral-800 p-6 overflow-hidden shadow-xl"
+            >
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.25),transparent_70%)]" />
+              <div className="relative z-10 flex flex-col flex-1">
+                <h3 className="text-base font-bold text-white tracking-tight">
+                  {pack.name}
+                </h3>
+                <p className="text-sm text-neutral-400 leading-relaxed mt-1">
+                  {pack.tagline}
+                </p>
+                <div className="mt-4">
+                  <span className="text-xl font-extrabold text-white tracking-tight">
+                    {pack.price}
+                  </span>
+                </div>
+                <ul className="mt-3 space-y-2">
+                  {pack.included.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-sm text-neutral-300 leading-snug"
+                    >
+                      <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto pt-5">
+                  <a
+                    href={mailto(pack.ctaSubject, pack.ctaBody)}
+                    id={`cta-tier-${pack.id}`}
+                    className="w-full py-3 px-4 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold flex items-center justify-center gap-2 transition-colors"
+                  >
+                    <span>{pack.ctaLabel}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Pack discounts */}
         <div className="mt-6 max-w-5xl mx-auto">
           <div className="rounded-3xl bg-neutral-900/60 border border-neutral-800 px-6 py-4 text-center text-xs font-mono text-neutral-300">
-            Packs: 3 videos <span className="text-white font-bold">10% off</span> · 5 videos <span className="text-white font-bold">15% off</span>
+            Packs: 3 videos{' '}
+            <span className="text-white font-bold">10% off</span> · 5 videos{' '}
+            <span className="text-white font-bold">15% off</span>
           </div>
         </div>
 
-        {/* Custom Durations & Monthly: over 30 seconds, monthly batches, anything else */}
+        {/* Quote strip — over 30 seconds, monthly, custom */}
         <div className="mt-6 p-6 bg-neutral-900/60 border border-neutral-800 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 max-w-5xl mx-auto">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
               <Mail className="w-4 h-4" />
             </div>
             <div>
-              <span className="font-semibold text-white">Need over 30 seconds, monthly creative, or something custom?</span>
-              <p className="text-neutral-400 mt-0.5">Anything over 30 seconds, monthly content batches and fully custom scopes are priced on quotation — tell us the duration and product.</p>
+              <span className="font-semibold text-white">
+                Need over 30 seconds, monthly creative, or something custom?
+              </span>
+              <p className="text-neutral-400 mt-0.5">
+                Anything over 30 seconds, monthly content batches and fully
+                custom scopes are priced on quotation — tell us the duration
+                and product.
+              </p>
             </div>
           </div>
           <a
-            href={`mailto:${recipientEmail}?subject=Quotation%20request%20-%20over%2030%20seconds%20or%20custom%20scope&body=Hi%20Hook%20Frames%20Studio,%0A%0AWe%27d%20like%20a%20quotation.%0A%0ABrand%20Name:%20%0AProduct%20/%20Website%20Link:%20%0AWhat%20we%20need%20(over%2030s%20video%20/%20monthly%20batch%20/%20other):%20%0A`}
+            href={mailto(
+              'Quotation request — over 30 seconds or custom scope',
+              'Hi Hook Frames Studio Team,%0A%0AWe would like a quotation for over 30 seconds, monthly batches, or a fully custom scope.%0A%0ABrand Name: %0AProduct / Website Link: %0AWhat we need: %0A'
+            )}
             className="shrink-0 px-5 py-2.5 rounded-full bg-white hover:bg-blue-500 text-black hover:text-white font-bold transition-colors"
           >
             Ask for a quotation

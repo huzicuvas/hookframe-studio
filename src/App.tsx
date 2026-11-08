@@ -5,6 +5,7 @@ import { PortfolioGrid } from './components/PortfolioGrid';
 import { AboutServicesCombined } from './components/AboutServicesCombined';
 import { WorkflowSection } from './components/WorkflowSection';
 import { FaqSection } from './components/FaqSection';
+import { PricingSection } from './components/PricingSection';
 import { GeminiChatbot } from './components/GeminiChatbot';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -147,7 +148,10 @@ export default function App() {
             {/* FAQ Section */}
             <FaqSection />
 
-            {/* Quick-Tier Contact & Pricing Section (Single source of pricing) */}
+            {/* Pricing Section (3-card layout) */}
+            <PricingSection />
+
+            {/* Contact Section */}
             <Contact />
           </main>
 
