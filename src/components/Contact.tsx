@@ -21,28 +21,20 @@ export const Contact: React.FC = () => {
       body: "Hi Hook Frames Studio Team,%0A%0AWe want to start with a $75 test ad (pay on approval).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
     },
     {
-      id: 'tier-15-30s',
-      name: '15-30 Second Video',
+      id: 'tier-10-20s',
+      name: '10–20 Second Video',
       price: '$75',
-      specs: '1 version • 15-30s runtime',
-      subject: 'Inquiry for 15-30 Second Video',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a 15-30 second video ad for our brand ($75 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
+      specs: '1 version • 10-20s runtime',
+      subject: 'Inquiry for 10-20 Second Video',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a 10-20 second video ad for our brand ($75 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
     },
     {
-      id: 'tier-30-60s',
-      name: '30-60 Second Video',
+      id: 'tier-custom-duration',
+      name: '30s–1min, Poster or Custom',
       price: 'Get a Quote',
-      specs: '1 version • 30-60s runtime',
-      subject: 'Inquiry for 30-60 Second Video',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe're looking for a 30-60 second video ad for our brand (custom quote / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AProduct Focus Areas: %0A",
-    },
-    {
-      id: 'tier-60s',
-      name: '60 Second Video',
-      price: 'Get a Quote',
-      specs: '1 version • 60s runtime narrative',
-      subject: 'Inquiry for 60 Second Video',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe're looking for a full 60-second in-depth narrative video ad (custom quote / 1 version).%0A%0ABrand Name: %0AProduct / Service Link: %0ACore Message / Proof Points: %0A",
+      specs: '30s to 1 minute • poster ads • any custom duration',
+      subject: 'Inquiry for custom duration or poster ad',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe would like a quotation for a custom duration (30 seconds to 1 minute), a poster ad, or another custom format.%0A%0ABrand Name: %0AProduct / Website Link: %0AWhat we need: %0A",
     },
     {
       id: 'tier-hook-pack',
@@ -90,7 +82,7 @@ export const Contact: React.FC = () => {
           {/* Primary Mailto Action & Copy Button */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto">
             <a
-              href={`mailto:${email}?subject=New%20Ad%20Creative%20Inquiry%20-%20Hook%20Frames%20Studio&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(15-30s%20/%2030-60s%20/%2060s%20/%20Hook%20Pack%20/%20Custom):%20%0ATarget%20Launch%20Date:%20%0A`}
+              href={`mailto:${email}?subject=New%20Ad%20Creative%20Inquiry%20-%20Hook%20Frames%20Studio&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2010-20s%20/%2030s-1min%20/%20Poster%20/%20Hook%20Pack%20/%20Custom):%20%0ATarget%20Launch%20Date:%20%0A`}
               id="contact-mailto-btn"
               className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold transition-colors duration-200 shadow-lg active:scale-95"
             >
