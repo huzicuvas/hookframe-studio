@@ -44,7 +44,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
               Sample ad styles.
             </h2>
             <p className="text-sm sm:text-base text-neutral-400 max-w-xl">
-              Creative frameworks: UGC creator videos, 3D CGI product films, kinetic fast cuts and poster ads.
+              Short-form ad styles for TikTok, Reels, Shorts, and poster ads — one bento grid with taller boxes, so every ad sits in its true shape, and posters repeat through it: two videos, two posters, all the way through.
             </p>
           </div>
 
@@ -54,10 +54,10 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           </div>
         </div>
 
-        {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tiles on the outer edges, wide tiles on top, posters in a repeating pattern */}
+        {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tile on the left, wide tile top-right, two posters bottom-right; then the mirror. Every tile is one media panel with its text overlaid, like the preview. */}
         <div
           id="portfolio-grid-items"
-          className="grid grid-cols-2 lg:grid-cols-6 auto-rows-[280px] lg:auto-rows-[340px] gap-6 max-w-6xl mx-auto"
+          className="grid grid-cols-2 lg:grid-cols-3 auto-rows-[280px] gap-6 max-w-6xl mx-auto"
         >
           {homepageVideos.map((video, index) => (
             <div key={video.id} className={BENTO_PLACEMENT[index]}>

@@ -158,9 +158,10 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
 
 /**
  * Bento grid placement (one class string per tile, in portfolio order).
- * Desktop: 6 columns x 2 rows — two mirrored blocks, tall tiles on the outer
- * edges, wide tiles on top, posters in a repeating pattern.
- * Mobile: 2 columns x 5 rows — tall tile top-left, wide strip at the bottom.
+ * Desktop: 3 columns x 4 rows — two mirrored blocks. Block 1: tall tile on the
+ * left, wide tile top-right, two posters bottom-right. Block 2 mirrors it:
+ * wide tile top-left, tall tile on the right, two posters bottom-left.
+ * Mobile: 2 columns x 5 rows — tall tiles span two rows, posters stack in pairs.
  * Shared by the homepage grid and the gallery page.
  */
 export const BENTO_PLACEMENT: string[] = [
@@ -168,8 +169,8 @@ export const BENTO_PLACEMENT: string[] = [
   'col-start-2 row-start-1 lg:col-start-2 lg:col-span-2 lg:row-start-1',
   'col-start-2 row-start-2 lg:col-start-2 lg:row-start-2',
   'col-start-1 row-start-3 lg:col-start-3 lg:row-start-2',
-  'col-start-2 row-start-3 lg:col-start-4 lg:col-span-2 lg:row-start-1',
-  'col-start-1 row-start-4 lg:col-start-4 lg:row-start-2',
-  'col-start-2 row-start-4 lg:col-start-5 lg:row-start-2',
-  'col-start-1 col-span-2 row-start-5 lg:col-start-6 lg:col-span-1 lg:row-start-1 lg:row-span-2',
+  'col-start-2 row-start-3 lg:col-start-1 lg:col-span-2 lg:row-start-3',
+  'col-start-1 row-start-4 row-span-2 lg:col-start-3 lg:row-start-3 lg:row-span-2',
+  'col-start-2 row-start-4 lg:col-start-1 lg:row-start-4',
+  'col-start-2 row-start-5 lg:col-start-2 lg:row-start-4',
 ];
