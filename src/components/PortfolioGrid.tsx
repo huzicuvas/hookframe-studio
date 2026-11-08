@@ -53,17 +53,18 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           </div>
         </div>
 
-        {/* 6 videos in 3 columns: vertical, horizontal, vertical — repeated */}
+        {/* 6 videos in a masonry layout: each card keeps its own height, so the wide and poster cards never stretch with an empty gap */}
         <div
           id="portfolio-grid-items"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          className="columns-1 sm:columns-2 lg:columns-3 gap-6 max-w-6xl mx-auto"
         >
           {homepageVideos.map((video) => (
-            <VideoCard
-              key={video.id}
-              video={video}
-              onSelect={onSelectVideo}
-            />
+            <div key={video.id} className="mb-6 break-inside-avoid">
+              <VideoCard
+                video={video}
+                onSelect={onSelectVideo}
+              />
+            </div>
           ))}
         </div>
 

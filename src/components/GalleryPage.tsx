@@ -152,17 +152,18 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           </div>
         </div>
 
-        {/* Gallery Videos Grid (No item limit) */}
+        {/* Gallery Videos (masonry — each card keeps its own height, no stretched gaps) */}
         <div
           id="gallery-grid-items"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="columns-1 sm:columns-2 lg:columns-3 gap-6"
         >
           {filteredVideos.map((video) => (
-            <VideoCard
-              key={video.id}
-              video={video}
-              onSelect={onSelectVideo}
-            />
+            <div key={video.id} className="mb-6 break-inside-avoid">
+              <VideoCard
+                video={video}
+                onSelect={onSelectVideo}
+              />
+            </div>
           ))}
         </div>
 
