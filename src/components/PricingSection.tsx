@@ -203,10 +203,10 @@ export const PricingSection: React.FC = () => {
             <div
               key={card.id}
               id={`pricing-card-${card.id}`}
-              className={`relative flex flex-col rounded-3xl bg-neutral-900 border p-6 sm:p-7 overflow-hidden shadow-xl ${
+              className={`group relative flex flex-col rounded-3xl bg-neutral-900 border p-6 sm:p-7 overflow-hidden shadow-xl transition-all duration-300 ${
                 card.isPopular
-                  ? 'border-blue-500/60 shadow-blue-500/10 lg:-translate-y-2'
-                  : 'border-neutral-800'
+                  ? 'border-blue-500/60 shadow-blue-500/10 lg:-translate-y-2 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/25'
+                  : 'border-neutral-800 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10'
               }`}
             >
               {/* Blue glow wash at the bottom — strongest on the featured card */}
@@ -229,7 +229,7 @@ export const PricingSection: React.FC = () => {
               )}
 
               <div className="relative z-10 flex flex-col flex-1">
-                <h3 className="text-lg font-bold text-white tracking-tight">
+                <h3 className="text-lg font-bold text-white tracking-tight transition-colors group-hover:text-blue-400">
                   {card.name}
                 </h3>
                 <p className="text-sm text-neutral-400 leading-relaxed mt-1.5 min-h-[42px]">
@@ -299,11 +299,11 @@ export const PricingSection: React.FC = () => {
             <div
               key={pack.id}
               id={`pricing-card-${pack.id}`}
-              className="relative flex flex-col rounded-3xl bg-neutral-900 border border-neutral-800 p-6 overflow-hidden shadow-xl"
+              className="group relative flex flex-col rounded-3xl bg-neutral-900 border border-neutral-800 p-6 overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10"
             >
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.25),transparent_70%)]" />
               <div className="relative z-10 flex flex-col flex-1">
-                <h3 className="text-base font-bold text-white tracking-tight">
+                <h3 className="text-base font-bold text-white tracking-tight transition-colors group-hover:text-blue-400">
                   {pack.name}
                 </h3>
                 <p className="text-sm text-neutral-400 leading-relaxed mt-1">
@@ -381,7 +381,7 @@ export const PricingSection: React.FC = () => {
                 'Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe%27re%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2015s%20UGC%20/%2020s%20UGC%20/%2030s%20UGC%20/%20Poster%20/%20CGI%2015s%20/%20CGI%2030s%20/%20Hook%20Pack%203%20/%20Hook%20Pack%205%20/%20Custom%20Pack%20/%20Over%2030s%20or%20monthly):%20%0ATarget%20Launch%20Date:%20%0A'
               )}
               id="contact-mailto-btn"
-              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold transition-colors duration-200 shadow-lg active:scale-95"
+              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold transition-colors duration-200 shadow-lg active:scale-95"
             >
               <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               <span>Email {recipientEmail}</span>
@@ -391,7 +391,7 @@ export const PricingSection: React.FC = () => {
                 'Quotation request — over 30 seconds or custom scope',
                 'Hi Hook Frames Studio Team,%0A%0AWe would like a quotation for over 30 seconds, monthly batches, or a fully custom scope.%0A%0ABrand Name: %0AProduct / Website Link: %0AWhat we need: %0A'
               )}
-              className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white text-sm font-bold border border-neutral-700/60 transition-colors duration-200 active:scale-95"
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-white hover:bg-neutral-100 text-black text-sm font-bold transition-colors duration-200 shadow-lg active:scale-95"
             >
               <span>Ask for a quotation</span>
               <ArrowRight className="w-4 h-4" />

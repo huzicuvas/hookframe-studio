@@ -93,6 +93,7 @@ export const FaqSection: React.FC = () => {
           })}
         </div>
       </div>
+
     </section>
   );
 };
