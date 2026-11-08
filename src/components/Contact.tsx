@@ -16,33 +16,33 @@ export const Contact: React.FC = () => {
       id: 'tier-test-ad',
       name: 'First Ad — Test',
       price: '$50',
-      specs: 'Pay on approval • 10s • watermarked preview',
+      specs: 'UGC or CGI — your pick • 10s • pay on approval',
       subject: 'Test ad — $50 pay on approval',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe want to start with a $50 test ad (pay on approval, 10 seconds).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
+      body: "Hi Hook Frames Studio Team,%0A%0AWe want to start with a $50 test ad (pay on approval, 10 seconds, UGC or CGI — our pick).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
     },
     {
       id: 'tier-15s',
-      name: '15 Second Video',
+      name: '15 Second UGC Video',
       price: '$75',
-      specs: '1 version • 15s runtime',
-      subject: 'Order a 15 second video ad — $75',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a 15 second video ad for our brand ($75 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
+      specs: 'UGC-style video • 1 version • 15s',
+      subject: 'Order a 15 second UGC video ad — $75',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a 15 second UGC video ad for our brand ($75 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
     },
     {
       id: 'tier-20s',
-      name: '20 Second Video',
+      name: '20 Second UGC Video',
       price: '$99',
-      specs: '1 version • 20s runtime',
-      subject: 'Order a 20 second video ad — $99',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a 20 second video ad for our brand ($99 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
+      specs: 'UGC-style video • 1 version • 20s',
+      subject: 'Order a 20 second UGC video ad — $99',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a 20 second UGC video ad for our brand ($99 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
     },
     {
       id: 'tier-30s',
-      name: '30 Second Video',
+      name: '30 Second UGC Video',
       price: '$149',
-      specs: '1 version • 30s runtime',
-      subject: 'Order a 30 second video ad — $149',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a 30 second video ad for our brand ($149 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
+      specs: 'UGC-style video • 1 version • 30s',
+      subject: 'Order a 30 second UGC video ad — $149',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a 30 second UGC video ad for our brand ($149 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A",
     },
     {
       id: 'tier-poster',
@@ -53,20 +53,36 @@ export const Contact: React.FC = () => {
       body: "Hi Hook Frames Studio Team,%0A%0AWe would like to order a poster ad ($30, or $20 with any video).%0A%0ABrand Name: %0AProduct / Website Link: %0A",
     },
     {
-      id: 'tier-cgi',
-      name: 'CGI Video',
-      price: 'From $175',
-      specs: '3D product video • from $175',
-      subject: 'Order a CGI video',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe would like to order a CGI video.%0A%0ALength needed (15s $175 / 30s $299): %0A%0ABrand Name: %0AProduct / Website Link: %0A",
+      id: 'tier-cgi-15s',
+      name: 'CGI Video — 15s',
+      price: '$175',
+      specs: '3D product video • 15s runtime',
+      subject: 'Order a CGI video — 15 seconds $175',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe would like to order a 15 second CGI video ($175).%0A%0ABrand Name: %0AProduct / Website Link: %0A",
     },
     {
-      id: 'tier-hook-pack',
-      name: 'Hook Variation Pack',
+      id: 'tier-cgi-30s',
+      name: 'CGI Video — 30s',
+      price: '$299',
+      specs: '3D product video • 30s runtime',
+      subject: 'Order a CGI video — 30 seconds $299',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe would like to order a 30 second CGI video ($299).%0A%0ABrand Name: %0AProduct / Website Link: %0A",
+    },
+    {
+      id: 'tier-hook-pack-3',
+      name: 'Hook Pack — 3 Hooks',
       price: '$189',
-      specs: '3 hooks $189 • 5 hooks $299',
-      subject: 'Order Hook Variation Pack — 3 hooks $189',
-      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a Hook Variation Pack (same ad, different opening hooks).%0A%0APack (3 hooks $189 / 5 hooks $299): %0A%0ABrand Name: %0AProduct Link: %0ATarget Ad Platform (Meta / TikTok): %0A",
+      specs: 'Same ad • 3 opening hooks',
+      subject: 'Order Hook Pack — 3 hooks $189',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a Hook Pack with 3 opening hooks ($189).%0A%0ABrand Name: %0AProduct Link: %0ATarget Ad Platform (Meta / TikTok): %0A",
+    },
+    {
+      id: 'tier-hook-pack-5',
+      name: 'Hook Pack — 5 Hooks',
+      price: '$299',
+      specs: 'Same ad • 5 opening hooks',
+      subject: 'Order Hook Pack — 5 hooks $299',
+      body: "Hi Hook Frames Studio Team,%0A%0AWe want to order a Hook Pack with 5 opening hooks ($299).%0A%0ABrand Name: %0AProduct Link: %0ATarget Ad Platform (Meta / TikTok): %0A",
     },
     {
       id: 'tier-custom-pack',
@@ -114,7 +130,7 @@ export const Contact: React.FC = () => {
           {/* Primary Mailto Action & Copy Button */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto">
             <a
-              href={`mailto:${email}?subject=New%20Ad%20Creative%20Inquiry%20-%20Hook%20Frames%20Studio&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2015s%20/%2020s%20/%2030s%20/%20Poster%20/%20CGI%20/%20Hook%20Pack%20/%20Custom%20Pack%20/%20Over%2030s%20or%20monthly):%20%0ATarget%20Launch%20Date:%20%0A`}
+              href={`mailto:${email}?subject=New%20Ad%20Creative%20Inquiry%20-%20Hook%20Frames%20Studio&body=Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe're%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2015s%20UGC%20/%2020s%20UGC%20/%2030s%20UGC%20/%20Poster%20/%20CGI%2015s%20/%20CGI%2030s%20/%20Hook%20Pack%203%20/%20Hook%20Pack%205%20/%20Custom%20Pack%20/%20Over%2030s%20or%20monthly):%20%0ATarget%20Launch%20Date:%20%0A`}
               id="contact-mailto-btn"
               className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold transition-colors duration-200 shadow-lg active:scale-95"
             >
@@ -154,7 +170,7 @@ export const Contact: React.FC = () => {
               </span>
             </div>
 
-            {/* 2-Column Grid for 8 Tiers (2 per row on mobile & desktop) */}
+            {/* 2-Column Grid for 10 Tiers (2 per row on mobile & desktop) */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {standardTiers.map((tier) => (
                 <a

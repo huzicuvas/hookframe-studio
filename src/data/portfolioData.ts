@@ -32,7 +32,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     thumbnailUrl: '',
     videoUrl: '',
     duration: '0:22',
-    aspectRatio: '9:16',
+    aspectRatio: '16:9',
     hookHeadline: '"CGI Exploded View: See the internal acoustic chamber silence ambient noise."',
     description: 'Photorealistic 3D CGI product animation highlighting internal components, raytraced metallic textures, and fluid physics.',
     metrics: {
@@ -50,7 +50,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     thumbnailUrl: '',
     videoUrl: '',
     duration: '0:15',
-    aspectRatio: '9:16',
+    aspectRatio: '4:5',
     hookHeadline: '"Why 30,000 coffee drinkers switched to morning jitter-free focus..."',
     description: 'Fast-paced kinetic typography, fluid dynamic splashes, morning routine POV, and energetic sound design.',
     metrics: {
@@ -86,7 +86,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     thumbnailUrl: '',
     videoUrl: '',
     duration: '0:14',
-    aspectRatio: '9:16',
+    aspectRatio: '16:9',
     hookHeadline: '"Ultra-realistic zero-gravity ice & citrus fluid simulation in 4K."',
     description: 'Cinema-grade 3D fluid simulations, condensation droplets, luxury studio lighting, and zero-gravity rotating packshot.',
     metrics: {

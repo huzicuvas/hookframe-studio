@@ -30,14 +30,14 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       id="hero"
-      className="relative pt-28 pb-12 md:pt-36 md:pb-16 overflow-hidden bg-[#0A0A0B]"
+      className="relative pt-20 pb-8 md:pt-24 md:pb-10 overflow-hidden bg-[#0A0A0B]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Bento Grid Hero Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
           {/* Bento Main Hero Tile (Left 7 cols) */}
-          <div className="lg:col-span-7 bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden group shadow-xl">
+          <div className="lg:col-span-7 bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group shadow-xl">
             {/* Background Decorative SVG Wireframe */}
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-25 transition-opacity pointer-events-none">
               <svg width="130" height="130" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="0.5">
@@ -47,7 +47,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Top Pill / Badge */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-4">
               <span className="px-3 py-1 bg-neutral-800 border border-neutral-700/60 rounded-full text-[11px] font-mono font-medium text-neutral-300 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                 AI Content Production Studio
@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="space-y-4 my-auto py-2">
               <h1
                 id="hero-title"
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.05]"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.05]"
               >
                 Ad content for brands, <br />
                 <span className="text-neutral-500">delivered fast.</span>
@@ -76,7 +76,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* CTA */}
-            <div className="pt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <div className="pt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <button
                 type="button"
                 id="hero-cta-start-project"
@@ -89,7 +89,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Proof Metrics Bento Strip */}
-            <div className="grid grid-cols-3 gap-3 pt-8 mt-6 border-t border-neutral-800">
+            <div className="grid grid-cols-3 gap-3 pt-6 mt-4 border-t border-neutral-800">
               <div className="p-3 bg-neutral-950/60 border border-neutral-800/80 rounded-2xl">
                 <span className="text-xl sm:text-2xl font-bold text-white font-mono block">48h</span>
                 <span className="text-[11px] text-neutral-400 font-mono">Turnaround</span>
@@ -106,7 +106,7 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* Bento Featured Preview Tile (Right 5 cols) */}
-          <div className="lg:col-span-5 bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl">
+          <div className="lg:col-span-5 bg-neutral-900 border border-neutral-800 rounded-3xl p-5 sm:p-6 flex flex-col justify-between shadow-xl">
             {/* Header */}
             <div className="flex justify-between items-center px-1 pb-4 border-b border-neutral-800">
               <div className="flex items-center gap-2">
@@ -121,7 +121,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Stylized Vertical Ad Reel Frame */}
             <div
               onClick={onSelectFeaturedVideo}
-              className="group relative my-4 aspect-[9/13] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-between p-4"
+              className="group relative my-4 aspect-[9/11] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-between p-4"
             >
               {/* Pattern Grid */}
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />

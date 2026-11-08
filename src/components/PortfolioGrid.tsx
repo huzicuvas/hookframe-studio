@@ -34,13 +34,13 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-              <span>Featured ad formats</span>
+              <span>Sample ads</span>
             </div>
             <h2
               id="portfolio-title"
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight"
             >
-              Ad formats for every product.
+              Sample ad styles.
             </h2>
             <p className="text-sm sm:text-base text-neutral-400 max-w-xl">
               Creative frameworks: UGC creator videos, 3D CGI product films, kinetic fast cuts and poster ads.

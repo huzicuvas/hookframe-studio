@@ -138,7 +138,7 @@ export default function App() {
               onNavigateToGallery={navigateToGallery}
             />
 
-            {/* Combined About & Specialized Services Section + About the Team */}
+            {/* Formats Section */}
             <AboutServicesCombined />
 
             {/* 48h Production Workflow */}

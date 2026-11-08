@@ -11,6 +11,24 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
   const [imageLoaded, setImageLoaded] = useState(!video.thumbnailUrl);
   const [copied, setCopied] = useState(false);
 
+  // True media shape per item: vertical 9:16, wide 16:9, poster 4:5, square 1:1
+  const mediaAspectClass =
+    video.aspectRatio === '16:9'
+      ? 'aspect-video'
+      : video.aspectRatio === '4:5'
+        ? 'aspect-[4/5]'
+        : video.aspectRatio === '1:1'
+          ? 'aspect-square'
+          : 'aspect-[9/13]';
+  const frameLabel =
+    video.aspectRatio === '16:9'
+      ? '16:9 horizontal frame'
+      : video.aspectRatio === '4:5'
+        ? 'Poster 4:5 frame'
+        : video.aspectRatio === '1:1'
+          ? '1:1 square frame'
+          : '9:16 feed frame';
+
   const handleShareClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     
@@ -36,7 +54,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
       className="portfolio-card group relative flex flex-col bg-neutral-900 rounded-3xl border border-neutral-800 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden cursor-pointer transition-all duration-300 shadow-xl"
     >
       {/* Card Media / Stylized Blueprint Canvas */}
-      <div className="relative aspect-[9/13] w-full overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 flex flex-col justify-between p-4 border-b border-neutral-800/80">
+      <div className={`relative ${mediaAspectClass} w-full overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 flex flex-col justify-between p-4 border-b border-neutral-800/80`}>
         {/* Background Pattern Grid */}
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
 
@@ -116,7 +134,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             <Play className="w-5 h-5 fill-white text-white ml-0.5" />
           </div>
           <span className="text-[10px] font-mono text-neutral-500 mt-2 group-hover:text-neutral-300 transition-colors">
-            9:16 feed frame
+            {frameLabel}
           </span>
         </div>
 
