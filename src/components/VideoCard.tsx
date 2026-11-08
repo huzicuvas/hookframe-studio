@@ -58,7 +58,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
       className="portfolio-card group relative flex flex-col h-full bg-neutral-900 rounded-3xl border border-neutral-800 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden cursor-pointer transition-all duration-300 shadow-xl"
     >
       {/* Card Media / Stylized Blueprint Canvas */}
-      <div className="relative flex-1 min-h-0 w-full overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 flex flex-col justify-between p-4 border-b border-neutral-800/80">
+      <div className="relative flex-1 min-h-0 w-full overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 flex flex-col justify-between p-3 border-b border-neutral-800/80">
         {/* Background Pattern Grid */}
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
 
@@ -85,20 +85,16 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
         )}
 
         {/* Top Badges & Share Button Overlay */}
-        <div className="relative z-10 flex items-center justify-between shrink-0">
+        <div className="relative z-10 flex items-center justify-between gap-2 shrink-0">
           {/* Sample Style Tag */}
-          <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/40 text-[10px] font-bold text-blue-300 flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+          <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/40 text-[10px] font-bold text-blue-300 flex items-center gap-1 whitespace-nowrap shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
             Sample style
           </span>
 
-          <div className="flex items-center gap-1.5">
-            {isPoster ? (
-              <span className="px-2 py-0.5 rounded-full bg-blue-500/20 backdrop-blur-md text-[10px] font-bold text-blue-300 border border-blue-500/40">
-                Poster
-              </span>
-            ) : (
-              <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono text-neutral-400 border border-neutral-800">
+          <div className="flex items-center gap-1.5 shrink-0">
+            {!isPoster && (
+              <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono text-neutral-400 border border-neutral-800 whitespace-nowrap">
                 {video.duration}
               </span>
             )}
@@ -141,16 +137,13 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
         {/* Centre true-shape frame — shown while the tile is an empty placeholder;
             once a real thumbnail is wired in, the image fills the media area instead */}
         {!video.thumbnailUrl && (
-          <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center py-3">
-            <div className={`flex flex-col items-center justify-center gap-2 rounded-2xl border border-neutral-700/80 bg-neutral-950/60 transition-transform duration-300 group-hover:scale-[1.06] ${frameSizeClass}`}>
+          <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center py-2">
+            <div className={`flex items-center justify-center rounded-2xl border border-neutral-700/80 bg-neutral-950/60 transition-transform duration-300 group-hover:scale-[1.06] ${frameSizeClass}`} title={frameLabel}>
               {isPoster ? (
-                <Image className="w-6 h-6 text-neutral-400" />
+                <Image className="w-7 h-7 text-neutral-400" />
               ) : (
-                <Play className="w-6 h-6 fill-white text-white ml-0.5" />
+                <Play className="w-7 h-7 fill-white text-white ml-0.5" />
               )}
-              <span className="text-[10px] font-mono text-neutral-500 group-hover:text-neutral-300 transition-colors">
-                {frameLabel}
-              </span>
             </div>
           </div>
         )}
@@ -168,23 +161,15 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
         </div>
       </div>
 
-      {/* Card Meta & Hook Description */}
-      <div className="p-4 flex flex-col flex-grow justify-between space-y-3">
+      {/* Card Meta — kept short so the media area keeps its height; the full hook lives in the preview modal */}
+      <div className="p-4 flex flex-col flex-grow justify-between space-y-2">
         <div className="space-y-1.5">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono text-neutral-500">
-              {video.category}
-            </span>
-            <span className="text-[10px] font-mono text-blue-400">
-              Slot ready
-            </span>
-          </div>
+          <span className="text-[10px] font-mono text-neutral-500">
+            {video.category}
+          </span>
           <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
             {video.title}
           </h3>
-          <p className="text-xs text-neutral-400 italic line-clamp-2 font-normal">
-            "{video.hookHeadline}"
-          </p>
         </div>
 
         {/* Footer tags */}
