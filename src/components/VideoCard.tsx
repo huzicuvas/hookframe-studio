@@ -13,26 +13,6 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
 
   const isPoster = video.kind === 'poster';
 
-  // True media shape per item: vertical 9:16, wide 16:9, poster 4:5, square 1:1.
-  // The frame is sized to fit inside the bento tile and zooms on hover, so the
-  // zoom stays visible even on empty placeholders.
-  const frameSizeClass =
-    video.aspectRatio === '16:9'
-      ? 'aspect-video w-full max-h-full'
-      : video.aspectRatio === '4:5'
-        ? 'aspect-[4/5] h-full max-w-full'
-        : video.aspectRatio === '1:1'
-          ? 'aspect-square h-full max-w-full'
-          : 'aspect-[9/16] h-full max-w-full';
-  const frameLabel =
-    video.aspectRatio === '16:9'
-      ? '16:9 horizontal frame'
-      : video.aspectRatio === '4:5'
-        ? 'Poster 4:5 frame'
-        : video.aspectRatio === '1:1'
-          ? '1:1 square frame'
-          : '9:16 feed frame';
-
   const handleShareClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     
@@ -93,12 +73,6 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           </span>
 
           <div className="flex items-center gap-1.5 shrink-0">
-            {!isPoster && (
-              <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono text-neutral-400 border border-neutral-800 whitespace-nowrap">
-                {video.duration}
-              </span>
-            )}
-
             {/* Share / Copy Direct Link Button Overlay */}
             <div className="relative">
               <button
@@ -134,51 +108,58 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           </div>
         </div>
 
-        {/* Centre true-shape frame — shown while the tile is an empty placeholder;
-            once a real thumbnail is wired in, the image fills the media area instead */}
+        {/* Centre icon — the media area itself is the frame (its shape comes from
+            the bento cell), so there is no inset box leaving empty space around it.
+            Shown while the tile is an empty placeholder; once a real thumbnail is
+            wired in, the image fills the media area instead. */}
         {!video.thumbnailUrl && (
-          <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center py-2">
-            <div className={`flex items-center justify-center rounded-2xl border border-neutral-700/80 bg-neutral-950/60 transition-transform duration-300 group-hover:scale-[1.06] ${frameSizeClass}`} title={frameLabel}>
+          <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center">
+            <div className="w-14 h-14 rounded-2xl bg-neutral-950/80 backdrop-blur-md border border-neutral-700/80 text-white flex items-center justify-center shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:border-blue-500/60 group-hover:shadow-blue-500/20">
               {isPoster ? (
-                <Image className="w-7 h-7 text-neutral-400" />
+                <Image className="w-6 h-6 text-neutral-400" />
               ) : (
-                <Play className="w-7 h-7 fill-white text-white ml-0.5" />
+                <Play className="w-6 h-6 fill-white text-white ml-0.5" />
               )}
             </div>
           </div>
         )}
 
-        {/* Bottom Format Pill */}
-        <div className="relative z-10 flex items-center justify-between text-[10px] font-mono shrink-0">
-          <span className="text-neutral-400 bg-black/70 px-2 py-0.5 rounded-full border border-neutral-800">
+        {/* Bottom row: shape on the left, length (video) or type (poster) on the right */}
+        <div className="relative z-10 flex items-center justify-between gap-2 text-[10px] font-mono shrink-0">
+          <span className="text-neutral-400 bg-black/70 px-2 py-0.5 rounded-full border border-neutral-800 whitespace-nowrap">
             {video.aspectRatio}
           </span>
-          {isPoster && (
-            <span className="text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/30 font-bold">
+          {isPoster ? (
+            <span className="text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/30 font-bold whitespace-nowrap">
               Poster Ad
+            </span>
+          ) : (
+            <span className="text-neutral-400 bg-black/70 px-2 py-0.5 rounded-full border border-neutral-800 whitespace-nowrap">
+              {video.duration}
             </span>
           )}
         </div>
       </div>
 
-      {/* Card Meta — kept short so the media area keeps its height; the full hook lives in the preview modal */}
-      <div className="p-4 flex flex-col flex-grow justify-between space-y-2">
-        <div className="space-y-1.5">
+      {/* Card Meta — compact and flowing (no pinned footer, so no empty void);
+          the video area stays bigger than the text. The full hook lives in the preview modal. */}
+      <div className="p-3 flex flex-col gap-1.5">
+        <div className="space-y-1">
           <span className="text-[10px] font-mono text-neutral-500">
             {video.category}
           </span>
-          <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
+          <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
             {video.title}
           </h3>
         </div>
 
-        {/* Footer tags */}
-        <div className="pt-2.5 border-t border-neutral-800/80 flex items-center justify-between text-xs">
-          <span className="text-[10px] font-mono text-neutral-400 bg-neutral-950 px-2 py-0.5 rounded-full border border-neutral-800/60">
+        {/* Footer tags — one line, nothing wraps */}
+        <div className="pt-2 mt-0.5 border-t border-neutral-800/80 flex items-center justify-between gap-2 text-xs">
+          <span className="text-[10px] font-mono text-neutral-400 bg-neutral-950 px-2 py-0.5 rounded-full border border-neutral-800/60 whitespace-nowrap shrink-0">
             {video.tags[0]}
           </span>
-          <span className="text-[11px] font-bold text-neutral-300 group-hover:text-white flex items-center gap-1 group-hover:translate-x-0.5 transition-all">
-            Preview style <ExternalLink className="w-3 h-3 text-blue-400" />
+          <span className="text-[11px] font-bold text-neutral-300 group-hover:text-white flex items-center gap-1 group-hover:translate-x-0.5 transition-all whitespace-nowrap shrink-0">
+            Preview <ExternalLink className="w-3 h-3 text-blue-400" />
           </span>
         </div>
       </div>
