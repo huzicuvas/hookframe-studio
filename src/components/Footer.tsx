@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, Video, Sparkles } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Mail, Video, Sparkles } from 'lucide-react';
 import { HookFramesLogo } from './HookFramesLogo';
 
 interface FooterProps {
@@ -24,6 +24,26 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery }) => {
       className="bg-[#0A0A0B] border-t border-neutral-800/80 py-12 text-neutral-400 text-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Footer CTA band — the third call to action (scrolls to the contact section) */}
+        <div className="mb-10 rounded-3xl border border-blue-500/30 bg-neutral-900 p-8 sm:p-10 shadow-2xl shadow-blue-500/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              Let's make your next ad.
+            </h3>
+            <p className="text-sm text-neutral-400 font-mono">
+              48-hour turnaround · Full commercial rights · First ad pay on approval
+            </p>
+          </div>
+          <a
+            href="#contact"
+            id="footer-cta-start-project"
+            className="group shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-black text-sm font-bold hover:bg-blue-500 hover:text-white transition-colors duration-200 shadow-lg active:scale-95"
+          >
+            <span>Start a Project</span>
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </div>
+
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-neutral-800/80">
           {/* Logo & Tagline */}
           <div className="space-y-2">
