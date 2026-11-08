@@ -32,7 +32,7 @@ export const WorkflowSection: React.FC = () => {
   return (
     <section
       id="workflow"
-      className="py-16 bg-[#0A0A0B]"
+      className="py-12 bg-[#0A0A0B]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">

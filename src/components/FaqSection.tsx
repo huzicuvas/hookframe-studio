@@ -37,7 +37,7 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-24 relative border-t border-neutral-800/80">
+    <section id="faq" className="py-12 relative border-t border-neutral-800/80">
       <div className="absolute inset-0 bg-neutral-950" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -27,7 +27,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
   return (
     <section
       id="portfolio"
-      className="py-16 bg-[#0A0A0B]"
+      className="py-12 bg-[#0A0A0B]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

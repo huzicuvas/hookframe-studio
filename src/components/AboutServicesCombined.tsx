@@ -1,19 +1,19 @@
 import React from 'react';
-import { Zap, Camera, Users, ShieldCheck } from 'lucide-react';
+import { Zap, Camera, ShieldCheck } from 'lucide-react';
 
 export const AboutServicesCombined: React.FC = () => {
   return (
-    <section id="about" className="py-16 bg-[#0A0A0B]">
+    <section id="about" className="py-12 bg-[#0A0A0B]">
       {/* Anchor for services navigation */}
       <div id="services" className="-translate-y-24" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Top Story & Production Model (Approachable, jargon-free) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* One panel: what we do, how fast, who we are — the two old panels merged */}
         <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-12 shadow-xl">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-950 border border-neutral-800 text-[11px] font-mono text-neutral-300 mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-              <span>About and production model</span>
+              <span>About the studio</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-snug">
@@ -48,16 +48,10 @@ export const AboutServicesCombined: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* About the Team Section */}
-        <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-10 shadow-xl">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          {/* Team row — same panel, under a divider */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-8 mt-8 border-t border-neutral-800">
             <div className="max-w-3xl space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-950 border border-neutral-800 text-[11px] font-mono text-neutral-300">
-                <Users className="w-3.5 h-3.5 text-blue-400" />
-                <span>About the team</span>
-              </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                 Direct attention
               </h3>

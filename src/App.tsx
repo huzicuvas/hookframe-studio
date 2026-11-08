@@ -7,7 +7,6 @@ import { WorkflowSection } from './components/WorkflowSection';
 import { FaqSection } from './components/FaqSection';
 import { PricingSection } from './components/PricingSection';
 import { GeminiChatbot } from './components/GeminiChatbot';
-import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { VideoModal } from './components/VideoModal';
 import { DeveloperNoteModal } from './components/DeveloperNoteModal';
@@ -145,14 +144,11 @@ export default function App() {
             {/* 48h Production Workflow */}
             <WorkflowSection />
 
-            {/* FAQ Section */}
-            <FaqSection />
-
-            {/* Pricing Section (3-card layout) */}
+            {/* Pricing Section — pricing cards + contact panel in one section */}
             <PricingSection />
 
-            {/* Contact Section */}
-            <Contact />
+            {/* FAQ Section — below pricing, last before the footer */}
+            <FaqSection />
           </main>
 
           {/* Footer with Hook Frames Studio Logo */}
