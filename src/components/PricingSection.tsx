@@ -8,8 +8,24 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) => {
   const recipientEmail = 'kiramorganai@gmail.com';
 
+  interface PricingTier {
+    id: string;
+    name: string;
+    price: string;
+    pricePrefix: string;
+    duration: string;
+    versionSpec: string;
+    badge: string;
+    isPopular: boolean;
+    tagline: string;
+    included: string[];
+    ctaLabel: string;
+    mailtoSubject: string;
+    priceList?: { label: string; price: string }[];
+  }
+
   // Fixed-price cards: short ads only, 30 seconds max.
-  const pricingTiers = [
+  const pricingTiers: PricingTier[] = [
     {
       id: 'first-ad-test',
       name: 'First Ad — Test',
@@ -32,61 +48,67 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
       mailtoSubject: 'Test ad — $75 pay on approval',
     },
     {
-      id: '10-20-sec-video',
-      name: '10–20 Second Video',
-      price: '$75',
+      id: 'video-ads-by-length',
+      name: 'Video Ads by Length',
+      price: 'From $50',
       pricePrefix: 'Fixed Price',
-      duration: '10–20 sec',
-      versionSpec: '1 version',
-      badge: 'Short ad',
+      duration: '5–30 sec',
+      versionSpec: 'Priced by length',
+      badge: 'Short ads',
       isPopular: false,
-      tagline: 'Short video ad for TikTok, Reels and Shorts — ten or twenty seconds.',
+      tagline: 'One video ad, priced by runtime — the longer the ad, the more it costs. Every length includes voiceover, sound design and both cuts.',
+      priceList: [
+        { label: '5–10 sec', price: '$50' },
+        { label: '10–15 sec', price: '$75' },
+        { label: '15–20 sec', price: '$99' },
+        { label: '20–30 sec', price: '$149' },
+      ],
       included: [
         '1 final version',
-        '10 to 20 second runtime',
         'Full AI voiceover & sound design',
         '9:16 vertical & 16:9 horizontal cuts',
         'Full commercial usage rights',
         '48-hour delivery turnaround',
       ],
-      ctaLabel: 'Get a Quote',
-      mailtoSubject: 'Inquiry for 10-20 Second Video',
+      ctaLabel: 'Order a video ad',
+      mailtoSubject: 'Order a video ad — priced by length',
     },
   ];
 
-  // Everything longer or custom: long bars, priced on quotation.
+  // Packs with fixed prices: variations and bundles.
   const quoteBars = [
     {
       id: 'hook-variation-pack',
       name: 'Hook Variation Pack',
-      price: 'Get a Quote',
-      pricePrefix: 'Custom Quote',
+      price: '$189',
+      pricePrefix: 'From $189',
       badge: 'Hook pack',
-      tagline: 'Made for ad testing. 3 opening hooks: problem, POV and ASMR.',
+      tagline: 'Same ad, different opening hooks — made for A/B testing. 3 hooks (3× 15s videos) for $189, or 5 hooks for $299. Extra hook +$50.',
       included: [
-        '3 distinct video variations',
+        '3 videos, 15 seconds each',
         '3 different opening hooks',
-        '15 to 30 seconds per video',
+        '5-hook pack $299',
+        'Extra hook +$50',
         'Made for Meta & TikTok A/B testing',
       ],
-      ctaLabel: 'Get a Quote',
-      mailtoSubject: 'Inquiry for Hook Variation Pack',
+      ctaLabel: 'Order the pack',
+      mailtoSubject: 'Order Hook Variation Pack — 3 hooks $189',
     },
     {
-      id: 'custom-brand-package',
-      name: 'Custom Brand Package',
-      price: 'Get a Quote',
-      pricePrefix: 'Custom Scope',
-      badge: 'Enterprise',
-      tagline: 'Longer videos, multiple products/SKUs, or ongoing monthly creative content pipelines.',
+      id: 'custom-brand-pack',
+      name: 'Custom Brand Pack',
+      price: '$249',
+      pricePrefix: 'Fixed Price',
+      badge: 'Bundle',
+      tagline: 'One UGC testimonial video, one CGI product video, and one poster — made to work together for one launch.',
       included: [
-        'Longer videos & multi-SKU packs',
-        'Batch production (10+ creatives / month)',
-        'Ongoing monthly creative refreshes',
-        'Dedicated AI creative director',
+        '1 UGC testimonial video (15s)',
+        '1 CGI product video (15s)',
+        '1 poster ad',
+        'Extra poster $20 · extra UGC $60 · extra CGI $150',
       ],
-      ctaLabel: 'Get a Quote',
-      mailtoSubject: 'Inquiry for Custom Brand Package',
+      ctaLabel: 'Order the pack',
+      mailtoSubject: 'Order Custom Brand Pack — $249',
     },
   ];
 
@@ -111,7 +133,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
               <span className="text-neutral-400">No agency retainers required.</span>
             </h2>
             <p className="text-sm sm:text-base text-neutral-400">
-              First time here? Start with a $75 test ad and pay only after you approve the preview. Every video is delivered in vertical 9:16 and horizontal 16:9, with sound design, ad-ready exports, and full commercial usage rights.
+              First time here? Start with a $75 test ad and pay only after you approve the preview. Video ads from $50, posters from $30. Every video is delivered in vertical 9:16 and horizontal 16:9, with sound design, ad-ready exports, and full commercial usage rights.
             </p>
           </div>
 
@@ -180,14 +202,25 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
                   <span className="text-[10px] font-mono text-neutral-500 block">
                     {tier.pricePrefix}
                   </span>
-                  <div className="flex items-baseline gap-1 mt-0.5">
-                    <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
-                      {tier.price}
-                    </span>
-                    {tier.price.startsWith('$') && (
-                      <span className="text-xs text-neutral-500 font-mono">/ cut</span>
-                    )}
-                  </div>
+                  {tier.priceList ? (
+                    <div className="mt-2 space-y-1.5">
+                      {tier.priceList.map((row) => (
+                        <div key={row.label} className="flex items-center justify-between text-xs">
+                          <span className="text-neutral-400">{row.label}</span>
+                          <span className="font-mono font-bold text-white">{row.price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="flex items-baseline gap-1 mt-0.5">
+                      <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-mono">
+                        {tier.price}
+                      </span>
+                      {tier.price.startsWith('$') && (
+                        <span className="text-xs text-neutral-500 font-mono">/ cut</span>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* What's Included */}
@@ -226,7 +259,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
           ))}
         </div>
 
-        {/* Long Bars: everything longer or custom, priced on quotation */}
+        {/* Long Bars: fixed-price packs */}
         <div className="mt-6 space-y-4 max-w-5xl mx-auto">
           {quoteBars.map((bar) => (
             <div
@@ -279,19 +312,30 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
           ))}
         </div>
 
-        {/* Custom Durations & Posters: 30s to 1 minute, posters, anything else */}
+        {/* Poster, CGI & pack discounts — fixed prices */}
+        <div className="mt-6 max-w-5xl mx-auto">
+          <div className="rounded-3xl bg-neutral-900/60 border border-neutral-800 px-6 py-4 text-center text-xs font-mono text-neutral-300">
+            <span className="text-white font-bold">Poster ad $30</span> ($20 with any video)
+            <span className="text-neutral-600 mx-2">•</span>
+            <span className="text-white font-bold">CGI 15s $175</span> · CGI 30s $299
+            <span className="text-neutral-600 mx-2">•</span>
+            3 videos <span className="text-white font-bold">10% off</span> · 5 videos <span className="text-white font-bold">15% off</span>
+          </div>
+        </div>
+
+        {/* Custom Durations & Monthly: over 30 seconds, monthly batches, anything else */}
         <div className="mt-6 p-6 bg-neutral-900/60 border border-neutral-800 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 max-w-5xl mx-auto">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
               <Mail className="w-4 h-4" />
             </div>
             <div>
-              <span className="font-semibold text-white">Need 30 seconds to 1 minute, a poster ad, or any other custom duration?</span>
-              <p className="text-neutral-400 mt-0.5">Anything over 30 seconds, poster ads, and custom lengths are priced on quotation — tell us the duration and product.</p>
+              <span className="font-semibold text-white">Need over 30 seconds, monthly creative, or something custom?</span>
+              <p className="text-neutral-400 mt-0.5">Anything over 30 seconds, monthly content batches and fully custom scopes are priced on quotation — tell us the duration and product.</p>
             </div>
           </div>
           <a
-            href={`mailto:${recipientEmail}?subject=Quotation%20request%20-%20custom%20duration%20or%20poster%20ad&body=Hi%20Hook%20Frames%20Studio,%0A%0AWe%27d%20like%20a%20quotation.%0A%0ABrand%20Name:%20%0AProduct%20/%20Website%20Link:%20%0AWhat%20we%20need%20(30s-1min%20video%20/%20poster%20ad%20/%20other):%20%0A`}
+            href={`mailto:${recipientEmail}?subject=Quotation%20request%20-%20over%2030%20seconds%20or%20custom%20scope&body=Hi%20Hook%20Frames%20Studio,%0A%0AWe%27d%20like%20a%20quotation.%0A%0ABrand%20Name:%20%0AProduct%20/%20Website%20Link:%20%0AWhat%20we%20need%20(over%2030s%20video%20/%20monthly%20batch%20/%20other):%20%0A`}
             className="shrink-0 px-5 py-2.5 rounded-full bg-white hover:bg-blue-500 text-black hover:text-white font-bold transition-colors"
           >
             Ask for a quotation
