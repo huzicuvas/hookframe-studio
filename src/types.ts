@@ -29,6 +29,8 @@ export interface ServiceItem {
   turnaround: string;
   badge: string;
   iconName: string;
+  aspectLabel?: string; // e.g. '9:16 vertical' — shown on the format's preview slot
+  previewKind?: 'video' | 'poster'; // which placeholder the preview slot shows
 }
 
 export interface FAQItem {

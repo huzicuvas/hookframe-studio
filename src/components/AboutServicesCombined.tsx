@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserCheck, Sparkles, Layers, Zap, Camera, Users, ShieldCheck } from 'lucide-react';
+import { UserCheck, Sparkles, Layers, Zap, Camera, Users, ShieldCheck, Monitor, Play, Image } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 
 export const AboutServicesCombined: React.FC = () => {
@@ -11,6 +11,8 @@ export const AboutServicesCombined: React.FC = () => {
         return <Sparkles className="w-5 h-5 text-blue-400" />;
       case 'Layers':
         return <Layers className="w-5 h-5 text-blue-400" />;
+      case 'Monitor':
+        return <Monitor className="w-5 h-5 text-blue-400" />;
       default:
         return <Sparkles className="w-5 h-5 text-blue-400" />;
     }
@@ -36,7 +38,7 @@ export const AboutServicesCombined: React.FC = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-neutral-300 leading-relaxed font-normal mt-6">
-              Hook Frames Studio makes UGC-style, CGI and poster ads for brands — fast turnaround, no film crew, no scheduling headaches. We turn product photos and key selling points into finished ads in as little as 48 hours.
+              Hook Frames Studio makes UGC-style, CGI, poster and horizontal video ads for brands — fast turnaround, no film crew, no scheduling headaches. We turn product photos and key selling points into finished ads in as little as 48 hours.
             </p>
           </div>
 
@@ -71,11 +73,11 @@ export const AboutServicesCombined: React.FC = () => {
               Formats
             </h3>
             <span className="text-xs font-mono text-neutral-400">
-              3 formats
+              4 formats
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {SERVICES_DATA.map((service) => (
               <div
                 key={service.id}
@@ -83,6 +85,18 @@ export const AboutServicesCombined: React.FC = () => {
                 className="flex flex-col justify-between bg-neutral-900 rounded-3xl border border-neutral-800 hover:border-neutral-700 p-6 sm:p-7 transition-colors duration-300 shadow-xl"
               >
                 <div className="space-y-4">
+                  {/* Preview slot: where this format's work is displayed */}
+                  <div className="relative h-44 rounded-2xl border border-dashed border-neutral-700/80 bg-neutral-950 flex items-center justify-center overflow-hidden">
+                    {service.previewKind === 'poster' ? (
+                      <Image className="w-6 h-6 text-neutral-500" />
+                    ) : (
+                      <Play className="w-6 h-6 text-neutral-500" />
+                    )}
+                    <span className="absolute bottom-2 left-0 right-0 text-center text-[10px] font-mono text-neutral-500">
+                      {service.aspectLabel}
+                    </span>
+                  </div>
+
                   <div className="flex items-center justify-between">
                     <div className="w-9 h-9 rounded-2xl bg-neutral-950 border border-neutral-800 flex items-center justify-center text-blue-400">
                       {getIcon(service.iconName)}
