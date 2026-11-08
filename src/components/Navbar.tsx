@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, ArrowUpRight, Menu, X, Video, Grid } from 'lucide-react';
+import { Sparkles, Mail, ArrowUpRight, Menu, X, Video, Grid } from 'lucide-react';
 import { HookFramesLogo } from './HookFramesLogo';
 
 interface NavbarProps {
@@ -86,12 +86,21 @@ export const Navbar: React.FC<NavbarProps> = ({
           ))}
         </nav>
 
-        {/* Status pill — the only email action lives in the contact section */}
+        {/* Status pill + Start a Project button (scrolls to the contact section — the email button lives there) */}
         <div className="hidden md:flex items-center gap-4">
           <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 px-3 py-1.5 rounded-full">
             <span className="w-2 h-2 rounded-full bg-green-500" />
             <span className="text-[11px] font-semibold text-neutral-300">AI pipeline ready</span>
           </div>
+
+          <a
+            href="#contact"
+            id="nav-cta-contact"
+            className="group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-xs font-bold hover:bg-blue-500 hover:text-white transition-colors duration-200 shadow-md active:scale-95"
+          >
+            <span>Start a Project</span>
+            <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
         </div>
 
         {/* Mobile menu button */}
@@ -134,6 +143,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="w-2 h-2 rounded-full bg-green-500" />
               <span>AI pipeline online · 48h turnaround</span>
             </div>
+            <a
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              <span>Start a Project</span>
+            </a>
           </div>
         </div>
       )}
