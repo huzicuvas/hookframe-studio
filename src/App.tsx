@@ -29,6 +29,19 @@ export default function App() {
   const [isDevGuideOpen, setIsDevGuideOpen] = useState(false);
   const [isFloatingChatOpen, setIsFloatingChatOpen] = useState(false);
   const [showChatTooltip, setShowChatTooltip] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Scroll progress bar (thin gold line at the very top of the page).
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.documentElement;
+      const total = el.scrollHeight - el.clientHeight;
+      setScrollProgress(total > 0 ? (el.scrollTop / total) * 100 : 0);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Sync route on popstate (browser back/forward) and deep-linked video hash
   useEffect(() => {
@@ -171,6 +184,25 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
+      {/* Skip to content — keyboard users jump straight to the page content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-white focus:text-neutral-900 focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-semibold focus:outline-none"
+      >
+        Skip to content
+      </a>
+
+      {/* Scroll progress bar — thin gold line at the very top */}
+      <div
+        className="fixed top-0 left-0 right-0 h-[3px] z-[60] bg-transparent"
+        aria-hidden="true"
+      >
+        <div
+          className="h-full bg-[#F5B544]"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
       {isGalleryView ? (
         /* Full Gallery View at /gallery */
         <GalleryPage
@@ -201,7 +233,7 @@ export default function App() {
             onOpenChat={handleOpenChat}
           />
 
-          <main>
+          <main id="main-content">
             {/* Hero Section */}
             <Hero
               onStartProject={handleGetQuote}

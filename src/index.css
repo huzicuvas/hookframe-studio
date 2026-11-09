@@ -46,3 +46,24 @@
     transform: translateX(-50%);
   }
 }
+
+/* Print stylesheet — a clean, ink-friendly printout: hide the floating
+   chat, navbar, footer decorations and videos, keep the text and prices. */
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+  #floating-chat-widget,
+  #navbar,
+  #footer,
+  video,
+  .no-scrollbar {
+    display: none !important;
+  }
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}

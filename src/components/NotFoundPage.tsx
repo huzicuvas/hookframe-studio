@@ -10,7 +10,7 @@ interface NotFoundPageProps {
 // instead of silently showing the homepage. Matches the studio's dark theme.
 export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigateHome }) => {
   return (
-    <div className="min-h-screen bg-[#0A0A0B] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
+    <div id="main-content" className="min-h-screen bg-[#0A0A0B] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
       {/* Top Header */}
       <header className="sticky top-0 z-40 bg-[#0A0A0B]/90 backdrop-blur-md border-b border-neutral-800/80 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
