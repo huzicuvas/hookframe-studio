@@ -58,7 +58,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
         {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tile on the left, wide tile top-right, two posters bottom-right; then the mirror. Every tile is one media panel with its text overlaid, like the preview. */}
         <div
           id="portfolio-grid-items"
-          className="grid grid-cols-2 lg:grid-cols-3 auto-rows-[280px] lg:auto-rows-[340px] gap-6 max-w-6xl mx-auto"
+          className="grid grid-cols-2 lg:grid-cols-3 auto-rows-[280px] lg:auto-rows-[400px] gap-6 max-w-6xl mx-auto"
         >
           {homepageVideos.map((video, index) => (
             <div key={video.id} className={BENTO_PLACEMENT[index]}>
