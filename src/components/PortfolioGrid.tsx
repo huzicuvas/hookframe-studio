@@ -31,26 +31,6 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
       className="py-12 bg-[#0A0A0B]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F5B544]" />
-              <span>Sample ads</span>
-            </div>
-            <h2
-              id="portfolio-title"
-              className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight"
-            >
-              Sample ad styles.
-            </h2>
-            <p className="text-sm sm:text-base text-neutral-400 max-w-xl">
-              Short-form ad styles for TikTok, Reels, Shorts, and poster ads — one bento grid with taller boxes, so every ad sits in its true shape, and posters repeat through it: two videos, two posters, all the way through.
-            </p>
-          </div>
-
-        </div>
-
         {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tile on the left, wide tile top-right, two posters bottom-right; then the mirror. Every tile is one media panel with its text overlaid, like the preview. */}
         <div
           id="portfolio-grid-items"
