@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { ArrowRight, Play, Copy, Check } from 'lucide-react';
+import { ArrowRight, Copy, Check } from 'lucide-react';
 import { FEATURED_VIDEO } from '../data/portfolioData';
 import { ContactPrefill } from './ContactFormModal';
 
@@ -138,15 +138,6 @@ export const Hero: React.FC<HeroProps> = ({
                   >
                     <span>Get my $50 test ad</span>
                     <ArrowRight className="w-4 h-4" />
-                  </button>
-                  <button
-                    type="button"
-                    id="hero-cta-watch-reel"
-                    onClick={onSelectFeaturedVideo}
-                    className="bg-transparent text-neutral-900 dark:text-white px-6 py-3 rounded-full font-semibold text-sm border border-neutral-200 dark:border-[#222833] hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <Play className="w-4 h-4 fill-current" />
-                    <span>Watch reel</span>
                   </button>
                   <button
                     type="button"
