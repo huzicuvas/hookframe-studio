@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Play, ArrowRight } from 'lucide-react';
-import { PORTFOLIO_VIDEOS } from '../data/portfolioData';
+import { FEATURED_VIDEO } from '../data/portfolioData';
 
 interface HeroProps {
   onStartProject?: () => void;
@@ -15,9 +15,30 @@ export const Hero: React.FC<HeroProps> = ({
   onSelectFeaturedVideo,
   onGetQuote,
 }) => {
-  // The featured tile highlights the first portfolio video (the Burger).
+  // The featured tile highlights the Burger (FEATURED_VIDEO).
   // Clicking it opens that video's modal via onSelectFeaturedVideo.
-  const featured = PORTFOLIO_VIDEOS[0];
+  const featured = FEATURED_VIDEO;
+
+  // Hover preview: the featured video plays muted while the mouse is over
+  // the frame, and pauses back at the start when it leaves. Clicking opens
+  // the popup, where the video plays with sound.
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handleMouseEnter = () => {
+    const v = videoRef.current;
+    if (v) {
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    const v = videoRef.current;
+    if (v) {
+      v.pause();
+      v.currentTime = 0;
+    }
+  };
   const handleStartProjectClick = () => {
     if (onStartProject) {
       onStartProject();
@@ -125,6 +146,8 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Stylized Vertical Ad Reel Frame */}
             <div
               onClick={onSelectFeaturedVideo}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
               className="group relative my-4 aspect-[9/11] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-between p-4"
             >
               {/* Pattern Grid */}
@@ -144,9 +167,11 @@ export const Hero: React.FC<HeroProps> = ({
                   frame shows, so the tile is never a blank placeholder. */}
               {!featured.thumbnailUrl && featured.videoUrl && (
                 <video
+                  ref={videoRef}
                   src={featured.videoUrl}
                   muted
                   playsInline
+                  loop
                   preload="metadata"
                   className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
                 />

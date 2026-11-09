@@ -11,7 +11,7 @@ import { Footer } from './components/Footer';
 import { VideoModal } from './components/VideoModal';
 import { DeveloperNoteModal } from './components/DeveloperNoteModal';
 import { GalleryPage } from './components/GalleryPage';
-import { PORTFOLIO_VIDEOS } from './data/portfolioData';
+import { PORTFOLIO_VIDEOS, FEATURED_VIDEO } from './data/portfolioData';
 import { VideoItem } from './types';
 import { Bot, MessageSquare, X, Code2, Sparkles } from 'lucide-react';
 
@@ -97,7 +97,7 @@ export default function App() {
   };
 
   const handleSelectFeaturedVideo = () => {
-    setSelectedVideo(PORTFOLIO_VIDEOS[0]);
+    setSelectedVideo(FEATURED_VIDEO);
   };
 
   const handleOpenChat = () => {

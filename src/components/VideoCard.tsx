@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Play, Image } from 'lucide-react';
 import { VideoItem } from '../types';
 
@@ -11,6 +11,28 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
   const [imageLoaded, setImageLoaded] = useState(!video.thumbnailUrl);
   const isPoster = video.kind === 'poster';
 
+  // Hover preview: the tile video plays muted while the mouse is over the
+  // card, and pauses back at the start when it leaves. Clicking opens the
+  // popup, where the video plays with sound. (Touch devices have no hover,
+  // so a tap just opens the popup — the same as before.)
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handleMouseEnter = () => {
+    const v = videoRef.current;
+    if (v) {
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    const v = videoRef.current;
+    if (v) {
+      v.pause();
+      v.currentTime = 0;
+    }
+  };
+
   // Poster frame shape: 4:5 (default) or 1:1 square — hangs in the centre of the tile.
   const posterFrameClass =
     video.aspectRatio === '1:1'
@@ -21,6 +43,8 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
     <div
       id={`video-card-${video.id}`}
       onClick={() => onSelect(video)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className="portfolio-card group relative flex flex-col h-full bg-neutral-900 rounded-3xl border border-neutral-800 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden cursor-pointer transition-all duration-300 shadow-xl"
     >
       {/* Media — the whole tile is the frame; its shape comes from the bento cell.
@@ -60,9 +84,11 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             A thumbnail, when one is set, still wins over this. */}
         {!video.thumbnailUrl && video.videoUrl && !isPoster && (
           <video
+            ref={videoRef}
             src={video.videoUrl}
             muted
             playsInline
+            loop
             preload="metadata"
             className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
           />

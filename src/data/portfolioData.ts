@@ -2,28 +2,50 @@ import { VideoItem } from '../types';
 
 /**
  * Hook Frames Studio - Portfolio Showcase Data
- * Real client-style ad videos, hosted on Supabase, with thumbnails served
- * from the site itself (public/thumbnails). The first 8 items form the
- * homepage bento rectangle (2 tall + 2 wide videos, 4 poster slots);
- * items after that are gallery-only and show on the /gallery page.
+ * Real client-style ad videos, hosted on Supabase. Each video tile shows
+ * the video itself as its cover (first frame), so no separate thumbnail
+ * image is needed. The first 8 items form the homepage bento rectangle
+ * (2 tall + 2 wide videos, 4 poster slots); items after that are
+ * gallery-only and show on the /gallery page.
  */
 const SUPABASE_BASE =
   'https://tladjgnzrmwaegqdkahu.supabase.co/storage/v1/object/public/portfolio-videos';
 
+/**
+ * The featured hero video — the Burger. It lives in the hero tile, not in
+ * the homepage grid (it would only duplicate the hero), but it is still
+ * part of the full library, so it is also the last item of PORTFOLIO_VIDEOS
+ * and shows on the /gallery page.
+ */
+export const FEATURED_VIDEO: VideoItem = {
+  id: 'burger-smoke-house-cgi',
+  title: 'Smoke House — Biggest Burger in the USA',
+  brand: 'Smoke House',
+  category: 'Food',
+  thumbnailUrl: '', // video itself is the cover — no thumbnail upload needed
+  videoUrl: `${SUPABASE_BASE}/Burger%209%3A16.mp4`,
+  duration: '0:10',
+  aspectRatio: '9:16',
+  hookHeadline: '"The biggest burger in the USA — $15.99."',
+  description:
+    'Stacked patties, dripping cheese, onion rings and smoke building to the full burger with the price front and centre.',
+  tags: ['3D CGI', 'Food', 'Burger', 'Product Ad'],
+};
+
 export const PORTFOLIO_VIDEOS: VideoItem[] = [
   {
-    id: 'burger-smoke-house-cgi',
-    title: 'Smoke House — Biggest Burger in the USA',
-    brand: 'Smoke House',
-    category: 'Food',
+    id: 'serum-centella-cgi',
+    title: 'Centella Serum — From Lab to Skin',
+    brand: 'Centella Skincare',
+    category: 'Beauty',
     thumbnailUrl: '', // video itself is the cover — no thumbnail upload needed
-    videoUrl: `${SUPABASE_BASE}/Burger%209%3A16.mp4`,
+    videoUrl: `${SUPABASE_BASE}/Serum%209%3A16.mp4`,
     duration: '0:10',
     aspectRatio: '9:16',
-    hookHeadline: '"The biggest burger in the USA — $15.99."',
+    hookHeadline: '"Skincare, bottled by science."',
     description:
-      'Stacked patties, dripping cheese, onion rings and smoke building to the full burger with the price front and centre.',
-    tags: ['3D CGI', 'Food', 'Burger', 'Product Ad'],
+      'A serum dropper bottle in a glass lab vessel, centella leaves steeping in golden liquid under mint-green light. Clean, premium, clinical.',
+    tags: ['3D CGI', 'Skincare', 'Serum', 'Beauty'],
   },
   {
     id: 'handbag-blue-craft-film',
@@ -84,18 +106,18 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     tags: ['3D CGI', 'Food', 'Restaurant', 'Menu Ad'],
   },
   {
-    id: 'serum-centella-cgi',
-    title: 'Centella Serum — From Lab to Skin',
-    brand: 'Centella Skincare',
-    category: 'Beauty',
+    id: 'berry-rush-energy-drink-cgi',
+    title: 'Berry Rush — Energy Drink CGI',
+    brand: 'Berry Rush',
+    category: 'Food',
     thumbnailUrl: '', // video itself is the cover — no thumbnail upload needed
-    videoUrl: `${SUPABASE_BASE}/Serum%209%3A16.mp4`,
-    duration: '0:10',
+    videoUrl: `${SUPABASE_BASE}/Drink%209%3A16.mp4`,
+    duration: '0:11',
     aspectRatio: '9:16',
-    hookHeadline: '"Skincare, bottled by science."',
+    hookHeadline: '"Real fruit. Real rush."',
     description:
-      'A serum dropper bottle in a glass lab vessel, centella leaves steeping in golden liquid under mint-green light. Clean, premium, clinical.',
-    tags: ['3D CGI', 'Skincare', 'Serum', 'Beauty'],
+      'A red energy drink can in a burst of strawberries, raspberries and red splash.',
+    tags: ['3D CGI', 'Beverage', 'Energy Drink', 'Product Ad'],
   },
   {
     id: 'sample-style-founder-story-direct',
@@ -141,20 +163,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
       'The SHEGLAM Good Grip primer bottle traced in beach sand. A concept ad for the brand, not a paid client project.',
     tags: ['Concept Ad', 'Skincare', 'Primer', 'Beauty'],
   },
-  {
-    id: 'berry-rush-energy-drink-cgi',
-    title: 'Berry Rush — Energy Drink CGI',
-    brand: 'Berry Rush',
-    category: 'Food',
-    thumbnailUrl: '', // video itself is the cover — no thumbnail upload needed
-    videoUrl: `${SUPABASE_BASE}/Drink%209%3A16.mp4`,
-    duration: '0:11',
-    aspectRatio: '9:16',
-    hookHeadline: '"Real fruit. Real rush."',
-    description:
-      'A red energy drink can in a burst of strawberries, raspberries and red splash.',
-    tags: ['3D CGI', 'Beverage', 'Energy Drink', 'Product Ad'],
-  },
+  FEATURED_VIDEO,
 ];
 
 /**
