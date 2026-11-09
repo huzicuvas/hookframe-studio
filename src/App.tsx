@@ -204,7 +204,7 @@ export default function App() {
       {/* Skip to content — keyboard users jump straight to the page content */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-neutral-900 dark:focus:bg-white focus:text-white dark:focus:text-neutral-900 focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-semibold focus:outline-none"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-neutral-900 dark:focus:bg-white focus:text-white dark:focus:text-neutral-900 focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-semibold"
       >
         Skip to content
       </a>

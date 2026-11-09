@@ -485,7 +485,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                 onKeyDown={handleKeyDown}
                 placeholder={`Ask ${currentModeInfo.name} (e.g. "What do you make?", "How much does a batch cost?", "How does the 48h turnaround work?")...`}
                 disabled={isLoading}
-                className="w-full bg-transparent text-white placeholder-neutral-500 text-xs sm:text-sm resize-none focus:outline-none max-h-32"
+                className="w-full bg-transparent text-white placeholder-neutral-500 text-xs sm:text-sm resize-none max-h-32"
               />
               <div className="flex items-center justify-between pt-1 text-[10px] font-mono text-neutral-400">
                 <span>Shift + Enter for new line</span>

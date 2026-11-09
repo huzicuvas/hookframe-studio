@@ -68,7 +68,7 @@ export const FaqSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => toggleAccordion(faq.id)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left focus:outline-none"
+                  className="w-full flex items-center justify-between px-6 py-5 text-left"
                   aria-expanded={isOpen}
                 >
                   <span className="text-sm sm:text-base font-semibold text-neutral-900 dark:text-white pr-8">

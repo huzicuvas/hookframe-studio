@@ -118,7 +118,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
           type="button"
           id="close-video-modal"
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-neutral-950/80 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-800 transition-colors focus:outline-none"
+          className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-neutral-950/80 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-800 transition-colors"
           aria-label="Close video player"
         >
           <X className="w-4 h-4" />
@@ -195,7 +195,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
                 <button
                   type="button"
                   onClick={togglePlay}
-                  className="hover:text-white focus:outline-none"
+                  className="hover:text-white"
                   aria-label={isPlaying ? 'Pause' : 'Play'}
                 >
                   {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
@@ -203,7 +203,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
                 <button
                   type="button"
                   onClick={toggleMute}
-                  className="hover:text-white focus:outline-none"
+                  className="hover:text-white"
                   aria-label={isMuted ? 'Unmute' : 'Mute'}
                 >
                   {isMuted ? <VolumeX className="w-4 h-4 text-blue-400" /> : <Volume2 className="w-4 h-4" />}
@@ -237,7 +237,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
                 {video.title}
               </h3>
               <p className="text-sm font-medium text-neutral-300 italic mt-2 bg-neutral-950 p-3 rounded-2xl border border-neutral-800">
-                "{video.hookHeadline}"
+                {video.hookHeadline}
               </p>
             </div>
 

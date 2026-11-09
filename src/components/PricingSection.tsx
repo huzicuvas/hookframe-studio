@@ -256,7 +256,7 @@ export const PricingSection: React.FC = () => {
                   <span className={card.isPopular ? 'text-4xl font-bold tracking-tight text-[#B45309] dark:text-[#F5B544]' : 'text-4xl font-bold tracking-tight text-neutral-900 dark:text-white'}>
                     {card.price}
                   </span>
-                  <span className="text-xs text-neutral-600 dark:text-neutral-400 font-mono ml-2">
+                  <span className="text-xs text-neutral-600 dark:text-neutral-400 font-mono ml-2 whitespace-nowrap">
                     {card.priceSub}
                   </span>
                 </div>

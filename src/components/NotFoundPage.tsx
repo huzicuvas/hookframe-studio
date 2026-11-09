@@ -37,7 +37,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigateHome, them
             <button
               type="button"
               onClick={onToggleTheme}
-              className="p-2 rounded-xl text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 focus:outline-none active:scale-95 transition-colors"
+              className="p-2 rounded-xl text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 active:scale-95 transition-colors"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
