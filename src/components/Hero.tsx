@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { ArrowRight, Play, Copy, Check } from 'lucide-react';
 import { FEATURED_VIDEO } from '../data/portfolioData';
+import { ContactPrefill } from './ContactFormModal';
 
 interface HeroProps {
   onExplorePortfolio?: () => void;
   onSelectFeaturedVideo: () => void;
+  onOpenContactForm: (prefill: ContactPrefill) => void;
 }
 
 const AUDIENCES = [
@@ -18,6 +20,7 @@ const AUDIENCES = [
 export const Hero: React.FC<HeroProps> = ({
   onExplorePortfolio,
   onSelectFeaturedVideo,
+  onOpenContactForm,
 }) => {
   // The featured tile highlights the Burger (FEATURED_VIDEO).
   // Clicking it opens that video's modal via onSelectFeaturedVideo.
@@ -25,14 +28,14 @@ export const Hero: React.FC<HeroProps> = ({
 
   const recipientEmail = 'kiramorganai@gmail.com';
 
-  // The main CTA opens the $50 test-ad email directly (same pre-filled
-  // email as the Test Ad pricing card) instead of scrolling to the contact
-  // panel — a tap must open the mail app, not just move the page.
-  const TEST_AD_MAILTO =
-    `mailto:${recipientEmail}?subject=${encodeURIComponent('Test ad — $50 pay on approval')}` +
-    `&body=${encodeURIComponent(
-      'Hi Hook Frames Studio Team,\n\nWe want to start with a $50 test ad (pay on approval, 10 seconds, UGC or CGI — our pick).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n'
-    )}`;
+  // The main CTA opens the contact form pre-filled with the $50 test ad —
+  // the form works on any device, no mail app needed. The "Open in Gmail"
+  // link inside the form is the email path for Gmail users.
+  const TEST_AD_PREFILL: ContactPrefill = {
+    subject: 'Test ad — $50 pay on approval',
+    product: 'Test ad — $50 pay on approval',
+    body: 'Hi Hook Frames Studio Team,\n\nWe want to start with a $50 test ad (pay on approval, 10 seconds, UGC or CGI — our pick).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
+  };
   const [emailCopied, setEmailCopied] = useState(false);
 
   const copyEmail = async () => {
@@ -127,14 +130,15 @@ export const Hero: React.FC<HeroProps> = ({
 
                 {/* CTA row — bigger buttons, pushed down a touch to fill the gap below */}
                 <div className="flex flex-wrap items-center gap-3.5 mt-1.5">
-                  <a
-                    href={TEST_AD_MAILTO}
+                  <button
+                    type="button"
                     id="hero-cta-start-project"
-                    className="bg-neutral-900 dark:bg-white text-white dark:text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:bg-neutral-200 transition-colors duration-200 flex items-center justify-center gap-2 text-[15px] cursor-pointer"
+                    onClick={() => onOpenContactForm(TEST_AD_PREFILL)}
+                    className="bg-neutral-900 dark:bg-white text-white dark:text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:bg-neutral-200 transition-colors duration-200 flex items-center justify-center gap-2 text-[15px] cursor-pointer active:scale-95"
                   >
                     <span>Get my $50 test ad</span>
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </button>
                   <button
                     type="button"
                     id="hero-cta-watch-reel"
@@ -161,9 +165,9 @@ export const Hero: React.FC<HeroProps> = ({
                     </span>
                     Pay after approval
                   </span>
-                  {/* What happens next — the 3-step flow, so the email click is not a black box */}
+                  {/* What happens next — the 3-step flow, so sending the form is not a black box */}
                   <p className="w-full text-[13px] text-neutral-600 dark:text-neutral-400">
-                    Email us → watermarked preview within 48h → you approve, then pay.
+                    Send the form → watermarked preview within 48h → you approve, then pay.
                   </p>
                 </div>
               </div>

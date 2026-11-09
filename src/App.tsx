@@ -7,6 +7,7 @@ import { PricingSection } from './components/PricingSection';
 import { GeminiChatbot } from './components/GeminiChatbot';
 import { Footer } from './components/Footer';
 import { VideoModal } from './components/VideoModal';
+import { ContactFormModal, ContactPrefill } from './components/ContactFormModal';
 import { DeveloperNoteModal } from './components/DeveloperNoteModal';
 import { GalleryPage } from './components/GalleryPage';
 import { AboutPage } from './components/AboutPage';
@@ -26,6 +27,9 @@ export default function App() {
   });
 
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+  // Contact form modal — opened by the hero CTA and every pricing button,
+  // pre-filled with the product that button stands for.
+  const [contactForm, setContactForm] = useState<ContactPrefill | null>(null);
   const [isDevGuideOpen, setIsDevGuideOpen] = useState(false);
   const [isFloatingChatOpen, setIsFloatingChatOpen] = useState(false);
   const [showChatTooltip, setShowChatTooltip] = useState(true);
@@ -251,6 +255,7 @@ export default function App() {
             {/* Hero Section */}
             <Hero
               onSelectFeaturedVideo={handleSelectFeaturedVideo}
+              onOpenContactForm={setContactForm}
             />
 
             {/* Homepage Portfolio Grid (First 6 videos, 3-column V/H/V pattern, with View Full Gallery CTA) */}
@@ -260,7 +265,7 @@ export default function App() {
             />
 
             {/* Pricing Section — pricing cards + contact panel in one section */}
-            <PricingSection />
+            <PricingSection onOpenContactForm={setContactForm} />
 
             {/* FAQ Section — below pricing, last before the footer */}
             <FaqSection />
@@ -281,6 +286,16 @@ export default function App() {
         video={selectedVideo}
         onClose={() => setSelectedVideo(null)}
       />
+
+      {/* Contact form modal — the main way to reach the studio; works on any
+          device, no mail app needed. Keyed by product so it resets per open. */}
+      {contactForm && (
+        <ContactFormModal
+          key={contactForm.product}
+          prefill={contactForm}
+          onClose={() => setContactForm(null)}
+        />
+      )}
 
       {/* Floating Circular Chat & Helper Widget */}
       <aside

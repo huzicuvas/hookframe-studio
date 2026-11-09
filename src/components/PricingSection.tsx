@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Check, Copy, Zap, ArrowRight, Send, ShieldCheck, Sparkles } from 'lucide-react';
+import { ContactPrefill } from './ContactFormModal';
 
 const recipientEmail = 'kiramorganai@gmail.com';
-
-const mailto = (subject: string, body: string) =>
-  `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 interface PriceRow {
   label: string;
   price: string;
   subject: string;
   body: string;
+  product: string;
 }
 
 interface PricingCard {
@@ -26,10 +25,11 @@ interface PricingCard {
   ctaLabel: string;
   ctaSubject: string;
   ctaBody: string;
+  ctaProduct: string;
 }
 
 // Four cards: test ad, UGC by length, CGI, and posters — CGI and posters are separate niches.
-// The length rows are mailto links, so each price pre-fills its own email.
+// The length rows open the contact form, pre-filled with that length's email.
 const pricingCards: PricingCard[] = [
   {
     id: 'first-ad-test',
@@ -49,6 +49,7 @@ const pricingCards: PricingCard[] = [
     ],
     ctaLabel: 'Start with a test ad',
     ctaSubject: 'Test ad — $50 pay on approval',
+    ctaProduct: 'Test ad — $50 pay on approval',
     ctaBody:
       'Hi Hook Frames Studio Team,\n\nWe want to start with a $50 test ad (pay on approval, 10 seconds, UGC or CGI — our pick).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
   },
@@ -66,18 +67,21 @@ const pricingCards: PricingCard[] = [
         label: '15-second video',
         price: '$75',
         subject: 'Order a 15 second UGC video ad — $75',
+        product: 'UGC video — 15 seconds ($75)',
         body: 'Hi Hook Frames Studio Team,\n\nWe want to order a 15 second UGC video ad for our brand ($75 / 1 version).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
       },
       {
         label: '20-second video',
         price: '$99',
         subject: 'Order a 20 second UGC video ad — $99',
+        product: 'UGC video — 20 seconds ($99)',
         body: 'Hi Hook Frames Studio Team,\n\nWe want to order a 20 second UGC video ad for our brand ($99 / 1 version).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
       },
       {
         label: '30-second video',
         price: '$149',
         subject: 'Order a 30 second UGC video ad — $149',
+        product: 'UGC video — 30 seconds ($149)',
         body: 'Hi Hook Frames Studio Team,\n\nWe want to order a 30 second UGC video ad for our brand ($149 / 1 version).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
       },
     ],
@@ -88,6 +92,7 @@ const pricingCards: PricingCard[] = [
     ],
     ctaLabel: 'Pick a length',
     ctaSubject: 'Order a UGC video ad',
+    ctaProduct: 'UGC video — 15 seconds ($75)',
     ctaBody:
       'Hi Hook Frames Studio Team,\n\nWe want to order a UGC video ad.\n\nLength (15s $75 / 20s $99 / 30s $149): \n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
   },
@@ -103,18 +108,21 @@ const pricingCards: PricingCard[] = [
         label: 'CGI 15-second',
         price: '$175',
         subject: 'Order a CGI video — 15 seconds $175',
+        product: 'CGI video — 15 seconds ($175)',
         body: 'Hi Hook Frames Studio Team,\n\nWe would like to order a 15 second CGI video ($175).\n\nBrand Name: \nProduct / Website Link: \n',
       },
       {
         label: 'CGI 30-second',
         price: '$299',
         subject: 'Order a CGI video — 30 seconds $299',
+        product: 'CGI video — 30 seconds ($299)',
         body: 'Hi Hook Frames Studio Team,\n\nWe would like to order a 30 second CGI video ($299).\n\nBrand Name: \nProduct / Website Link: \n',
       },
     ],
     included: ['Studio-quality 3D render', '48-hour delivery'],
     ctaLabel: 'Get a CGI ad',
     ctaSubject: 'Order a CGI video ad',
+    ctaProduct: 'CGI video — 15 seconds ($175)',
     ctaBody:
       'Hi Hook Frames Studio Team,\n\nWe would like to order a CGI video ad.\n\nLength (15s $175 / 30s $299): \n\nBrand Name: \nProduct / Website Link: \n',
   },
@@ -130,18 +138,21 @@ const pricingCards: PricingCard[] = [
         label: 'Poster ad',
         price: '$30',
         subject: 'Order a poster ad — $30',
+        product: 'Poster ad — $30',
         body: 'Hi Hook Frames Studio Team,\n\nWe would like to order a poster ad ($30, or $20 with any video).\n\nBrand Name: \nProduct / Website Link: \n',
       },
       {
         label: 'Poster with any video',
         price: '$20',
         subject: 'Order a poster ad — $30 (with a video $20)',
+        product: 'Poster ad with a video — $20',
         body: 'Hi Hook Frames Studio Team,\n\nWe would like to order a poster ad with a video ($20 with any video).\n\nBrand Name: \nProduct / Website Link: \n',
       },
     ],
     included: ['High-res poster design', '48-hour delivery'],
     ctaLabel: 'Get a poster',
     ctaSubject: 'Order a poster ad',
+    ctaProduct: 'Poster ad — $30',
     ctaBody:
       'Hi Hook Frames Studio Team,\n\nWe would like to order a poster ad.\n\nChoice (Poster $30 / Poster with a video $20): \n\nBrand Name: \nProduct / Website Link: \n',
   },
@@ -161,6 +172,7 @@ const packCards = [
     ],
     ctaLabel: 'Order the pack',
     ctaSubject: 'Order Hook Variation Pack — 3 hooks $189',
+    ctaProduct: 'Hook Pack — 3 hooks ($189)',
     ctaBody:
       'Hi Hook Frames Studio Team,\n\nWe want to order a Hook Pack with 3 opening hooks ($189).\n\nBrand Name: \nProduct Link: \nTarget Ad Platform (Meta / TikTok): \n',
   },
@@ -177,12 +189,17 @@ const packCards = [
     ],
     ctaLabel: 'Order the pack',
     ctaSubject: 'Order Custom Brand Pack — $249',
+    ctaProduct: 'Custom Brand Pack — $249',
     ctaBody:
       'Hi Hook Frames Studio Team,\n\nWe want to order a Custom Brand Pack ($249: 1 UGC testimonial video 15s + 1 CGI product video 15s + 1 poster ad).\n\nBrand Name: \nProduct / Website Link: \nExtras needed (poster $20 / UGC $60 / CGI $150): \n',
   },
 ];
 
-export const PricingSection: React.FC = () => {
+interface PricingSectionProps {
+  onOpenContactForm: (prefill: ContactPrefill) => void;
+}
+
+export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenContactForm }) => {
   const [emailCopied, setEmailCopied] = useState(false);
 
   const copyEmail = async () => {
@@ -288,20 +305,23 @@ export const PricingSection: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Price rows — each one is a mailto that pre-fills its own email */}
+                {/* Price rows — each one opens the contact form, pre-filled with that length */}
                 {card.priceRows && (
                   <div className="mt-4 space-y-1">
                     {card.priceRows.map((row) => (
-                      <a
+                      <button
                         key={row.label}
-                        href={mailto(row.subject, row.body)}
-                        className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm border border-transparent hover:bg-blue-500/10 hover:border-blue-500/30 transition-colors"
+                        type="button"
+                        onClick={() =>
+                          onOpenContactForm({ subject: row.subject, product: row.product, body: row.body })
+                        }
+                        className="w-full text-left flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-sm border border-transparent hover:bg-blue-500/10 hover:border-blue-500/30 transition-colors cursor-pointer"
                       >
                         <span className="text-neutral-700 dark:text-neutral-300">{row.label}</span>
                         <span className="font-mono font-bold text-neutral-900 dark:text-white">
                           {row.price}
                         </span>
-                      </a>
+                      </button>
                     ))}
                   </div>
                 )}
@@ -321,14 +341,17 @@ export const PricingSection: React.FC = () => {
 
                 {/* CTA — white pill, like the preview */}
                 <div className="mt-auto pt-6">
-                  <a
-                    href={mailto(card.ctaSubject, card.ctaBody)}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onOpenContactForm({ subject: card.ctaSubject, product: card.ctaProduct, body: card.ctaBody })
+                    }
                     id={`cta-tier-${card.id}`}
-                    className="w-full py-3 px-4 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] flex items-center justify-center gap-2 transition-colors"
+                    className="w-full py-3 px-4 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] flex items-center justify-center gap-2 transition-colors cursor-pointer active:scale-95"
                   >
                     <span>{card.ctaLabel}</span>
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -368,14 +391,17 @@ export const PricingSection: React.FC = () => {
                   ))}
                 </ul>
                 <div className="mt-auto pt-5">
-                  <a
-                    href={mailto(pack.ctaSubject, pack.ctaBody)}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onOpenContactForm({ subject: pack.ctaSubject, product: pack.ctaProduct, body: pack.ctaBody })
+                    }
                     id={`cta-tier-${pack.id}`}
-                    className="w-full py-3 px-4 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] flex items-center justify-center gap-2 transition-colors"
+                    className="w-full py-3 px-4 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] flex items-center justify-center gap-2 transition-colors cursor-pointer active:scale-95"
                   >
                     <span>{pack.ctaLabel}</span>
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -410,34 +436,42 @@ export const PricingSection: React.FC = () => {
           </h2>
 
           <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xl mx-auto mt-3 font-normal leading-relaxed">
-            Pick a plan above and email us to start — or ask for a quotation
+            Pick a plan above and send the form to start — or ask for a quotation
             for over 30 seconds, monthly, or custom work. First ad? Try the
             $50 test ad — pay only after you approve the preview.
           </p>
 
-          {/* Two actions — email to start, or ask for a quotation */}
+          {/* Two actions — send the form to start, or ask for a quotation */}
           <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-xl mx-auto">
-            <a
-              href={mailto(
-                'New Ad Creative Inquiry - Hook Frames Studio',
-                'Hi Hook Frames Studio Team,\n\nWe\'re interested in creating performance ad content for our brand.\n\nBrand Name: \nWebsite / Product Link: \nFormat Needed (Test ad / 15s UGC / 20s UGC / 30s UGC / Poster / CGI 15s / CGI 30s / Hook Pack 3 / Hook Pack 5 / Custom Pack / Over 30s or monthly): \nTarget Launch Date: \n'
-              )}
-              id="contact-mailto-btn"
-              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 dark:bg-blue-600 text-neutral-900 dark:text-white text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
+            <button
+              type="button"
+              onClick={() =>
+                onOpenContactForm({
+                  subject: 'New Ad Creative Inquiry - Hook Frames Studio',
+                  product: 'Test ad — $50 pay on approval',
+                  body: 'Hi Hook Frames Studio Team,\n\nWe\'re interested in creating performance ad content for our brand.\n\nBrand Name: \nWebsite / Product Link: \nFormat Needed (Test ad / 15s UGC / 20s UGC / 30s UGC / Poster / CGI 15s / CGI 30s / Hook Pack 3 / Hook Pack 5 / Custom Pack / Over 30s or monthly): \nTarget Launch Date: \n',
+                })
+              }
+              id="contact-form-btn"
+              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 dark:bg-blue-600 text-neutral-900 dark:text-white text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95 cursor-pointer"
             >
               <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               <span>Email {recipientEmail}</span>
-            </a>
-            <a
-              href={mailto(
-                'Quotation request — over 30 seconds or custom scope',
-                'Hi Hook Frames Studio Team,\n\nWe would like a quotation for over 30 seconds, monthly batches, or a fully custom scope.\n\nBrand Name: \nProduct / Website Link: \nWhat we need: \n'
-              )}
-              className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                onOpenContactForm({
+                  subject: 'Quotation request — over 30 seconds or custom scope',
+                  product: 'Quotation / custom scope',
+                  body: 'Hi Hook Frames Studio Team,\n\nWe would like a quotation for over 30 seconds, monthly batches, or a fully custom scope.\n\nBrand Name: \nProduct / Website Link: \nWhat we need: \n',
+                })
+              }
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95 cursor-pointer"
             >
               <span>Ask for a quotation</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
 
           {/* No email app? Copy the address instead of opening a mail client */}
@@ -450,9 +484,9 @@ export const PricingSection: React.FC = () => {
             <span>{emailCopied ? 'Copied — paste it into any email app' : 'No email app? Copy kiramorganai@gmail.com'}</span>
           </button>
 
-          {/* What happens next — the 3-step flow, so the email click is not a black box */}
+          {/* What happens next — the 3-step flow, so sending the form is not a black box */}
           <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-3">
-            What happens next: email us → watermarked preview within 48h → you approve, then pay.
+            What happens next: send the form → watermarked preview within 48h → you approve, then pay.
           </p>
 
           {/* Guarantee Badges: Response time, Commercial rights, Delivery time */}
