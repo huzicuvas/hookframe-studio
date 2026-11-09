@@ -1,6 +1,9 @@
 import React from 'react';
-import { UploadCloud, Cpu, Layers, CheckCircle2 } from 'lucide-react';
+import { UploadCloud, Cpu, Layers, CheckCircle2, Zap } from 'lucide-react';
 
+// Workflow as a bento grid (the same three steps, in varied tiles so it
+// matches the portfolio and gallery): step 1 wide, steps 2 and 3 single,
+// and a wide 48-hour highlight tile to close the rectangle.
 export const WorkflowSection: React.FC = () => {
   const steps = [
     {
@@ -10,6 +13,7 @@ export const WorkflowSection: React.FC = () => {
       icon: <UploadCloud className="w-5 h-5 text-blue-400" />,
       tag: 'Step 1 • 15 Mins',
       highlight: 'Zero physical shipping delays',
+      span: 'lg:col-span-2',
     },
     {
       step: '02',
@@ -18,6 +22,7 @@ export const WorkflowSection: React.FC = () => {
       icon: <Cpu className="w-5 h-5 text-blue-400" />,
       tag: 'Step 2 • 24 Hours',
       highlight: 'CGI, UGC and poster ads',
+      span: '',
     },
     {
       step: '03',
@@ -26,6 +31,7 @@ export const WorkflowSection: React.FC = () => {
       icon: <Layers className="w-5 h-5 text-blue-400" />,
       tag: 'Step 3 • 48 Hours',
       highlight: 'Ready for Ads Manager',
+      span: '',
     },
   ];
 
@@ -55,7 +61,7 @@ export const WorkflowSection: React.FC = () => {
           {steps.map((item, idx) => (
             <div
               key={idx}
-              className="relative bg-neutral-900 border border-neutral-800 rounded-3xl p-8 flex flex-col justify-between space-y-4 hover:border-neutral-700 transition-colors group shadow-xl"
+              className={`relative bg-neutral-900 border border-neutral-800 rounded-3xl p-8 flex flex-col justify-between space-y-4 hover:border-neutral-700 transition-colors group shadow-xl ${item.span}`}
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -82,6 +88,33 @@ export const WorkflowSection: React.FC = () => {
               </div>
             </div>
           ))}
+
+          {/* 48-hour highlight — wide tile that closes the bento rectangle */}
+          <div className="relative bg-neutral-900 border border-neutral-800 rounded-3xl p-8 flex flex-col justify-between space-y-4 shadow-xl lg:col-span-2">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-2xl bg-blue-500/10 border border-neutral-800 flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-blue-400" />
+                </div>
+                <span className="text-[10px] font-mono text-neutral-400 px-2.5 py-1 rounded-full bg-neutral-950 border border-neutral-800">
+                  Brief to ready cut
+                </span>
+              </div>
+
+              <h3 className="text-lg font-bold text-white">
+                48 hours, start to finish
+              </h3>
+
+              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                No film crew, no scheduling headaches — your finished ads, named and ready for Ads Manager, in as little as two days.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-neutral-800 flex items-center gap-2 text-xs font-mono text-neutral-400">
+              <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" />
+              <span>Fastest way from product to published ad</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

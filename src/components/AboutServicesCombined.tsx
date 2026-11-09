@@ -1,6 +1,9 @@
 import React from 'react';
 import { Zap, Camera, ShieldCheck } from 'lucide-react';
 
+// About as a bento grid (the same content as the old single panel, split
+// into tiles so it matches the portfolio and gallery): a large text tile,
+// two small stat tiles, and a wide team tile underneath.
 export const AboutServicesCombined: React.FC = () => {
   return (
     <section id="about" className="py-12 bg-[#0A0A0B]">
@@ -8,49 +11,50 @@ export const AboutServicesCombined: React.FC = () => {
       <div id="services" className="-translate-y-24" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* One panel: what we do, how fast, who we are — the two old panels merged */}
-        <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-12 shadow-xl">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-950 border border-neutral-800 text-[11px] font-mono text-neutral-300 mb-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {/* Main text — large tile, two rows tall */}
+          <div className="lg:col-span-2 lg:row-span-2 bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col justify-between gap-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-950 border border-neutral-800 text-[11px] font-mono text-neutral-300 self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
               <span>About the studio</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-snug">
-              Ad creative, <br className="hidden sm:inline" />
-              <span className="text-neutral-400">built without film crew overhead.</span>
-            </h2>
+            <div className="space-y-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-snug">
+                Ad creative, <br className="hidden sm:inline" />
+                <span className="text-neutral-400">built without film crew overhead.</span>
+              </h2>
 
-            <p className="text-base sm:text-lg text-neutral-300 leading-relaxed font-normal mt-6">
-              Hook Frames Studio makes UGC-style, CGI, poster and horizontal video ads for brands — fast turnaround, no film crew, no scheduling headaches. We turn product photos and key selling points into finished ads in as little as 48 hours.
-            </p>
-          </div>
-
-          {/* Two Stat Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-8 mt-8 border-t border-neutral-800 max-w-2xl">
-            <div className="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800 flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 shrink-0">
-                <Zap className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-sm font-bold text-white">48h delivery</h4>
-                <p className="text-xs text-neutral-400 mt-0.5">Brief to ready cut in as little as 2 days</p>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800 flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-neutral-800 text-neutral-300 shrink-0">
-                <Camera className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-sm font-bold text-white">Zero crew overhead</h4>
-                <p className="text-xs text-neutral-400 mt-0.5">No actors to book, sets to build, or gear to haul</p>
-              </div>
+              <p className="text-base sm:text-lg text-neutral-300 leading-relaxed font-normal max-w-2xl">
+                Hook Frames Studio makes UGC-style, CGI, poster and horizontal video ads for brands — fast turnaround, no film crew, no scheduling headaches. We turn product photos and key selling points into finished ads in as little as 48 hours.
+              </p>
             </div>
           </div>
 
-          {/* Team row — same panel, under a divider */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-8 mt-8 border-t border-neutral-800">
+          {/* 48h delivery — small stat tile */}
+          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 shadow-xl flex items-center gap-4">
+            <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 shrink-0">
+              <Zap className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-white">48h delivery</h4>
+              <p className="text-xs text-neutral-400 mt-0.5">Brief to ready cut in as little as 2 days</p>
+            </div>
+          </div>
+
+          {/* Zero crew overhead — small stat tile */}
+          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 shadow-xl flex items-center gap-4">
+            <div className="p-3 rounded-xl bg-neutral-800 text-neutral-300 shrink-0">
+              <Camera className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-white">Zero crew overhead</h4>
+              <p className="text-xs text-neutral-400 mt-0.5">No actors to book, sets to build, or gear to haul</p>
+            </div>
+          </div>
+
+          {/* Team — wide tile across the bottom */}
+          <div className="lg:col-span-3 bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="max-w-3xl space-y-3">
               <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                 Direct attention

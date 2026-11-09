@@ -35,8 +35,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     { name: 'Gallery', href: '/gallery', isGallery: true },
     { name: 'About & Services', href: '/about', isAbout: true },
     { name: 'Workflow', href: '/workflow', isWorkflow: true },
-    { name: 'FAQ', href: '#faq' },
     { name: 'Pricing & Quotes', href: '#pricing' },
+    { name: 'FAQ', href: '#faq' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent, link: typeof navLinks[0]) => {
