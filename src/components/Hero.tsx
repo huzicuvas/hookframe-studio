@@ -152,16 +152,16 @@ export const Hero: React.FC<HeroProps> = ({
 
                 {/* Proof Metrics — flat cards, no divider line */}
                 <div className="grid grid-cols-3 gap-3 mt-5">
-                  <div className="p-4 rounded-2xl bg-neutral-900 border border-[#222833]">
-                    <span className="text-[38px] leading-none font-bold text-white block">48h</span>
+                  <div className="group p-4 rounded-2xl bg-neutral-900 border border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
+                    <span className="text-[38px] leading-none font-bold text-white block group-hover:text-[#F5B544] transition-colors duration-200">48h</span>
                     <span className="text-xs text-neutral-400 block mt-1.5">Turnaround</span>
                   </div>
-                  <div className="p-4 rounded-2xl bg-neutral-900 border border-[#222833]">
-                    <span className="text-[38px] leading-none font-bold text-[#D9C7A0] block">$50</span>
+                  <div className="group p-4 rounded-2xl bg-neutral-900 border border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
+                    <span className="text-[38px] leading-none font-bold text-[#D9C7A0] block group-hover:text-[#F5B544] transition-colors duration-200">$50</span>
                     <span className="text-xs text-neutral-400 block mt-1.5">Test ad · pay on approval</span>
                   </div>
-                  <div className="p-4 rounded-2xl bg-neutral-900 border border-[#222833]">
-                    <span className="text-[38px] leading-none font-bold text-white block">100%</span>
+                  <div className="group p-4 rounded-2xl bg-neutral-900 border border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
+                    <span className="text-[38px] leading-none font-bold text-white block group-hover:text-[#F5B544] transition-colors duration-200">100%</span>
                     <span className="text-xs text-neutral-400 block mt-1.5">Commercial rights included</span>
                   </div>
                 </div>
