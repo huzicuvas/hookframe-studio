@@ -13,9 +13,10 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
   onSelectVideo,
   onNavigateToGallery,
 }) => {
-  // Homepage shows all 8 sample ads in the bento grid — the rectangle only
-  // works complete, so there is no 6-tile cut any more.
-  const homepageVideos = PORTFOLIO_VIDEOS;
+  // Homepage shows the first 8 portfolio items in the bento grid — the
+  // rectangle only works complete, so there is no 6-tile cut any more.
+  // Items after the first 8 are gallery-only (they show on /gallery).
+  const homepageVideos = PORTFOLIO_VIDEOS.slice(0, 8);
 
   const handleGalleryClick = (e: React.MouseEvent) => {
     if (onNavigateToGallery) {

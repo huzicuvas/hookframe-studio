@@ -1,5 +1,6 @@
 import React from 'react';
 import { Play, ArrowRight } from 'lucide-react';
+import { PORTFOLIO_VIDEOS } from '../data/portfolioData';
 
 interface HeroProps {
   onStartProject?: () => void;
@@ -14,6 +15,9 @@ export const Hero: React.FC<HeroProps> = ({
   onSelectFeaturedVideo,
   onGetQuote,
 }) => {
+  // The featured tile highlights the first portfolio video (the Burger).
+  // Clicking it opens that video's modal via onSelectFeaturedVideo.
+  const featured = PORTFOLIO_VIDEOS[0];
   const handleStartProjectClick = () => {
     if (onStartProject) {
       onStartProject();
@@ -114,7 +118,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
               </div>
               <span className="text-[10px] bg-neutral-800 px-2.5 py-1 rounded-full text-neutral-400 font-mono font-medium">
-                9:16 feed
+                {featured.aspectRatio} feed
               </span>
             </div>
 
@@ -125,6 +129,28 @@ export const Hero: React.FC<HeroProps> = ({
             >
               {/* Pattern Grid */}
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
+
+              {/* Real thumbnail when available — the tile shows the featured ad */}
+              {featured.thumbnailUrl && (
+                <img
+                  src={featured.thumbnailUrl}
+                  alt={featured.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
+                />
+              )}
+
+              {/* Otherwise the featured video itself is the cover — its first
+                  frame shows, so the tile is never a blank placeholder. */}
+              {!featured.thumbnailUrl && featured.videoUrl && (
+                <video
+                  src={featured.videoUrl}
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
+                />
+              )}
 
               {/* Top Badges */}
               <div className="relative z-10 flex items-center justify-between pointer-events-none">
@@ -140,20 +166,20 @@ export const Hero: React.FC<HeroProps> = ({
                   <Play className="w-6 h-6 fill-white text-white ml-0.5" />
                 </div>
                 <span className="text-[11px] font-mono text-neutral-400 mt-2.5">
-                  UGC / CGI creative frame
+                  {featured.tags[0]} · {featured.duration}
                 </span>
               </div>
 
               {/* Bottom Captions Simulation */}
               <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-neutral-800/80">
                 <span className="inline-block px-2 py-0.5 rounded bg-black border border-neutral-700 text-[10px] font-mono text-blue-300 font-semibold">
-                  Hook 1 · Problem and agitation
+                  {featured.hookHeadline}
                 </span>
                 <p className="text-xs font-semibold text-white leading-snug">
-                  Problem-agitation UGC ad format
+                  {featured.title}
                 </p>
                 <div className="flex items-center gap-3 text-[10px] text-neutral-400 font-mono">
-                  <span>48h turnaround</span>
+                  <span>{featured.duration} · 48h turnaround</span>
                 </div>
               </div>
             </div>

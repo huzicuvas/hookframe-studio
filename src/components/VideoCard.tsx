@@ -55,6 +55,19 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           />
         )}
 
+        {/* Video itself as the tile cover when there is no thumbnail image:
+            the first frame shows, so the tile is never a blank placeholder.
+            A thumbnail, when one is set, still wins over this. */}
+        {!video.thumbnailUrl && video.videoUrl && !isPoster && (
+          <video
+            src={video.videoUrl}
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
+          />
+        )}
+
         {/* Top row: Sample style badge + duration (video) / Poster chip (poster) */}
         <div className="relative z-10 flex items-center justify-between gap-2 p-3 shrink-0">
           <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/40 text-[10px] font-bold text-blue-300 flex items-center gap-1 whitespace-nowrap shrink-0">
