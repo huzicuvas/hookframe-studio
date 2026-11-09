@@ -35,7 +35,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
             section is not just a bare grid after the hero. */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-3xl sm:text-4xl font-semibold text-neutral-900 dark:text-white tracking-tight leading-tight">
-            Our work
+            The Hook Wall
           </h2>
           <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 mt-3">
             Real ads, made for real brands.
