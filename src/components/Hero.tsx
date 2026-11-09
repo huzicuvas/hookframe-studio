@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       id="hero"
-      className="relative pt-20 pb-8 md:pt-24 md:pb-10 overflow-hidden bg-[#0B0D12]"
+      className="relative pt-20 pb-8 md:pt-24 md:pb-10 overflow-hidden bg-[#FAFAF9] dark:bg-[#0B0D12]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Bento Grid Hero Layout — 65/35, locked so content cannot push
@@ -220,15 +220,16 @@ export const Hero: React.FC<HeroProps> = ({
               )}
 
 
-              {/* Bottom Captions Simulation */}
-              <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-neutral-200/80 dark:border-[#222833]/80">
-                <span className="inline-block px-2 py-0.5 rounded bg-black border border-neutral-200 dark:border-[#222833] text-[10px] font-mono text-blue-700 dark:text-blue-300 font-semibold">
+              {/* Bottom Captions Simulation — the box is dark in both themes,
+                  so its text stays light in both themes. */}
+              <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-white/20">
+                <span className="inline-block px-2 py-0.5 rounded bg-black border border-white/20 text-[10px] font-mono text-blue-300 font-semibold">
                   {featured.hookHeadline}
                 </span>
-                <p className="text-xs font-semibold text-neutral-900 dark:text-white leading-snug">
+                <p className="text-xs font-semibold text-white leading-snug">
                   {featured.title}
                 </p>
-                <div className="flex items-center gap-3 text-[10px] text-neutral-600 dark:text-neutral-400 font-mono">
+                <div className="flex items-center gap-3 text-[10px] text-neutral-400 font-mono">
                   <span>{featured.duration} · 48h turnaround</span>
                 </div>
               </div>
