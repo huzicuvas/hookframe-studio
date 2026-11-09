@@ -73,7 +73,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Studio Headline */}
-            <div className="space-y-4 my-auto py-2">
+            <div className="space-y-4 py-2">
               <h1
                 id="hero-title"
                 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-[1.05]"
@@ -90,6 +90,18 @@ export const Hero: React.FC<HeroProps> = ({
               </p>
             </div>
 
+            {/* Who we make ads for — fills the tile so it reads complete, not empty */}
+            <div className="pt-6 mt-4">
+              <p className="text-[11px] font-mono text-neutral-500 mb-3">Who we make ads for</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Beauty &amp; Skincare</span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Tech &amp; Gadgets</span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Food &amp; Cafes</span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Fashion</span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Apps</span>
+              </div>
+            </div>
+
             {/* CTA */}
             <div className="pt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <button
@@ -101,18 +113,6 @@ export const Hero: React.FC<HeroProps> = ({
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-            </div>
-
-            {/* Who we make ads for — fills the tile so it reads complete, not empty */}
-            <div className="pt-6 mt-4">
-              <p className="text-[11px] font-mono text-neutral-500 mb-3">Who we make ads for</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Beauty &amp; Skincare</span>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Tech &amp; Gadgets</span>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Food &amp; Cafes</span>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Fashion</span>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Apps</span>
-              </div>
             </div>
 
             {/* Proof Metrics Bento Strip */}
