@@ -51,6 +51,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
           d="M0,24 C120,40 240,8 360,24 C480,40 600,8 720,24 C840,40 960,8 1080,24 C1200,40 1320,8 1440,24 L1440,48 L0,48 Z"
           fill="currentColor"
         />
+        {/* Thin gold line tracing the wave's top edge, with a soft glow. */}
+        <path
+          d="M0,24 C120,40 240,8 360,24 C480,40 600,8 720,24 C840,40 960,8 1080,24 C1200,40 1320,8 1440,24"
+          fill="none"
+          stroke="#F5B544"
+          strokeWidth="5"
+          strokeOpacity="0.25"
+          vectorEffect="non-scaling-stroke"
+        />
+        <path
+          d="M0,24 C120,40 240,8 360,24 C480,40 600,8 720,24 C840,40 960,8 1080,24 C1200,40 1320,8 1440,24"
+          fill="none"
+          stroke="#F5B544"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+        />
       </svg>
 
       <div className="bg-neutral-900 py-8">

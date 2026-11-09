@@ -153,7 +153,7 @@ export const Hero: React.FC<HeroProps> = ({
               onClick={onSelectFeaturedVideo}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="group relative my-4 aspect-[9/14] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-between p-4"
+              className="group relative my-4 aspect-[9/14] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-end p-4"
             >
               {/* Pattern Grid */}
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
