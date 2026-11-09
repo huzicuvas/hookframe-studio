@@ -83,7 +83,7 @@ export const About: React.FC = () => {
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                       <span>HookFrame Studio: 48h</span>
                     </div>
-                    <div className="p-2.5 rounded-xl bg-neutral-100/40 dark:bg-neutral-950/40 border border-neutral-200/50 dark:border-neutral-800/50 text-xs text-neutral-600 dark:text-neutral-500 line-through">
+                    <div className="p-2.5 rounded-xl bg-neutral-100/40 dark:bg-neutral-950/40 border border-neutral-200/50 dark:border-neutral-800/50 text-xs text-neutral-600 dark:text-neutral-400 line-through">
                       Legacy: 4-6 Wks
                     </div>
                   </div>
@@ -97,7 +97,7 @@ export const About: React.FC = () => {
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                       <span>85% Lower Cost</span>
                     </div>
-                    <div className="p-2.5 rounded-xl bg-neutral-100/40 dark:bg-neutral-950/40 border border-neutral-200/50 dark:border-neutral-800/50 text-xs text-neutral-600 dark:text-neutral-500 line-through">
+                    <div className="p-2.5 rounded-xl bg-neutral-100/40 dark:bg-neutral-950/40 border border-neutral-200/50 dark:border-neutral-800/50 text-xs text-neutral-600 dark:text-neutral-400 line-through">
                       $5k–$25k / Shoot
                     </div>
                   </div>
@@ -111,7 +111,7 @@ export const About: React.FC = () => {
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                       <span>5–15 Variants</span>
                     </div>
-                    <div className="p-2.5 rounded-xl bg-neutral-100/40 dark:bg-neutral-950/40 border border-neutral-200/50 dark:border-neutral-800/50 text-xs text-neutral-600 dark:text-neutral-500 line-through">
+                    <div className="p-2.5 rounded-xl bg-neutral-100/40 dark:bg-neutral-950/40 border border-neutral-200/50 dark:border-neutral-800/50 text-xs text-neutral-600 dark:text-neutral-400 line-through">
                       1 Single Cut
                     </div>
                   </div>
@@ -125,7 +125,7 @@ export const About: React.FC = () => {
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                       <span>AI Avatars & 3D</span>
                     </div>
-                    <div className="p-2.5 rounded-xl bg-neutral-100/40 dark:bg-neutral-950/40 border border-neutral-200/50 dark:border-neutral-800/50 text-xs text-neutral-600 dark:text-neutral-500 line-through">
+                    <div className="p-2.5 rounded-xl bg-neutral-100/40 dark:bg-neutral-950/40 border border-neutral-200/50 dark:border-neutral-800/50 text-xs text-neutral-600 dark:text-neutral-400 line-through">
                       Casting & Sets
                     </div>
                   </div>

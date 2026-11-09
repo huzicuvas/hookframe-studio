@@ -162,7 +162,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
 
           {/* Quick Search */}
           <div className="relative w-full md:w-64">
-            <Search className="w-4 h-4 text-neutral-600 dark:text-neutral-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-neutral-600 dark:text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search formats, hooks..."

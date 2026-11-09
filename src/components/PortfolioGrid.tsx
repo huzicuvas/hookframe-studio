@@ -58,7 +58,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
             <span>View Full Gallery ({PORTFOLIO_VIDEOS.length}+ Styles)</span>
             <ArrowRight className="w-4 h-4 text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white group-hover:translate-x-1 transition-transform" />
           </a>
-          <p className="text-xs font-mono text-neutral-600 dark:text-neutral-500 mt-3">
+          <p className="text-xs font-mono text-neutral-600 dark:text-neutral-400 mt-3">
             Browse all ad formats and categories
           </p>
         </div>

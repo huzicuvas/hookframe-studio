@@ -203,7 +203,7 @@ export const PricingSection: React.FC = () => {
           <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 mt-3">
             One price per ad. No hidden fees, no surprises.
           </p>
-          <p className="text-xs font-mono text-neutral-600 dark:text-neutral-500 mt-2">
+          <p className="text-xs font-mono text-neutral-600 dark:text-neutral-400 mt-2">
             First ad is pay on approval · 48-hour delivery · Full commercial
             rights
           </p>
@@ -396,7 +396,7 @@ export const PricingSection: React.FC = () => {
                 'Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe%27re%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2015s%20UGC%20/%2020s%20UGC%20/%2030s%20UGC%20/%20Poster%20/%20CGI%2015s%20/%20CGI%2030s%20/%20Hook%20Pack%203%20/%20Hook%20Pack%205%20/%20Custom%20Pack%20/%20Over%2030s%20or%20monthly):%20%0ATarget%20Launch%20Date:%20%0A'
               )}
               id="contact-mailto-btn"
-              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 text-neutral-900 dark:text-white text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
+              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 dark:bg-blue-600 text-neutral-900 dark:text-white text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >
               <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               <span>Email {recipientEmail}</span>
@@ -419,7 +419,7 @@ export const PricingSection: React.FC = () => {
               <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span>Full commercial rights included</span>
             </div>
-            <span className="text-neutral-700 hidden sm:inline">•</span>
+            <span className="text-neutral-600 dark:text-neutral-400 hidden sm:inline">•</span>
             <div className="flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
               <span>48h fast delivery</span>

@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       id="hero"
-      className="relative pt-20 pb-4 md:pt-24 md:pb-6 overflow-hidden bg-[#FAFAF9] dark:bg-[#0B0D12]"
+      className="relative pt-20 pb-5 md:pt-24 md:pb-7 overflow-hidden bg-[#FAFAF9] dark:bg-[#0B0D12]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Bento Grid Hero Layout — 65/35, locked so content cannot push
@@ -136,7 +136,7 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Bottom cluster: pills + stats, pinned to the bottom */}
               <div className="relative flex flex-col">
                 {/* Who we make ads for — slow scrolling marquee */}
-                <p className="text-[11px] text-neutral-600 dark:text-neutral-500 mb-2">Who we make ads for</p>
+                <p className="text-[11px] text-neutral-600 dark:text-neutral-400 mb-2">Who we make ads for</p>
                 <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
                   <div className="flex gap-2 w-max animate-[marquee-scroll_24s_linear_infinite]">
                     {[...AUDIENCES, ...AUDIENCES].map((audience, i) => (
@@ -153,15 +153,15 @@ export const Hero: React.FC<HeroProps> = ({
                 {/* Proof Metrics — flat cards, no divider line */}
                 <div className="grid grid-cols-3 gap-3 mt-5">
                   <div className="group p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
-                    <span className="text-[38px] leading-none font-bold text-neutral-900 dark:text-white block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">48h</span>
+                    <span className="text-3xl leading-none font-bold text-neutral-900 dark:text-white block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">48h</span>
                     <span className="text-xs text-neutral-600 dark:text-neutral-400 block mt-1.5">Turnaround</span>
                   </div>
                   <div className="group p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
-                    <span className="text-[38px] leading-none font-bold text-[#D9C7A0] block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">$50</span>
+                    <span className="text-3xl leading-none font-bold text-[#D9C7A0] block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">$50</span>
                     <span className="text-xs text-neutral-600 dark:text-neutral-400 block mt-1.5">Test ad · pay on approval</span>
                   </div>
                   <div className="group p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
-                    <span className="text-[38px] leading-none font-bold text-neutral-900 dark:text-white block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">100%</span>
+                    <span className="text-3xl leading-none font-bold text-neutral-900 dark:text-white block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">100%</span>
                     <span className="text-xs text-neutral-600 dark:text-neutral-400 block mt-1.5">Commercial rights included</span>
                   </div>
                 </div>

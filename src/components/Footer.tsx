@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-2">
               <HookFramesLogo size="sm" />
-              <p className="text-xs text-neutral-600 dark:text-neutral-500 max-w-sm">
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 max-w-sm">
                 UGC, CGI and poster ads for Meta, TikTok and YouTube Shorts.
               </p>
             </div>
@@ -219,7 +219,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
           </div>
 
           {/* Bottom row: copyright + back to top */}
-          <div className="mt-10 pt-6 border-t border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between gap-4 text-xs text-neutral-600 dark:text-neutral-500 font-mono">
+          <div className="mt-10 pt-6 border-t border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between gap-4 text-xs text-neutral-600 dark:text-neutral-400 font-mono">
             <span>© {new Date().getFullYear()} Hook Frames Studio. All rights reserved.</span>
             <button
               type="button"

@@ -16,12 +16,14 @@
     background-color: #0A0A0B;
   }
 
-  /* Visible keyboard focus on every control, even where a component uses
-     focus:outline-none — tabbing must always show where you are. */
-  :focus-visible {
-    outline: 2px solid #3B82F6;
-    outline-offset: 2px;
-  }
+}
+
+/* Visible keyboard focus on every control, even where a component uses
+   focus:outline-none — tabbing must always show where you are. Unlayered
+   (and !important) so it beats Tailwind's focus:outline-none utilities. */
+:focus-visible {
+  outline: 2px solid #3B82F6 !important;
+  outline-offset: 2px;
 }
 
 /* Custom minimal dark scrollbar for Bento Grid */
