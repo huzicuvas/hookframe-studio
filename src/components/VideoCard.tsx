@@ -17,6 +17,23 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
   // so a tap just opens the popup — the same as before.)
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
+  // The tile's still frame: the video's first frame, unless the video sets
+  // a posterTime — then the tile seeks there on load (the Handbag's full bag
+  // at 12s, not its opening close-up) and rests there whenever the mouse
+  // leaves, so the tile always shows the good frame. No thumbnail needed.
+  const posterTime = video.posterTime ?? 0;
+
+  const seekToPosterTime = () => {
+    const v = videoRef.current;
+    if (v && posterTime > 0 && v.duration > posterTime) {
+      v.currentTime = posterTime;
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    seekToPosterTime();
+  };
+
   const handleMouseEnter = () => {
     const v = videoRef.current;
     if (v) {
@@ -29,7 +46,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
     const v = videoRef.current;
     if (v) {
       v.pause();
-      v.currentTime = 0;
+      v.currentTime = posterTime;
     }
   };
 
@@ -90,6 +107,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             playsInline
             loop
             preload="metadata"
+            onLoadedMetadata={handleLoadedMetadata}
             className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
           />
         )}

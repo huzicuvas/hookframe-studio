@@ -56,6 +56,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     videoUrl: `${SUPABASE_BASE}/Handbag%2016%3A9.mp4`,
     duration: '0:16',
     aspectRatio: '16:9',
+    posterTime: 12, // tile shows the full bag (~12s), not the opening close-up
     hookHeadline: '"Stitched by hand. Carried everywhere."',
     description:
       'A sewing machine stitches dark-blue monogram fabric, then the finished bag with its silver chain, carried out into the day. A live-action product film, not CGI.',

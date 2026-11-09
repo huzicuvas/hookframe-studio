@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Play, Pause, Volume2, VolumeX, Maximize2, RotateCcw, Send, Check } from 'lucide-react';
+import { X, Play, Pause, Volume2, VolumeX, Maximize2, RotateCcw, Send, Check, Share2 } from 'lucide-react';
 import { VideoItem } from '../types';
 
 interface VideoModalProps {
@@ -14,12 +14,14 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
   const [currentTime, setCurrentTime] = useState('0:00');
   const [totalDuration, setTotalDuration] = useState('0:00');
   const [videoError, setVideoError] = useState(false);
+  const [copied, setCopied] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     // Reset state when video changes
     setIsPlaying(true);
     setVideoError(false);
+    setCopied(false);
     setProgress(0);
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -75,6 +77,29 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const pos = (e.clientX - rect.left) / rect.width;
     videoRef.current.currentTime = pos * (videoRef.current.duration || 1);
+  };
+
+  // Share this ad: the link is the site URL with this video's id as the
+  // hash, so opening it opens the site with this video's popup already up.
+  // Phones get the native share sheet; everywhere else the link is copied.
+  const handleShare = async () => {
+    const url = `${window.location.href.split('#')[0]}#${video.id}`;
+    const text = `${video.title} — HookFrame Studio`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: video.title, text, url });
+      } catch {
+        // user closed the share sheet — nothing to do
+      }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard unavailable — leave the button as-is
+    }
   };
 
   return (
@@ -234,6 +259,14 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
               <Send className="w-3.5 h-3.5" />
               <span>Request this ad style</span>
             </a>
+            <button
+              type="button"
+              onClick={handleShare}
+              className="w-full sm:w-auto py-3.5 px-5 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-xs font-medium transition-colors flex items-center justify-center gap-2"
+            >
+              {copied ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
+              <span>{copied ? 'Link copied' : 'Share'}</span>
+            </button>
             <button
               type="button"
               onClick={onClose}

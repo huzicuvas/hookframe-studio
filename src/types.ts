@@ -10,6 +10,13 @@ export interface VideoItem {
   duration: string;
   aspectRatio: '9:16' | '1:1' | '16:9' | '4:5';
   kind?: 'video' | 'poster'; // poster tiles show a static poster frame, not a play button
+  // Seconds into the video to use as the tile's still frame. By default the
+  // first frame shows, but some videos open on a close-up that does not read
+  // as the product (the Handbag opens on fingertips + a bag corner), so a
+  // posterTime points the tile at a better frame — the full bag at ~12s.
+  // The tile seeks there on load and rests there whenever the mouse leaves.
+  // No thumbnail image needed.
+  posterTime?: number;
   hookHeadline: string;
   description: string;
   metrics?: {

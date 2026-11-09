@@ -143,12 +143,15 @@ export const Hero: React.FC<HeroProps> = ({
               </span>
             </div>
 
-            {/* Stylized Vertical Ad Reel Frame */}
+            {/* Stylized Vertical Ad Reel Frame — 9:14, close to the Burger's
+                true 9:16, so the video is barely cropped. A full 9:16 would
+                make the hero taller than most screens, so 9:14 is the
+                balance: the frame looks like the real vertical feed. */}
             <div
               onClick={onSelectFeaturedVideo}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="group relative my-4 aspect-[9/11] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-between p-4"
+              className="group relative my-4 aspect-[9/14] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-between p-4"
             >
               {/* Pattern Grid */}
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
