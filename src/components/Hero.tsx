@@ -84,24 +84,24 @@ export const Hero: React.FC<HeroProps> = ({
                 <div className="flex items-center gap-2">
                   <span className="px-3 py-1 bg-neutral-800 border border-neutral-700/60 rounded-full text-[11px] font-medium text-neutral-300 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#F5B544]" />
-                    AI Content Production Studio
+                    UGC · CGI · Posters
                   </span>
                 </div>
 
-                {/* Studio Headline — much bigger, "delivered fast." in a blue-to-gold gradient */}
+                {/* Studio Headline — much bigger, "ready in 48h." in a blue-to-gold gradient */}
                 <h1
                   id="hero-title"
                   className="text-[clamp(3rem,6vw,4.75rem)] font-bold text-white tracking-[-0.02em] leading-[1.02]"
                 >
-                  Ad content for brands, <br />
-                  <span className="bg-gradient-to-r from-[#3b82f6] to-[#F5B544] bg-clip-text text-transparent">delivered fast.</span>
+                  Ads that stop the scroll, <br />
+                  <span className="bg-gradient-to-r from-[#3b82f6] to-[#F5B544] bg-clip-text text-transparent">ready in 48h.</span>
                 </h1>
 
                 <p
                   id="hero-tagline-sub"
                   className="text-xl text-neutral-400 max-w-[580px] font-normal leading-relaxed"
                 >
-                  We make <span className="text-white font-medium">3D CGI ads</span>, <span className="text-white font-medium">UGC-style videos</span> and <span className="text-white font-medium">poster ads</span> for your brand — ready in as little as 48 hours.
+                  <span className="text-white font-medium">3D CGI ads</span>, <span className="text-white font-medium">UGC-style videos</span> and <span className="text-white font-medium">posters</span> for your brand. Order a $50 test ad and pay only if you like the preview.
                 </p>
 
                 {/* CTA row — bigger buttons, pushed down a touch to fill the gap below */}
@@ -112,7 +112,7 @@ export const Hero: React.FC<HeroProps> = ({
                     onClick={handleStartProjectClick}
                     className="bg-white text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg shadow-black/40 text-[15px] active:scale-95 cursor-pointer"
                   >
-                    <span>Start a Project</span>
+                    <span>Get my $50 test ad</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <button
@@ -129,7 +129,7 @@ export const Hero: React.FC<HeroProps> = ({
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                     </span>
-                    2 slots open this week
+                    Pay after approval
                   </span>
                 </div>
               </div>
@@ -160,13 +160,13 @@ export const Hero: React.FC<HeroProps> = ({
                   </div>
                   <div className="relative overflow-hidden p-4 rounded-2xl bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-[#2e2e2e]">
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3b82f6] to-[#F5B544]" />
-                    <span className="text-[38px] leading-none font-bold text-[#F5B544] block">0</span>
-                    <span className="text-xs text-neutral-400 block mt-1.5">Upfront · pay on approval</span>
+                    <span className="text-[38px] leading-none font-bold text-[#F5B544] block">$50</span>
+                    <span className="text-xs text-neutral-400 block mt-1.5">Test ad · pay on approval</span>
                   </div>
                   <div className="relative overflow-hidden p-4 rounded-2xl bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-[#2e2e2e]">
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3b82f6] to-[#F5B544]" />
                     <span className="text-[38px] leading-none font-bold text-white block">100%</span>
-                    <span className="text-xs text-neutral-400 block mt-1.5">Commercial rights</span>
+                    <span className="text-xs text-neutral-400 block mt-1.5">Commercial rights included</span>
                   </div>
                 </div>
               </div>
