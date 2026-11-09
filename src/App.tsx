@@ -175,13 +175,6 @@ export default function App() {
     }
   };
 
-  const handleGetQuote = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const handleSelectFeaturedVideo = () => {
     setSelectedVideo(FEATURED_VIDEO);
   };
@@ -257,7 +250,6 @@ export default function App() {
           <main id="main-content">
             {/* Hero Section */}
             <Hero
-              onStartProject={handleGetQuote}
               onSelectFeaturedVideo={handleSelectFeaturedVideo}
             />
 

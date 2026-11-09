@@ -4,7 +4,7 @@ import { Check, Copy, Zap, ArrowRight, Send, ShieldCheck, Sparkles } from 'lucid
 const recipientEmail = 'kiramorganai@gmail.com';
 
 const mailto = (subject: string, body: string) =>
-  `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
+  `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 interface PriceRow {
   label: string;
@@ -50,7 +50,7 @@ const pricingCards: PricingCard[] = [
     ctaLabel: 'Start with a test ad',
     ctaSubject: 'Test ad — $50 pay on approval',
     ctaBody:
-      'Hi Hook Frames Studio Team,%0A%0AWe want to start with a $50 test ad (pay on approval, 10 seconds, UGC or CGI — our pick).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+      'Hi Hook Frames Studio Team,\n\nWe want to start with a $50 test ad (pay on approval, 10 seconds, UGC or CGI — our pick).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
   },
   {
     id: 'ugc-video-ads',
@@ -66,19 +66,19 @@ const pricingCards: PricingCard[] = [
         label: '15-second video',
         price: '$75',
         subject: 'Order a 15 second UGC video ad — $75',
-        body: 'Hi Hook Frames Studio Team,%0A%0AWe want to order a 15 second UGC video ad for our brand ($75 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+        body: 'Hi Hook Frames Studio Team,\n\nWe want to order a 15 second UGC video ad for our brand ($75 / 1 version).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
       },
       {
         label: '20-second video',
         price: '$99',
         subject: 'Order a 20 second UGC video ad — $99',
-        body: 'Hi Hook Frames Studio Team,%0A%0AWe want to order a 20 second UGC video ad for our brand ($99 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+        body: 'Hi Hook Frames Studio Team,\n\nWe want to order a 20 second UGC video ad for our brand ($99 / 1 version).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
       },
       {
         label: '30-second video',
         price: '$149',
         subject: 'Order a 30 second UGC video ad — $149',
-        body: 'Hi Hook Frames Studio Team,%0A%0AWe want to order a 30 second UGC video ad for our brand ($149 / 1 version).%0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+        body: 'Hi Hook Frames Studio Team,\n\nWe want to order a 30 second UGC video ad for our brand ($149 / 1 version).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
       },
     ],
     included: [
@@ -89,7 +89,7 @@ const pricingCards: PricingCard[] = [
     ctaLabel: 'Pick a length',
     ctaSubject: 'Order a UGC video ad',
     ctaBody:
-      'Hi Hook Frames Studio Team,%0A%0AWe want to order a UGC video ad.%0A%0ALength (15s $75 / 20s $99 / 30s $149): %0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
+      'Hi Hook Frames Studio Team,\n\nWe want to order a UGC video ad.\n\nLength (15s $75 / 20s $99 / 30s $149): \n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n',
   },
   {
     id: 'cgi-video-ads',
@@ -103,20 +103,20 @@ const pricingCards: PricingCard[] = [
         label: 'CGI 15-second',
         price: '$175',
         subject: 'Order a CGI video — 15 seconds $175',
-        body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a 15 second CGI video ($175).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
+        body: 'Hi Hook Frames Studio Team,\n\nWe would like to order a 15 second CGI video ($175).\n\nBrand Name: \nProduct / Website Link: \n',
       },
       {
         label: 'CGI 30-second',
         price: '$299',
         subject: 'Order a CGI video — 30 seconds $299',
-        body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a 30 second CGI video ($299).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
+        body: 'Hi Hook Frames Studio Team,\n\nWe would like to order a 30 second CGI video ($299).\n\nBrand Name: \nProduct / Website Link: \n',
       },
     ],
     included: ['Studio-quality 3D render', '48-hour delivery'],
     ctaLabel: 'Get a CGI ad',
     ctaSubject: 'Order a CGI video ad',
     ctaBody:
-      'Hi Hook Frames Studio Team,%0A%0AWe would like to order a CGI video ad.%0A%0ALength (15s $175 / 30s $299): %0A%0ABrand Name: %0AProduct / Website Link: %0A',
+      'Hi Hook Frames Studio Team,\n\nWe would like to order a CGI video ad.\n\nLength (15s $175 / 30s $299): \n\nBrand Name: \nProduct / Website Link: \n',
   },
   {
     id: 'poster-ads',
@@ -130,20 +130,20 @@ const pricingCards: PricingCard[] = [
         label: 'Poster ad',
         price: '$30',
         subject: 'Order a poster ad — $30',
-        body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a poster ad ($30, or $20 with any video).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
+        body: 'Hi Hook Frames Studio Team,\n\nWe would like to order a poster ad ($30, or $20 with any video).\n\nBrand Name: \nProduct / Website Link: \n',
       },
       {
         label: 'Poster with any video',
         price: '$20',
         subject: 'Order a poster ad — $30 (with a video $20)',
-        body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a poster ad with a video ($20 with any video).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
+        body: 'Hi Hook Frames Studio Team,\n\nWe would like to order a poster ad with a video ($20 with any video).\n\nBrand Name: \nProduct / Website Link: \n',
       },
     ],
     included: ['High-res poster design', '48-hour delivery'],
     ctaLabel: 'Get a poster',
     ctaSubject: 'Order a poster ad',
     ctaBody:
-      'Hi Hook Frames Studio Team,%0A%0AWe would like to order a poster ad.%0A%0AChoice (Poster $30 / Poster with a video $20): %0A%0ABrand Name: %0AProduct / Website Link: %0A',
+      'Hi Hook Frames Studio Team,\n\nWe would like to order a poster ad.\n\nChoice (Poster $30 / Poster with a video $20): \n\nBrand Name: \nProduct / Website Link: \n',
   },
 ];
 
@@ -162,7 +162,7 @@ const packCards = [
     ctaLabel: 'Order the pack',
     ctaSubject: 'Order Hook Variation Pack — 3 hooks $189',
     ctaBody:
-      'Hi Hook Frames Studio Team,%0A%0AWe want to order a Hook Pack with 3 opening hooks ($189).%0A%0ABrand Name: %0AProduct Link: %0ATarget Ad Platform (Meta / TikTok): %0A',
+      'Hi Hook Frames Studio Team,\n\nWe want to order a Hook Pack with 3 opening hooks ($189).\n\nBrand Name: \nProduct Link: \nTarget Ad Platform (Meta / TikTok): \n',
   },
   {
     id: 'custom-brand-pack',
@@ -178,7 +178,7 @@ const packCards = [
     ctaLabel: 'Order the pack',
     ctaSubject: 'Order Custom Brand Pack — $249',
     ctaBody:
-      'Hi Hook Frames Studio Team,%0A%0AWe want to order a Custom Brand Pack ($249: 1 UGC testimonial video 15s + 1 CGI product video 15s + 1 poster ad).%0A%0ABrand Name: %0AProduct / Website Link: %0AExtras needed (poster $20 / UGC $60 / CGI $150): %0A',
+      'Hi Hook Frames Studio Team,\n\nWe want to order a Custom Brand Pack ($249: 1 UGC testimonial video 15s + 1 CGI product video 15s + 1 poster ad).\n\nBrand Name: \nProduct / Website Link: \nExtras needed (poster $20 / UGC $60 / CGI $150): \n',
   },
 ];
 
@@ -420,7 +420,7 @@ export const PricingSection: React.FC = () => {
             <a
               href={mailto(
                 'New Ad Creative Inquiry - Hook Frames Studio',
-                'Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe%27re%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2015s%20UGC%20/%2020s%20UGC%20/%2030s%20UGC%20/%20Poster%20/%20CGI%2015s%20/%20CGI%2030s%20/%20Hook%20Pack%203%20/%20Hook%20Pack%205%20/%20Custom%20Pack%20/%20Over%2030s%20or%20monthly):%20%0ATarget%20Launch%20Date:%20%0A'
+                'Hi Hook Frames Studio Team,\n\nWe\'re interested in creating performance ad content for our brand.\n\nBrand Name: \nWebsite / Product Link: \nFormat Needed (Test ad / 15s UGC / 20s UGC / 30s UGC / Poster / CGI 15s / CGI 30s / Hook Pack 3 / Hook Pack 5 / Custom Pack / Over 30s or monthly): \nTarget Launch Date: \n'
               )}
               id="contact-mailto-btn"
               className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 dark:bg-blue-600 text-neutral-900 dark:text-white text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
@@ -431,7 +431,7 @@ export const PricingSection: React.FC = () => {
             <a
               href={mailto(
                 'Quotation request — over 30 seconds or custom scope',
-                'Hi Hook Frames Studio Team,%0A%0AWe would like a quotation for over 30 seconds, monthly batches, or a fully custom scope.%0A%0ABrand Name: %0AProduct / Website Link: %0AWhat we need: %0A'
+                'Hi Hook Frames Studio Team,\n\nWe would like a quotation for over 30 seconds, monthly batches, or a fully custom scope.\n\nBrand Name: \nProduct / Website Link: \nWhat we need: \n'
               )}
               className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >

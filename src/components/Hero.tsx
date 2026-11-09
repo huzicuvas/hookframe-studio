@@ -3,10 +3,8 @@ import { ArrowRight, Play, Copy, Check } from 'lucide-react';
 import { FEATURED_VIDEO } from '../data/portfolioData';
 
 interface HeroProps {
-  onStartProject?: () => void;
   onExplorePortfolio?: () => void;
   onSelectFeaturedVideo: () => void;
-  onGetQuote?: () => void;
 }
 
 const AUDIENCES = [
@@ -18,16 +16,23 @@ const AUDIENCES = [
 ];
 
 export const Hero: React.FC<HeroProps> = ({
-  onStartProject,
   onExplorePortfolio,
   onSelectFeaturedVideo,
-  onGetQuote,
 }) => {
   // The featured tile highlights the Burger (FEATURED_VIDEO).
   // Clicking it opens that video's modal via onSelectFeaturedVideo.
   const featured = FEATURED_VIDEO;
 
   const recipientEmail = 'kiramorganai@gmail.com';
+
+  // The main CTA opens the $50 test-ad email directly (same pre-filled
+  // email as the Test Ad pricing card) instead of scrolling to the contact
+  // panel — a tap must open the mail app, not just move the page.
+  const TEST_AD_MAILTO =
+    `mailto:${recipientEmail}?subject=${encodeURIComponent('Test ad — $50 pay on approval')}` +
+    `&body=${encodeURIComponent(
+      'Hi Hook Frames Studio Team,\n\nWe want to start with a $50 test ad (pay on approval, 10 seconds, UGC or CGI — our pick).\n\nBrand Name: \nProduct / Website Link: \nKey Selling Point / Hook Angle: \n'
+    )}`;
   const [emailCopied, setEmailCopied] = useState(false);
 
   const copyEmail = async () => {
@@ -76,18 +81,6 @@ export const Hero: React.FC<HeroProps> = ({
       onSelectFeaturedVideo();
     }
   };
-  const handleStartProjectClick = () => {
-    if (onStartProject) {
-      onStartProject();
-    } else if (onGetQuote) {
-      onGetQuote();
-    } else {
-      const contactEl = document.getElementById('contact');
-      if (contactEl) {
-        contactEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
 
   return (
     <section
@@ -134,15 +127,14 @@ export const Hero: React.FC<HeroProps> = ({
 
                 {/* CTA row — bigger buttons, pushed down a touch to fill the gap below */}
                 <div className="flex flex-wrap items-center gap-3.5 mt-1.5">
-                  <button
-                    type="button"
+                  <a
+                    href={TEST_AD_MAILTO}
                     id="hero-cta-start-project"
-                    onClick={handleStartProjectClick}
                     className="bg-neutral-900 dark:bg-white text-white dark:text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:bg-neutral-200 transition-colors duration-200 flex items-center justify-center gap-2 text-[15px] cursor-pointer"
                   >
                     <span>Get my $50 test ad</span>
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </a>
                   <button
                     type="button"
                     id="hero-cta-watch-reel"
