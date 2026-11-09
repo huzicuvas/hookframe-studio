@@ -10,21 +10,38 @@ export interface ContactPrefill {
   body: string;
 }
 
-// The "What do you need?" options — one per pricing choice, plus quotation.
-export const CONTACT_PRODUCTS = [
-  'Test ad — $50 pay on approval',
-  'UGC video — 15 seconds ($75)',
-  'UGC video — 20 seconds ($99)',
-  'UGC video — 30 seconds ($149)',
-  'CGI video — 15 seconds ($175)',
-  'CGI video — 30 seconds ($299)',
-  'Poster ad — $30',
-  'Poster ad with a video — $20',
-  'Hook Pack — 3 hooks ($189)',
-  'Hook Pack — 5 hooks ($299)',
-  'Custom Brand Pack — $249',
-  'Quotation / custom scope',
-] as const;
+// The "What do you need?" options, grouped under headings so the list scans
+// fast — UGC together, CGI together, posters together, and so on. Rendered
+// with native <optgroup> (group labels are headings, not selectable), which
+// works on phones too — the phone's own picker shows the groups.
+export const CONTACT_PRODUCT_GROUPS: { label: string; options: readonly string[] }[] = [
+  { label: 'First ad', options: ['Test ad — $50 pay on approval'] },
+  {
+    label: 'UGC videos',
+    options: [
+      'UGC video — 15 seconds ($75)',
+      'UGC video — 20 seconds ($99)',
+      'UGC video — 30 seconds ($149)',
+    ],
+  },
+  {
+    label: 'CGI videos',
+    options: ['CGI video — 15 seconds ($175)', 'CGI video — 30 seconds ($299)'],
+  },
+  {
+    label: 'Poster ads',
+    options: ['Poster ad — $30', 'Poster ad with a video — $20'],
+  },
+  {
+    label: 'Packs',
+    options: [
+      'Hook Pack — 3 hooks ($189)',
+      'Hook Pack — 5 hooks ($299)',
+      'Custom Brand Pack — $249',
+    ],
+  },
+  { label: 'Other', options: ['Quotation / custom scope'] },
+];
 
 const RECIPIENT_EMAIL = 'kiramorganai@gmail.com';
 // FormSubmit (formsubmit.co) — free, no account. First submission to this
@@ -195,10 +212,14 @@ export const ContactFormModal: React.FC<ContactFormModalProps> = ({ prefill, onC
                     onChange={(e) => setProduct(e.target.value)}
                     className={`${inputCls} cursor-pointer`}
                   >
-                    {CONTACT_PRODUCTS.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
+                    {CONTACT_PRODUCT_GROUPS.map((group) => (
+                      <optgroup key={group.label} label={group.label}>
+                        {group.options.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                 </div>
