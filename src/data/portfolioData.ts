@@ -186,4 +186,9 @@ export const BENTO_PLACEMENT: string[] = [
   'col-start-1 row-start-4 row-span-2 lg:col-start-3 lg:row-start-3 lg:row-span-2',
   'col-start-2 row-start-4 lg:col-start-1 lg:row-start-4',
   'col-start-2 row-start-5 lg:col-start-2 lg:row-start-4',
+  // Third block (rows 5-6) — the two gallery-only vertical videos. Both are
+  // 9:16, so both get tall slots; the third column of this block stays
+  // empty (the library has no 11th item), which is the grid simply ending.
+  'col-start-1 row-start-6 row-span-2 lg:col-start-1 lg:row-start-5 lg:row-span-2',
+  'col-start-2 row-start-6 row-span-2 lg:col-start-2 lg:row-start-5 lg:row-span-2',
 ];

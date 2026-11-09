@@ -4,11 +4,13 @@ import { HookFramesLogo } from './HookFramesLogo';
 
 interface FooterProps {
   onNavigateToGallery?: () => void;
+  onNavigateToAbout?: () => void;
+  onNavigateToWorkflow?: () => void;
 }
 
 const recipientEmail = 'kiramorganai@gmail.com';
 
-export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateToAbout, onNavigateToWorkflow }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -17,6 +19,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery }) => {
     if (onNavigateToGallery) {
       e.preventDefault();
       onNavigateToGallery();
+    }
+  };
+
+  const handleAboutClick = (e: React.MouseEvent) => {
+    if (onNavigateToAbout) {
+      e.preventDefault();
+      onNavigateToAbout();
+    }
+  };
+
+  const handleWorkflowClick = (e: React.MouseEvent) => {
+    if (onNavigateToWorkflow) {
+      e.preventDefault();
+      onNavigateToWorkflow();
     }
   };
 
@@ -92,12 +108,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery }) => {
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#about" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="/about" onClick={handleAboutClick} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="#workflow" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="/workflow" onClick={handleWorkflowClick} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     Our Workflow
                   </a>
                 </li>

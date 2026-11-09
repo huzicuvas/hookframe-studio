@@ -5,6 +5,8 @@ import { HookFramesLogo } from './HookFramesLogo';
 interface NavbarProps {
   onOpenContact?: () => void;
   onNavigateToGallery?: () => void;
+  onNavigateToAbout?: () => void;
+  onNavigateToWorkflow?: () => void;
   onNavigateHome?: () => void;
   onOpenChat?: () => void;
 }
@@ -12,6 +14,8 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenContact,
   onNavigateToGallery,
+  onNavigateToAbout,
+  onNavigateToWorkflow,
   onNavigateHome,
   onOpenChat,
 }) => {
@@ -29,8 +33,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Gallery', href: '/gallery', isGallery: true },
-    { name: 'About & Services', href: '#about' },
-    { name: 'Workflow', href: '#workflow' },
+    { name: 'About & Services', href: '/about', isAbout: true },
+    { name: 'Workflow', href: '/workflow', isWorkflow: true },
     { name: 'FAQ', href: '#faq' },
     { name: 'Pricing & Quotes', href: '#pricing' },
   ];
@@ -39,6 +43,14 @@ export const Navbar: React.FC<NavbarProps> = ({
     if (link.isGallery && onNavigateToGallery) {
       e.preventDefault();
       onNavigateToGallery();
+      setMobileMenuOpen(false);
+    } else if (link.isAbout && onNavigateToAbout) {
+      e.preventDefault();
+      onNavigateToAbout();
+      setMobileMenuOpen(false);
+    } else if (link.isWorkflow && onNavigateToWorkflow) {
+      e.preventDefault();
+      onNavigateToWorkflow();
       setMobileMenuOpen(false);
     }
   };

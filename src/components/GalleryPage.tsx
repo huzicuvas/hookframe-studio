@@ -36,10 +36,9 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
     return matchesCategory && matchesSearch;
   });
 
-  // The bento rectangle only works with the full set of exactly 8 — a
+  // The bento rectangle only works with the full set of exactly 10 — a
   // filter or search falls back to a plain uniform grid so there are never
-  // holes in the layout, and so does a library with more than 8 items
-  // (the extra items are gallery-only and would have no bento placement).
+  // holes in the layout.
   const isFullSet =
     activeCategory === 'All' &&
     searchQuery.trim() === '' &&

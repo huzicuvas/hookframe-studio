@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PortfolioGrid } from './components/PortfolioGrid';
-import { AboutServicesCombined } from './components/AboutServicesCombined';
-import { WorkflowSection } from './components/WorkflowSection';
 import { FaqSection } from './components/FaqSection';
 import { PricingSection } from './components/PricingSection';
 import { GeminiChatbot } from './components/GeminiChatbot';
@@ -11,6 +9,8 @@ import { Footer } from './components/Footer';
 import { VideoModal } from './components/VideoModal';
 import { DeveloperNoteModal } from './components/DeveloperNoteModal';
 import { GalleryPage } from './components/GalleryPage';
+import { AboutPage } from './components/AboutPage';
+import { WorkflowPage } from './components/WorkflowPage';
 import { PORTFOLIO_VIDEOS, FEATURED_VIDEO } from './data/portfolioData';
 import { VideoItem } from './types';
 import { Bot, MessageSquare, X, Code2, Sparkles } from 'lucide-react';
@@ -82,6 +82,14 @@ export default function App() {
     navigateTo('/gallery');
   };
 
+  const navigateToAbout = () => {
+    navigateTo('/about');
+  };
+
+  const navigateToWorkflow = () => {
+    navigateTo('/workflow');
+  };
+
   const handleExplorePortfolio = () => {
     const portfolioSection = document.getElementById('portfolio');
     if (portfolioSection) {
@@ -106,6 +114,8 @@ export default function App() {
   };
 
   const isGalleryView = currentPath === '/gallery' || currentPath === '/gallery/';
+  const isAboutView = currentPath === '/about' || currentPath === '/about/';
+  const isWorkflowView = currentPath === '/workflow' || currentPath === '/workflow/';
 
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
@@ -115,12 +125,20 @@ export default function App() {
           onNavigateHome={navigateHome}
           onSelectVideo={(video) => setSelectedVideo(video)}
         />
+      ) : isAboutView ? (
+        /* About View at /about — the about panel moved off the homepage */
+        <AboutPage onNavigateHome={navigateHome} />
+      ) : isWorkflowView ? (
+        /* Workflow View at /workflow — the workflow steps moved off the homepage */
+        <WorkflowPage onNavigateHome={navigateHome} />
       ) : (
         /* Standard Homepage View */
         <>
           {/* Top Sticky Navigation */}
           <Navbar
             onNavigateToGallery={navigateToGallery}
+            onNavigateToAbout={navigateToAbout}
+            onNavigateToWorkflow={navigateToWorkflow}
             onNavigateHome={navigateHome}
             onOpenChat={handleOpenChat}
           />
@@ -138,12 +156,6 @@ export default function App() {
               onNavigateToGallery={navigateToGallery}
             />
 
-            {/* Combined About & Specialized Services Section + About the Team */}
-            <AboutServicesCombined />
-
-            {/* 48h Production Workflow */}
-            <WorkflowSection />
-
             {/* Pricing Section — pricing cards + contact panel in one section */}
             <PricingSection />
 
@@ -152,7 +164,11 @@ export default function App() {
           </main>
 
           {/* Footer with Hook Frames Studio Logo */}
-          <Footer onNavigateToGallery={navigateToGallery} />
+          <Footer
+            onNavigateToGallery={navigateToGallery}
+            onNavigateToAbout={navigateToAbout}
+            onNavigateToWorkflow={navigateToWorkflow}
+          />
         </>
       )}
 
