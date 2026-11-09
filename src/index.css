@@ -35,3 +35,14 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Hero "Who we make ads for" marquee — the pill track scrolls slowly and
+   loops seamlessly (the track holds two identical sets of pills). */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

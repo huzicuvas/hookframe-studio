@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import { FEATURED_VIDEO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -8,6 +8,14 @@ interface HeroProps {
   onSelectFeaturedVideo: () => void;
   onGetQuote?: () => void;
 }
+
+const AUDIENCES = [
+  'Beauty & Skincare',
+  'Tech & Gadgets',
+  'Food & Cafes',
+  'Fashion',
+  'Apps',
+];
 
 export const Hero: React.FC<HeroProps> = ({
   onStartProject,
@@ -58,82 +66,115 @@ export const Hero: React.FC<HeroProps> = ({
       className="relative pt-20 pb-8 md:pt-24 md:pb-10 overflow-hidden bg-[#0A0A0B]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Bento Grid Hero Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-          
-          {/* Bento Main Hero Tile (Left 7 cols) */}
-          <div className="lg:col-span-7 bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group shadow-xl">
+        {/* Bento Grid Hero Layout — 65/35, locked so content cannot push
+            the columns around (minmax(0, ...) + min-w-0 on both tiles). */}
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,13fr)_minmax(0,7fr)] gap-5 items-stretch">
 
-            {/* Top Pill / Badge */}
-            <div className="flex items-center gap-2 mb-4">
-              <span className="px-3 py-1 bg-neutral-800 border border-neutral-700/60 rounded-full text-[11px] font-mono font-medium text-neutral-300 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#F5B544]" />
-                AI Content Production Studio
-              </span>
-            </div>
+          {/* Bento Main Hero Tile (Left, 65%) — gradient border wrapper */}
+          <div className="rounded-3xl bg-gradient-to-br from-blue-500/65 via-[#F5B544]/55 to-blue-500/15 p-[1px] flex min-w-0 shadow-xl">
+            <div className="bg-neutral-900 rounded-[23px] p-6 sm:p-9 flex flex-col justify-between relative overflow-hidden flex-1 min-w-0">
 
-            {/* Studio Headline */}
-            <div className="space-y-4 py-2">
-              <h1
-                id="hero-title"
-                className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-[1.05]"
-              >
-                Ad content for brands, <br />
-                <span className="text-neutral-500">delivered fast.</span>
-              </h1>
+              {/* Soft blue radial glow behind the headline + faint grid texture */}
+              <div className="pointer-events-none absolute -top-24 -left-16 h-80 w-80 rounded-full bg-blue-500/25 blur-3xl" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:28px_28px]" />
 
-              <p
-                id="hero-tagline-sub"
-                className="text-base sm:text-lg text-neutral-400 max-w-xl font-normal leading-relaxed"
-              >
-                We make <span className="text-white font-medium">3D CGI ads</span>, <span className="text-white font-medium">UGC-style videos</span> and <span className="text-white font-medium">poster ads</span> for your brand — ready in as little as 48 hours.
-              </p>
-            </div>
+              {/* Top cluster: badge, headline, subtext, CTA — tight gaps */}
+              <div className="relative flex flex-col gap-7">
+                {/* Top Pill / Badge */}
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 bg-neutral-800 border border-neutral-700/60 rounded-full text-[11px] font-medium text-neutral-300 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F5B544]" />
+                    AI Content Production Studio
+                  </span>
+                </div>
 
-            {/* Who we make ads for — fills the tile so it reads complete, not empty */}
-            <div className="pt-6 mt-4">
-              <p className="text-[11px] font-mono text-neutral-500 mb-3">Who we make ads for</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Beauty &amp; Skincare</span>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Tech &amp; Gadgets</span>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Food &amp; Cafes</span>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Fashion</span>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Apps</span>
+                {/* Studio Headline — much bigger, "delivered fast." in a blue-to-gold gradient */}
+                <h1
+                  id="hero-title"
+                  className="text-[clamp(3rem,6vw,4.75rem)] font-bold text-white tracking-[-0.02em] leading-[1.02]"
+                >
+                  Ad content for brands, <br />
+                  <span className="bg-gradient-to-r from-[#3b82f6] to-[#F5B544] bg-clip-text text-transparent">delivered fast.</span>
+                </h1>
+
+                <p
+                  id="hero-tagline-sub"
+                  className="text-xl text-neutral-400 max-w-[580px] font-normal leading-relaxed"
+                >
+                  We make <span className="text-white font-medium">3D CGI ads</span>, <span className="text-white font-medium">UGC-style videos</span> and <span className="text-white font-medium">poster ads</span> for your brand — ready in as little as 48 hours.
+                </p>
+
+                {/* CTA row — bigger buttons, pushed down a touch to fill the gap below */}
+                <div className="flex flex-wrap items-center gap-3.5 mt-1.5">
+                  <button
+                    type="button"
+                    id="hero-cta-start-project"
+                    onClick={handleStartProjectClick}
+                    className="bg-white text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg shadow-black/40 text-[15px] active:scale-95 cursor-pointer"
+                  >
+                    <span>Start a Project</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    id="hero-cta-watch-reel"
+                    onClick={onSelectFeaturedVideo}
+                    className="bg-transparent text-white px-8 py-[18px] rounded-full font-semibold text-[15px] border border-neutral-600 hover:border-[#F5B544] transition-colors duration-200 flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+                  >
+                    <Play className="w-4 h-4 fill-current" />
+                    <span>Watch reel</span>
+                  </button>
+                  <span className="inline-flex items-center gap-2 text-[13px] text-neutral-300">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                    </span>
+                    2 slots open this week
+                  </span>
+                </div>
               </div>
-            </div>
 
-            {/* CTA */}
-            <div className="pt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-              <button
-                type="button"
-                id="hero-cta-start-project"
-                onClick={handleStartProjectClick}
-                className="bg-white text-black px-8 py-4 rounded-full font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg shadow-black/40 text-sm active:scale-95 cursor-pointer"
-              >
-                <span>Start a Project</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+              {/* Bottom cluster: pills + stats, pinned to the bottom */}
+              <div className="relative flex flex-col">
+                {/* Who we make ads for — slow scrolling marquee */}
+                <p className="text-[11px] text-neutral-500 mb-2">Who we make ads for</p>
+                <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+                  <div className="flex gap-2 w-max animate-[marquee-scroll_24s_linear_infinite]">
+                    {[...AUDIENCES, ...AUDIENCES].map((audience, i) => (
+                      <span
+                        key={`${audience}-${i}`}
+                        className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300 whitespace-nowrap"
+                      >
+                        {audience}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-            {/* Proof Metrics Bento Strip */}
-            <div className="grid grid-cols-3 gap-3 pt-6 mt-4 border-t border-neutral-800">
-              <div className="p-3 bg-neutral-950/60 border border-neutral-800/80 rounded-2xl">
-                <span className="text-xl sm:text-2xl font-bold text-[#F5B544] font-mono block">48h</span>
-                <span className="text-[11px] text-neutral-400 font-mono">Turnaround</span>
-              </div>
-              <div className="p-3 bg-neutral-950/60 border border-neutral-800/80 rounded-2xl">
-                <span className="text-xl sm:text-2xl font-bold text-blue-400 font-mono block">3</span>
-                <span className="text-[11px] text-neutral-400 font-mono">Hooks / pack</span>
-              </div>
-              <div className="p-3 bg-neutral-950/60 border border-neutral-800/80 rounded-2xl">
-                <span className="text-xl sm:text-2xl font-bold text-white font-mono block">100%</span>
-                <span className="text-[11px] text-neutral-400 font-mono">Commercial rights</span>
+                {/* Proof Metrics — premium cards, no divider line */}
+                <div className="grid grid-cols-3 gap-3 mt-5">
+                  <div className="relative overflow-hidden p-4 rounded-2xl bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-[#2e2e2e]">
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3b82f6] to-[#F5B544]" />
+                    <span className="text-[38px] leading-none font-bold text-[#F5B544] block">48h</span>
+                    <span className="text-xs text-neutral-400 block mt-1.5">Turnaround</span>
+                  </div>
+                  <div className="relative overflow-hidden p-4 rounded-2xl bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-[#2e2e2e]">
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3b82f6] to-[#F5B544]" />
+                    <span className="text-[38px] leading-none font-bold text-[#F5B544] block">0</span>
+                    <span className="text-xs text-neutral-400 block mt-1.5">Upfront · pay on approval</span>
+                  </div>
+                  <div className="relative overflow-hidden p-4 rounded-2xl bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-[#2e2e2e]">
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3b82f6] to-[#F5B544]" />
+                    <span className="text-[38px] leading-none font-bold text-white block">100%</span>
+                    <span className="text-xs text-neutral-400 block mt-1.5">Commercial rights</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Bento Featured Preview Tile (Right 5 cols) */}
-          <div className="lg:col-span-5 bg-neutral-900 border border-neutral-800 rounded-3xl p-5 sm:p-6 flex flex-col justify-between shadow-xl">
+          {/* Bento Featured Preview Tile (Right, 35%) */}
+          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-5 sm:p-6 flex flex-col justify-between shadow-xl min-w-0">
             {/* Header */}
             <div className="flex justify-between items-center px-1 pb-4 border-b border-neutral-800">
               <div className="flex items-center gap-2">
@@ -145,15 +186,15 @@ export const Hero: React.FC<HeroProps> = ({
               </span>
             </div>
 
-            {/* Stylized Vertical Ad Reel Frame — 9:14, close to the Burger's
-                true 9:16, so the video is barely cropped. A full 9:16 would
-                make the hero taller than most screens, so 9:14 is the
-                balance: the frame looks like the real vertical feed. */}
+            {/* Stylized Vertical Ad Reel Frame — true 9:16, the Burger's
+                real vertical shape, so the video is never cropped. The hero
+                is taller now, and the left tile's two-cluster content fills
+                the extra height. */}
             <div
               onClick={onSelectFeaturedVideo}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="group relative my-4 aspect-[9/14] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-end p-4"
+              className="group relative my-4 aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-end p-4"
             >
               {/* Pattern Grid */}
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
