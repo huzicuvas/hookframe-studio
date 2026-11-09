@@ -15,6 +15,13 @@
     color-scheme: dark;
     background-color: #0A0A0B;
   }
+
+  /* Visible keyboard focus on every control, even where a component uses
+     focus:outline-none — tabbing must always show where you are. */
+  :focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+  }
 }
 
 /* Custom minimal dark scrollbar for Bento Grid */

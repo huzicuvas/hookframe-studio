@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
   };
 
   return (
-    <footer id="footer" className="text-neutral-600 dark:text-neutral-400 text-sm">
+    <footer id="footer" className="text-neutral-600 dark:text-neutral-300 text-sm">
       {/* Wavy top edge — the footer colour rises into the FAQ in a gentle wave.
           The footer is one shade lighter (neutral-900) than the FAQ (neutral-950)
           so the wave reads. */}
@@ -112,22 +112,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     UGC Video Ads
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     CGI Product Ads
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     Poster Ads
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     Hook Variation Packs
                   </a>
                 </li>
@@ -139,27 +139,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="/about" onClick={handleAboutClick} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="/about" onClick={handleAboutClick} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="/workflow" onClick={handleWorkflowClick} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="/workflow" onClick={handleWorkflowClick} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     Our Workflow
                   </a>
                 </li>
                 <li>
-                  <a href="#faq" onClick={(e) => handleSectionClick(e, 'faq')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#faq" onClick={(e) => handleSectionClick(e, 'faq')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     Pricing & Quotes
                   </a>
                 </li>
                 <li>
-                  <a href="/privacy" onClick={handlePrivacyClick} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="/privacy" onClick={handlePrivacyClick} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     Privacy Policy
                   </a>
                 </li>
@@ -171,7 +171,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#portfolio" onClick={(e) => handleSectionClick(e, 'portfolio')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#portfolio" onClick={(e) => handleSectionClick(e, 'portfolio')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     Portfolio
                   </a>
                 </li>
@@ -179,13 +179,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
                   <a
                     href="/gallery"
                     onClick={handleGalleryClick}
-                    className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                    className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
                   >
                     Gallery
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     $50 Test Ad
                   </a>
                 </li>
@@ -197,20 +197,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href={`mailto:${recipientEmail}`} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href={`mailto:${recipientEmail}`} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     Email Us
                   </a>
                 </li>
                 <li>
                   <a
                     href={`mailto:${recipientEmail}?subject=${encodeURIComponent('Quotation request — over 30 seconds or custom scope')}`}
-                    className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                    className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
                   >
                     Ask for a Quotation
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" onClick={(e) => handleSectionClick(e, 'contact')} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <a href="#contact" onClick={(e) => handleSectionClick(e, 'contact')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
                     Pricing & Quotes
                   </a>
                 </li>

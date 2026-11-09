@@ -200,7 +200,7 @@ export const PricingSection: React.FC = () => {
           >
             Pricing
           </h2>
-          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-3">
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 mt-3">
             One price per ad. No hidden fees, no surprises.
           </p>
           <p className="text-xs font-mono text-neutral-600 dark:text-neutral-500 mt-2">
@@ -247,7 +247,7 @@ export const PricingSection: React.FC = () => {
                 <h3 className="text-lg font-bold text-neutral-900 dark:text-white tracking-tight transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   {card.name}
                 </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mt-1.5 min-h-[42px]">
+                <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mt-1.5 min-h-[42px]">
                   {card.tagline}
                 </p>
 
@@ -256,7 +256,7 @@ export const PricingSection: React.FC = () => {
                   <span className={card.isPopular ? 'text-4xl font-bold tracking-tight text-[#B45309] dark:text-[#F5B544]' : 'text-4xl font-bold tracking-tight text-neutral-900 dark:text-white'}>
                     {card.price}
                   </span>
-                  <span className="text-xs text-neutral-600 dark:text-neutral-500 font-mono ml-2">
+                  <span className="text-xs text-neutral-600 dark:text-neutral-400 font-mono ml-2">
                     {card.priceSub}
                   </span>
                 </div>
@@ -321,7 +321,7 @@ export const PricingSection: React.FC = () => {
                 <h3 className="text-base font-bold text-neutral-900 dark:text-white tracking-tight transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   {pack.name}
                 </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mt-1">
+                <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mt-1">
                   {pack.tagline}
                 </p>
                 <div className="mt-4">
@@ -382,7 +382,7 @@ export const PricingSection: React.FC = () => {
             Ready to scale your ad creatives?
           </h2>
 
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto mt-3 font-normal leading-relaxed">
+          <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xl mx-auto mt-3 font-normal leading-relaxed">
             Pick a plan above and email us to start — or ask for a quotation
             for over 30 seconds, monthly, or custom work. First ad? Try the
             $50 test ad — pay only after you approve the preview.

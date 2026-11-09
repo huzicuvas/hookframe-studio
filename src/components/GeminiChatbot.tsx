@@ -279,7 +279,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
 
         {/* Persona / Mode Selector Bar */}
         <div className="px-4 sm:px-6 py-2.5 bg-neutral-900/90 border-b border-neutral-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
-          <span className="text-[11px] font-mono text-neutral-500 shrink-0 pl-1 hidden sm:inline">
+          <span className="text-[11px] font-mono text-neutral-400 shrink-0 pl-1 hidden sm:inline">
             Role mode:
           </span>
           <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -350,7 +350,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                         {msg.modelUsed && (
                           <>
                             <span>•</span>
-                            <span className="text-neutral-500">{msg.modelUsed}</span>
+                            <span className="text-neutral-400">{msg.modelUsed}</span>
                           </>
                         )}
                       </div>
@@ -448,7 +448,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
         {/* Quick Starter Chips */}
         <div className="px-4 sm:px-6 py-2.5 bg-neutral-950 border-t border-neutral-800/80 shrink-0 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono text-neutral-500 shrink-0">
+            <span className="text-[10px] font-mono text-neutral-400 shrink-0">
               Suggested:
             </span>
             {STARTER_PROMPTS.map((item, idx) => (
@@ -487,7 +487,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                 disabled={isLoading}
                 className="w-full bg-transparent text-white placeholder-neutral-500 text-xs sm:text-sm resize-none focus:outline-none max-h-32"
               />
-              <div className="flex items-center justify-between pt-1 text-[10px] font-mono text-neutral-500">
+              <div className="flex items-center justify-between pt-1 text-[10px] font-mono text-neutral-400">
                 <span>Shift + Enter for new line</span>
                 <span>Active: {currentModeInfo.model}</span>
               </div>

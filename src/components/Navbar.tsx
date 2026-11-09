@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({
  </a>
 
  {/* Desktop Nav Links */}
- <nav className="hidden md:flex items-center gap-1 bg-white/90 dark:bg-[#11141B]/90 border border-neutral-200 dark:border-[#222833] px-3 py-1.5 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-400 backdrop-blur-md">
+ <nav className="hidden lg:flex items-center gap-1 bg-white/90 dark:bg-[#11141B]/90 border border-neutral-200 dark:border-[#222833] px-3 py-1.5 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-400 backdrop-blur-md">
  {navLinks.map((link) => (
  <a
  key={link.name}
@@ -123,8 +123,9 @@ export const Navbar: React.FC<NavbarProps> = ({
  type="button"
  id="mobile-menu-toggle"
  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
- className="md:hidden p-2 rounded-xl text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white bg-white dark:bg-[#11141B] border border-neutral-200 dark:border-[#222833] focus:outline-none"
+ className="lg:hidden p-2 rounded-xl text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white bg-white dark:bg-[#11141B] border border-neutral-200 dark:border-[#222833] focus:outline-none"
  aria-label="Toggle navigation menu"
+ aria-expanded={mobileMenuOpen}
  >
  {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
  </button>
@@ -135,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
  {mobileMenuOpen && (
  <div
  id="mobile-drawer"
- className="md:hidden bg-white dark:bg-[#11141B] border-b border-neutral-200 dark:border-[#222833] px-6 py-5 mt-3 space-y-4 animate-in slide-in-from-top duration-200"
+ className="lg:hidden bg-white dark:bg-[#11141B] border-b border-neutral-200 dark:border-[#222833] px-6 py-5 mt-3 space-y-4 animate-in slide-in-from-top duration-200"
  >
  <div className="flex flex-col space-y-2">
  {navLinks.map((link) => (

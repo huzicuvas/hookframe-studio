@@ -177,18 +177,23 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
  * use this placement — the homepage shows the first 8, and the gallery
  * falls back to a plain grid when there are more than 8.
  */
+// Bento placement per tile. Mobile (<640px) is ONE column — two columns at
+// 320px makes each tile ~132px wide, too narrow for the overlay text, so
+// titles collided with hooks and the overlay spilled past the panel (taste
+// skill, Nov 9). sm (640px+) is the 2-column bento; lg (1024px+) is the
+// 3-column bento. Tall (9:16) tiles span 2 rows at every width.
 export const BENTO_PLACEMENT: string[] = [
-  'col-start-1 row-start-1 row-span-2 lg:col-start-1 lg:row-start-1 lg:row-span-2',
-  'col-start-2 row-start-1 lg:col-start-2 lg:col-span-2 lg:row-start-1',
-  'col-start-2 row-start-2 lg:col-start-2 lg:row-start-2',
-  'col-start-1 row-start-3 lg:col-start-3 lg:row-start-2',
-  'col-start-2 row-start-3 lg:col-start-1 lg:col-span-2 lg:row-start-3',
-  'col-start-1 row-start-4 row-span-2 lg:col-start-3 lg:row-start-3 lg:row-span-2',
-  'col-start-2 row-start-4 lg:col-start-1 lg:row-start-4',
-  'col-start-2 row-start-5 lg:col-start-2 lg:row-start-4',
+  'row-span-2 sm:col-start-1 sm:row-start-1 sm:row-span-2 lg:col-start-1 lg:row-start-1 lg:row-span-2',
+  'sm:col-start-2 sm:row-start-1 lg:col-start-2 lg:col-span-2 lg:row-start-1',
+  'sm:col-start-2 sm:row-start-2 lg:col-start-2 lg:row-start-2',
+  'sm:col-start-1 sm:row-start-3 lg:col-start-3 lg:row-start-2',
+  'sm:col-start-2 sm:row-start-3 lg:col-start-1 lg:col-span-2 lg:row-start-3',
+  'row-span-2 sm:col-start-1 sm:row-start-4 sm:row-span-2 lg:col-start-3 lg:row-start-3 lg:row-span-2',
+  'sm:col-start-2 sm:row-start-4 lg:col-start-1 lg:row-start-4',
+  'sm:col-start-2 sm:row-start-5 lg:col-start-2 lg:row-start-4',
   // Third block (rows 5-6) — the two gallery-only vertical videos. Both are
   // 9:16, so both get tall slots; the third column of this block stays
   // empty (the library has no 11th item), which is the grid simply ending.
-  'col-start-1 row-start-6 row-span-2 lg:col-start-1 lg:row-start-5 lg:row-span-2',
-  'col-start-2 row-start-6 row-span-2 lg:col-start-2 lg:row-start-5 lg:row-span-2',
+  'row-span-2 sm:col-start-1 sm:row-start-6 sm:row-span-2 lg:col-start-1 lg:row-start-5 lg:row-span-2',
+  'row-span-2 sm:col-start-2 sm:row-start-6 sm:row-span-2 lg:col-start-2 lg:row-start-5 lg:row-span-2',
 ];

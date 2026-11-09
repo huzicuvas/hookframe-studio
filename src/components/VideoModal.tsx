@@ -242,7 +242,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
             </div>
 
             <div className="space-y-1.5 text-xs text-neutral-300 leading-relaxed font-normal">
-              <span className="font-mono text-neutral-500 block text-[10px]">
+              <span className="font-mono text-neutral-400 block text-[10px]">
                 Creative strategy:
               </span>
               <p className="text-neutral-400">{video.description}</p>

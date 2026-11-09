@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       id="hero"
-      className="relative pt-20 pb-8 md:pt-24 md:pb-10 overflow-hidden bg-[#FAFAF9] dark:bg-[#0B0D12]"
+      className="relative pt-20 pb-4 md:pt-24 md:pb-6 overflow-hidden bg-[#FAFAF9] dark:bg-[#0B0D12]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Bento Grid Hero Layout — 65/35, locked so content cannot push
