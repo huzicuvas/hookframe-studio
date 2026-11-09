@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { ArrowRight, Play } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ArrowRight, Play, Copy, Check } from 'lucide-react';
 import { FEATURED_VIDEO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -27,12 +27,33 @@ export const Hero: React.FC<HeroProps> = ({
   // Clicking it opens that video's modal via onSelectFeaturedVideo.
   const featured = FEATURED_VIDEO;
 
+  const recipientEmail = 'kiramorganai@gmail.com';
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(recipientEmail);
+    } catch {
+      // Fallback for browsers without clipboard permission.
+      const ta = document.createElement('textarea');
+      ta.value = recipientEmail;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setEmailCopied(true);
+    window.setTimeout(() => setEmailCopied(false), 2000);
+  };
+
   // Hover preview: the featured video plays muted while the mouse is over
   // the frame, and pauses back at the start when it leaves. Clicking opens
   // the popup, where the video plays with sound.
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleMouseEnter = () => {
+    // Reduced motion: no hover-autoplay — the reel stays on its first frame.
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const v = videoRef.current;
     if (v) {
       const p = v.play();
@@ -45,6 +66,14 @@ export const Hero: React.FC<HeroProps> = ({
     if (v) {
       v.pause();
       v.currentTime = 0;
+    }
+  };
+
+  // Keyboard: the featured reel is a button — Enter or Space opens the modal.
+  const handleFeaturedKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSelectFeaturedVideo();
     }
   };
   const handleStartProjectClick = () => {
@@ -118,10 +147,20 @@ export const Hero: React.FC<HeroProps> = ({
                     type="button"
                     id="hero-cta-watch-reel"
                     onClick={onSelectFeaturedVideo}
-                    className="bg-transparent text-neutral-900 dark:text-white px-8 py-[18px] rounded-full font-semibold text-[15px] border border-neutral-200 dark:border-[#222833] hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                    className="bg-transparent text-neutral-900 dark:text-white px-6 py-3 rounded-full font-semibold text-sm border border-neutral-200 dark:border-[#222833] hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Play className="w-4 h-4 fill-current" />
                     <span>Watch reel</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="hero-copy-email"
+                    onClick={copyEmail}
+                    aria-label="Copy our email address"
+                    className="bg-transparent text-neutral-700 dark:text-neutral-300 px-4 py-3 rounded-full font-semibold text-sm border border-neutral-200 dark:border-[#222833] hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {emailCopied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                    <span>{emailCopied ? 'Copied' : 'Copy email'}</span>
                   </button>
                   <span className="inline-flex items-center gap-2 text-[13px] text-neutral-700 dark:text-neutral-300">
                     <span className="relative flex h-2 w-2">
@@ -130,6 +169,10 @@ export const Hero: React.FC<HeroProps> = ({
                     </span>
                     Pay after approval
                   </span>
+                  {/* What happens next — the 3-step flow, so the email click is not a black box */}
+                  <p className="w-full text-[13px] text-neutral-600 dark:text-neutral-400">
+                    Email us → watermarked preview within 48h → you approve, then pay.
+                  </p>
                 </div>
               </div>
 
@@ -138,15 +181,28 @@ export const Hero: React.FC<HeroProps> = ({
                 {/* Who we make ads for — slow scrolling marquee */}
                 <p className="text-[11px] text-neutral-600 dark:text-neutral-400 mb-2">Who we make ads for</p>
                 <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-                  <div className="flex gap-2 w-max animate-[marquee-scroll_24s_linear_infinite]">
-                    {[...AUDIENCES, ...AUDIENCES].map((audience, i) => (
-                      <span
-                        key={`${audience}-${i}`}
-                        className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-[#222833] text-neutral-700 dark:text-neutral-300 whitespace-nowrap"
-                      >
-                        {audience}
-                      </span>
-                    ))}
+                  <div className="flex w-max animate-[marquee-scroll_24s_linear_infinite]">
+                    <div className="flex gap-2 pr-2">
+                      {AUDIENCES.map((audience) => (
+                        <span
+                          key={audience}
+                          className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-[#222833] text-neutral-700 dark:text-neutral-300 whitespace-nowrap"
+                        >
+                          {audience}
+                        </span>
+                      ))}
+                    </div>
+                    {/* Duplicate set for the seamless loop — hidden from screen readers so the list is not read twice */}
+                    <div className="flex gap-2 pr-2" aria-hidden="true">
+                      {AUDIENCES.map((audience) => (
+                        <span
+                          key={`dup-${audience}`}
+                          className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-[#222833] text-neutral-700 dark:text-neutral-300 whitespace-nowrap"
+                        >
+                          {audience}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -177,7 +233,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <span className="text-neutral-900 dark:text-white text-sm font-semibold">Featured Ad Drop</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
               </div>
-              <span className="text-[10px] bg-neutral-200 dark:bg-neutral-800 px-2.5 py-1 rounded-full text-neutral-600 dark:text-neutral-400 font-mono font-medium">
+              <span className="text-[11px] bg-neutral-200 dark:bg-neutral-800 px-2.5 py-1 rounded-full text-neutral-600 dark:text-neutral-400 font-mono font-medium">
                 {featured.aspectRatio} feed
               </span>
             </div>
@@ -187,7 +243,11 @@ export const Hero: React.FC<HeroProps> = ({
                 is taller now, and the left tile's two-cluster content fills
                 the extra height. */}
             <div
+              role="button"
+              tabIndex={0}
+              aria-label={`Watch ad: ${featured.title}`}
               onClick={onSelectFeaturedVideo}
+              onKeyDown={handleFeaturedKeyDown}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               className="group relative my-4 aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-200 dark:border-[#222833] flex flex-col justify-end p-4"
@@ -223,13 +283,13 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Bottom Captions Simulation — the box is dark in both themes,
                   so its text stays light in both themes. */}
               <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-white/20">
-                <span className="inline-block px-2 py-0.5 rounded bg-black border border-white/20 text-[10px] font-mono text-blue-300 font-semibold">
+                <span className="inline-block px-2 py-0.5 rounded bg-black border border-white/20 text-[11px] font-mono text-blue-300 font-semibold">
                   {featured.hookHeadline}
                 </span>
                 <p className="text-xs font-semibold text-white leading-snug">
                   {featured.title}
                 </p>
-                <div className="flex items-center gap-3 text-[10px] text-neutral-400 font-mono">
+                <div className="flex items-center gap-3 text-[11px] text-neutral-400 font-mono">
                   <span>{featured.duration} · 48h turnaround</span>
                 </div>
               </div>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Check, Zap, ArrowRight, Send, ShieldCheck, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, Copy, Zap, ArrowRight, Send, ShieldCheck, Sparkles } from 'lucide-react';
 
 const recipientEmail = 'kiramorganai@gmail.com';
 
@@ -36,6 +36,7 @@ const pricingCards: PricingCard[] = [
     name: 'First Ad — Test',
     price: '$50',
     priceSub: '10-second ad',
+    badge: 'Start here',
     isPopular: false,
     tagline:
       'Your first ad, risk-free. UGC or CGI — your pick. You only pay after you approve it.',
@@ -182,6 +183,23 @@ const packCards = [
 ];
 
 export const PricingSection: React.FC = () => {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(recipientEmail);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = recipientEmail;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setEmailCopied(true);
+    window.setTimeout(() => setEmailCopied(false), 2000);
+  };
+
   return (
     <section
       id="pricing"
@@ -206,6 +224,9 @@ export const PricingSection: React.FC = () => {
           <p className="text-xs font-mono text-neutral-600 dark:text-neutral-400 mt-2">
             First ad is pay on approval · 48-hour delivery · Full commercial
             rights
+          </p>
+          <p className="text-sm text-neutral-600 dark:text-neutral-300 mt-4">
+            <span className="font-semibold text-neutral-900 dark:text-white">First time?</span> Start with the $50 test ad. Already know what you need? Pick a format below.
           </p>
         </div>
 
@@ -233,11 +254,17 @@ export const PricingSection: React.FC = () => {
                 }`}
               />
 
-              {/* Featured Badge — inside the card (the card clips anything above its top edge) */}
-              {card.isPopular && card.badge && (
+              {/* Badge — inside the card (the card clips anything above its top edge).
+                  "Most popular" is gold; "Start here" is blue, so gold stays
+                  reserved for the most-popular card. */}
+              {card.badge && (
                 <div className="flex justify-center mb-3">
-                  <span className="px-3 py-0.5 rounded-full bg-[#F5B544] text-white dark:text-black text-[11px] font-bold shadow-md flex items-center gap-1 whitespace-nowrap">
-                    <Zap className="w-3 h-3 fill-black" />
+                  <span className={`px-3 py-0.5 rounded-full text-[11px] font-bold shadow-md flex items-center gap-1 whitespace-nowrap ${
+                    card.isPopular
+                      ? 'bg-[#F5B544] text-white dark:text-black'
+                      : 'bg-blue-500 text-white'
+                  }`}>
+                    {card.isPopular && <Zap className="w-3 h-3 fill-black" />}
                     <span>{card.badge}</span>
                   </span>
                 </div>
@@ -253,7 +280,7 @@ export const PricingSection: React.FC = () => {
 
                 {/* Price */}
                 <div className="mt-5">
-                  <span className={card.isPopular ? 'text-4xl font-bold tracking-tight text-[#B45309] dark:text-[#F5B544]' : 'text-4xl font-bold tracking-tight text-neutral-900 dark:text-white'}>
+                  <span className={card.isPopular ? 'text-4xl font-bold tracking-tight whitespace-nowrap text-[#B45309] dark:text-[#F5B544]' : 'text-4xl font-bold tracking-tight whitespace-nowrap text-neutral-900 dark:text-white'}>
                     {card.price}
                   </span>
                   <span className="text-xs text-neutral-600 dark:text-neutral-400 font-mono ml-2 whitespace-nowrap">
@@ -412,6 +439,21 @@ export const PricingSection: React.FC = () => {
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
+
+          {/* No email app? Copy the address instead of opening a mail client */}
+          <button
+            type="button"
+            onClick={copyEmail}
+            className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+          >
+            {emailCopied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
+            <span>{emailCopied ? 'Copied — paste it into any email app' : 'No email app? Copy kiramorganai@gmail.com'}</span>
+          </button>
+
+          {/* What happens next — the 3-step flow, so the email click is not a black box */}
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-3">
+            What happens next: email us → watermarked preview within 48h → you approve, then pay.
+          </p>
 
           {/* Guarantee Badges: Response time, Commercial rights, Delivery time */}
           <div className="mt-5 pt-4 border-t border-neutral-200/80 dark:border-neutral-800/80 flex flex-wrap items-center justify-center gap-3 text-xs text-neutral-600 dark:text-neutral-400 font-mono">

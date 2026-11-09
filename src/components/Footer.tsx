@@ -209,11 +209,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
                     Ask for a Quotation
                   </a>
                 </li>
-                <li>
-                  <a href="#contact" onClick={(e) => handleSectionClick(e, 'contact')} className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                    Pricing & Quotes
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

@@ -69,7 +69,7 @@ export const HookFramesLogo: React.FC<HookFramesLogoProps> = ({
           <span className="text-neutral-900 dark:text-white text-base sm:text-lg font-extrabold tracking-[0.12em] uppercase leading-none font-['Plus_Jakarta_Sans',sans-serif]">
             Hook Frames
           </span>
-          <span className="text-neutral-600 dark:text-neutral-400 text-[10px] sm:text-[11px] font-bold tracking-[0.3em] uppercase leading-tight mt-0.5 font-['Plus_Jakarta_Sans',sans-serif]">
+          <span className="text-neutral-600 dark:text-neutral-400 text-[11px] font-bold tracking-[0.3em] uppercase leading-tight mt-0.5 font-['Plus_Jakarta_Sans',sans-serif]">
             Studio
           </span>
         </div>

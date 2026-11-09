@@ -84,7 +84,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
   // Phones get the native share sheet; everywhere else the link is copied.
   const handleShare = async () => {
     const url = `${window.location.href.split('#')[0]}#${video.id}`;
-    const text = `${video.title} — HookFrame Studio`;
+    const text = `${video.title} — Hook Frames Studio`;
     if (navigator.share) {
       try {
         await navigator.share({ title: video.title, text, url });
@@ -224,7 +224,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
         <div className="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto space-y-6">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-300 text-[10px] font-bold border border-blue-500/30">
+              <span className="px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-300 text-[11px] font-bold border border-blue-500/30">
                 {video.category}
               </span>
               <span className="text-xs font-mono text-neutral-400">
@@ -242,7 +242,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
             </div>
 
             <div className="space-y-1.5 text-xs text-neutral-300 leading-relaxed font-normal">
-              <span className="font-mono text-neutral-400 block text-[10px]">
+              <span className="font-mono text-neutral-400 block text-[11px]">
                 Creative strategy:
               </span>
               <p className="text-neutral-400">{video.description}</p>
@@ -253,7 +253,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
               {video.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-950 text-neutral-400 border border-neutral-800"
+                  className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-neutral-950 text-neutral-400 border border-neutral-800"
                 >
                   #{tag}
                 </span>

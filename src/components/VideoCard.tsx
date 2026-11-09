@@ -35,10 +35,21 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
   };
 
   const handleMouseEnter = () => {
+    // Reduced motion: no hover-autoplay — the tile stays on its still frame.
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const v = videoRef.current;
     if (v) {
       const p = v.play();
       if (p && typeof p.catch === 'function') p.catch(() => {});
+    }
+  };
+
+  // Keyboard: the tile is a button for keyboard and screen-reader users —
+  // Enter or Space opens the same popup a click opens.
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSelect(video);
     }
   };
 
@@ -63,7 +74,11 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
   return (
     <div
       id={`video-card-${video.id}`}
+      role="button"
+      tabIndex={0}
+      aria-label={`${isPoster ? 'View poster' : 'Watch ad'}: ${video.title}`}
       onClick={() => onSelect(video)}
+      onKeyDown={handleKeyDown}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="portfolio-card group relative flex flex-col h-full bg-white dark:bg-neutral-900 rounded-3xl border border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden cursor-pointer transition-all duration-300 shadow-xl"
@@ -120,11 +135,11 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
         {/* Top row: duration (video) / Poster chip (poster) */}
         <div className="relative z-10 flex items-center justify-end gap-2 p-3 shrink-0">
           {isPoster ? (
-            <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-bold text-neutral-300 border border-neutral-200 dark:border-neutral-800 whitespace-nowrap shrink-0">
+            <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-bold text-neutral-300 border border-neutral-200 dark:border-neutral-800 whitespace-nowrap shrink-0">
               Poster
             </span>
           ) : (
-            <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-mono text-neutral-400 border border-neutral-200 dark:border-neutral-800 whitespace-nowrap shrink-0">
+            <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-mono text-neutral-400 border border-neutral-200 dark:border-neutral-800 whitespace-nowrap shrink-0">
               {video.duration}
             </span>
           )}
@@ -150,7 +165,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             preview's poster tiles show no hook, which leaves room for a large frame),
             footer. Kept tight so the poster frame has room to be big. */}
         <div className="relative z-10 shrink-0 bg-gradient-to-t from-black/85 via-black/55 to-transparent px-3 pb-2 pt-2">
-          <span className="text-[10px] font-mono text-neutral-300 bg-black/70 px-2 py-0.5 rounded-full border border-neutral-300/80 dark:border-neutral-700/80 whitespace-nowrap">
+          <span className="text-[11px] font-mono text-neutral-300 bg-black/70 px-2 py-0.5 rounded-full border border-neutral-300/80 dark:border-neutral-700/80 whitespace-nowrap">
             {isPoster ? `${video.aspectRatio} Poster` : video.aspectRatio}
           </span>
           <div className="mt-1.5 space-y-0.5">
@@ -165,7 +180,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             )}
           </div>
           <div className="flex items-center justify-between gap-2 pt-1">
-            <span className="text-[10px] font-mono text-neutral-300 bg-neutral-100/80 dark:bg-neutral-950/80 px-2 py-0.5 rounded-full border border-neutral-200/60 dark:border-neutral-800/60 whitespace-nowrap shrink-0">
+            <span className="text-[11px] font-mono text-neutral-300 bg-neutral-100/80 dark:bg-neutral-950/80 px-2 py-0.5 rounded-full border border-neutral-200/60 dark:border-neutral-800/60 whitespace-nowrap shrink-0">
               {video.tags[0]}
             </span>
           </div>

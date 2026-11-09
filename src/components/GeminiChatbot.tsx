@@ -230,7 +230,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                   Hook Frames Studio Q&A & Pricing Desk
                   <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 </h3>
-                <span className="text-[10px] font-mono text-neutral-400 px-2 py-0.5 rounded-full bg-neutral-900 border border-neutral-800 hidden sm:inline-block">
+                <span className="text-[11px] font-mono text-neutral-400 px-2 py-0.5 rounded-full bg-neutral-900 border border-neutral-800 hidden sm:inline-block">
                   {currentModeInfo.model}
                 </span>
               </div>
@@ -299,7 +299,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                 >
                   {mode.icon}
                   <span className="font-semibold">{mode.name}</span>
-                  <span className="text-[10px] font-mono opacity-70 hidden md:inline">
+                  <span className="text-[11px] font-mono opacity-70 hidden md:inline">
                     ({mode.badge})
                   </span>
                 </button>
@@ -342,7 +342,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                 >
                   {/* Message Metadata Header for AI */}
                   {!isUser && (
-                    <div className="flex items-center justify-between gap-4 mb-2 pb-1.5 border-b border-neutral-800 text-[10px] font-mono text-neutral-400">
+                    <div className="flex items-center justify-between gap-4 mb-2 pb-1.5 border-b border-neutral-800 text-[11px] font-mono text-neutral-400">
                       <div className="flex items-center gap-1.5">
                         <span className="text-blue-400 font-semibold">
                           {msg.modeUsed ? MODES.find((m) => m.id === msg.modeUsed)?.name : 'Hook Frames Studio Advisor'}
@@ -402,7 +402,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
 
                   {/* User Timestamp */}
                   {isUser && (
-                    <div className="text-right text-[10px] opacity-75 font-mono mt-1">
+                    <div className="text-right text-[11px] opacity-75 font-mono mt-1">
                       {msg.timestamp}
                     </div>
                   )}
@@ -434,7 +434,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                 <button
                   type="button"
                   onClick={() => handleSendMessage()}
-                  className="mt-2 px-3 py-1 rounded-full bg-red-900 hover:bg-red-800 text-white font-mono text-[10px] transition-colors"
+                  className="mt-2 px-3 py-1 rounded-full bg-red-900 hover:bg-red-800 text-white font-mono text-[11px] transition-colors"
                 >
                   Retry
                 </button>
@@ -448,7 +448,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
         {/* Quick Starter Chips */}
         <div className="px-4 sm:px-6 py-2.5 bg-neutral-950 border-t border-neutral-800/80 shrink-0 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono text-neutral-400 shrink-0">
+            <span className="text-[11px] font-mono text-neutral-400 shrink-0">
               Suggested:
             </span>
             {STARTER_PROMPTS.map((item, idx) => (
@@ -487,7 +487,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                 disabled={isLoading}
                 className="w-full bg-transparent text-white placeholder-neutral-500 text-xs sm:text-sm resize-none max-h-32"
               />
-              <div className="flex items-center justify-between pt-1 text-[10px] font-mono text-neutral-400">
+              <div className="flex items-center justify-between pt-1 text-[11px] font-mono text-neutral-400">
                 <span>Shift + Enter for new line</span>
                 <span>Active: {currentModeInfo.model}</span>
               </div>

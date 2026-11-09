@@ -149,7 +149,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                 >
                   <span>{cat}</span>
                   <span
-                    className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+                    className={`text-[11px] font-mono px-1.5 py-0.2 rounded-full ${
                       isActive ? 'bg-black/15 text-white dark:text-black' : 'bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
                     }`}
                   >

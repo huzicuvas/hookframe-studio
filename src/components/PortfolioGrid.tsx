@@ -31,6 +31,9 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
       className="py-12 bg-[#FAFAF9] dark:bg-[#0A0A0B]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Screen-reader heading — the grid has no visible header, but the
+            heading order needs an h2 here (h1 hero → h2 portfolio → h3 tiles). */}
+        <h2 className="sr-only">Our work</h2>
         {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tile on the left, wide tile top-right, two posters bottom-right; then the mirror. Every tile is one media panel with its text overlaid, like the preview. */}
         <div
           id="portfolio-grid-items"
@@ -44,6 +47,25 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
               />
             </div>
           ))}
+        </div>
+
+        {/* Recent work for — the brands in the grid, so a first-time visitor
+            sees peer reassurance without a testimonial (none exists yet). */}
+        <div className="mt-10 text-center">
+          <p className="text-[11px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
+            Recent work for
+          </p>
+          <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
+            Smoke House
+            <span className="mx-2 text-neutral-400">·</span>
+            Centella Skincare
+            <span className="mx-2 text-neutral-400">·</span>
+            VEXMO Premium Cafe
+            <span className="mx-2 text-neutral-400">·</span>
+            Kingfisher Radler <span className="text-xs text-neutral-500 dark:text-neutral-400">(concept ad)</span>
+            <span className="mx-2 text-neutral-400">·</span>
+            SHEGLAM <span className="text-xs text-neutral-500 dark:text-neutral-400">(concept ad)</span>
+          </p>
         </div>
 
         {/* View Full Gallery CTA Button below the bento grid */}
