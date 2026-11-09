@@ -31,9 +31,16 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
       className="py-12 bg-[#FAFAF9] dark:bg-[#0A0A0B]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Screen-reader heading — the grid has no visible header, but the
-            heading order needs an h2 here (h1 hero → h2 portfolio → h3 tiles). */}
-        <h2 className="sr-only">Our work</h2>
+        {/* Portfolio heading — a visible header for the videos, so the
+            section is not just a bare grid after the hero. */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-neutral-900 dark:text-white tracking-tight leading-tight">
+            Our work
+          </h2>
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 mt-3">
+            Real ads, made for real brands.
+          </p>
+        </div>
         {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tile on the left, wide tile top-right, two posters bottom-right; then the mirror. Every tile is one media panel with its text overlaid, like the preview. */}
         <div
           id="portfolio-grid-items"
