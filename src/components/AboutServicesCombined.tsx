@@ -73,6 +73,33 @@ export const AboutServicesCombined: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* What we make — the services behind the "About & Services" nav link */}
+        <div className="mt-5">
+          <h3 className="text-lg font-semibold text-white tracking-tight mb-4">What we make</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 shadow-xl">
+              <h4 className="text-sm font-bold text-white">UGC Video Ads</h4>
+              <p className="text-xs text-neutral-400 leading-relaxed mt-2">Real creator videos, hook-first, built for TikTok, Reels and Shorts.</p>
+              <p className="text-xs font-mono text-blue-400 mt-3">From $75 per video</p>
+            </div>
+            <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 shadow-xl">
+              <h4 className="text-sm font-bold text-white">CGI Product Ads</h4>
+              <p className="text-xs text-neutral-400 leading-relaxed mt-2">3D product films with studio lighting and photorealistic effects.</p>
+              <p className="text-xs font-mono text-blue-400 mt-3">From $175 · 15 seconds</p>
+            </div>
+            <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 shadow-xl">
+              <h4 className="text-sm font-bold text-white">Poster Ads</h4>
+              <p className="text-xs text-neutral-400 leading-relaxed mt-2">Scroll-stopping posters for feeds, stories and print.</p>
+              <p className="text-xs font-mono text-blue-400 mt-3">$30 · $20 with any video</p>
+            </div>
+            <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 shadow-xl">
+              <h4 className="text-sm font-bold text-white">Hook Variation Packs</h4>
+              <p className="text-xs text-neutral-400 leading-relaxed mt-2">Same ad, new hooks — test what grabs attention.</p>
+              <p className="text-xs font-mono text-blue-400 mt-3">3 hooks $189 · 5 hooks $299</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -116,6 +116,34 @@ export const WorkflowSection: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Pay on approval — how the first ad works, so brands know the risk is ours */}
+        <div className="mt-5 bg-neutral-900 border border-neutral-800 rounded-3xl p-8 shadow-xl">
+          <h3 className="text-lg font-semibold text-white tracking-tight">Pay on approval — first ad only</h3>
+          <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mt-2">Your first ad is risk-free. You only pay after you approve the preview.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">
+              <p className="text-xs font-mono text-blue-400">01</p>
+              <p className="text-sm font-bold text-white mt-2">Watermarked preview</p>
+              <p className="text-xs text-neutral-400 leading-relaxed mt-1">We send a watermarked preview first, so you see the ad before anything is paid.</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">
+              <p className="text-xs font-mono text-blue-400">02</p>
+              <p className="text-sm font-bold text-white mt-2">You approve</p>
+              <p className="text-xs text-neutral-400 leading-relaxed mt-1">48–72 hours to approve, with 1 revision included.</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">
+              <p className="text-xs font-mono text-blue-400">03</p>
+              <p className="text-sm font-bold text-white mt-2">You pay</p>
+              <p className="text-xs text-neutral-400 leading-relaxed mt-1">Pay only after you approve the preview. No upfront payment on the first ad.</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800">
+              <p className="text-xs font-mono text-blue-400">04</p>
+              <p className="text-sm font-bold text-white mt-2">Clean files</p>
+              <p className="text-xs text-neutral-400 leading-relaxed mt-1">We send the clean files, ready for Ads Manager, with full commercial rights.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
