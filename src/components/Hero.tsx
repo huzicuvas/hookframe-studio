@@ -71,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,13fr)_minmax(0,7fr)] gap-5 items-stretch">
 
           {/* Bento Main Hero Tile (Left, 65%) — plain calm border */}
-          <div className="rounded-3xl border border-[#222833] bg-[#11141B] flex min-w-0">
+          <div className="rounded-3xl border border-neutral-200 dark:border-[#222833] bg-white dark:bg-[#11141B] flex min-w-0">
             <div className="rounded-3xl p-6 sm:p-9 flex flex-col justify-between relative overflow-hidden flex-1 min-w-0">
 
               {/* Faint grid texture */}
@@ -81,7 +81,7 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="relative flex flex-col gap-7">
                 {/* Top Pill / Badge */}
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 bg-neutral-800 border border-[#222833]/60 rounded-full text-[11px] font-medium text-neutral-300 flex items-center gap-2">
+                  <span className="px-3 py-1 bg-neutral-200 dark:bg-neutral-800 border border-neutral-200/60 dark:border-[#222833]/60 rounded-full text-[11px] font-medium text-neutral-700 dark:text-neutral-300 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                     UGC · CGI · Posters
                   </span>
@@ -90,7 +90,7 @@ export const Hero: React.FC<HeroProps> = ({
                 {/* Studio Headline — much bigger, "ready in 48h." in solid blue */}
                 <h1
                   id="hero-title"
-                  className="text-[clamp(3rem,6vw,4.75rem)] font-bold text-white tracking-[-0.02em] leading-[1.02]"
+                  className="text-[clamp(3rem,6vw,4.75rem)] font-bold text-neutral-900 dark:text-white tracking-[-0.02em] leading-[1.02]"
                 >
                   Ads that stop the scroll, <br />
                   <span className="text-[#3B82F6]">ready in 48h.</span>
@@ -98,9 +98,9 @@ export const Hero: React.FC<HeroProps> = ({
 
                 <p
                   id="hero-tagline-sub"
-                  className="text-xl text-neutral-400 max-w-[580px] font-normal leading-relaxed"
+                  className="text-xl text-neutral-600 dark:text-neutral-400 max-w-[580px] font-normal leading-relaxed"
                 >
-                  <span className="text-white font-medium">3D CGI ads</span>, <span className="text-white font-medium">UGC-style videos</span> and <span className="text-white font-medium">posters</span> for your brand. Order a $50 test ad and pay only if you like the preview.
+                  <span className="text-neutral-900 dark:text-white font-medium">3D CGI ads</span>, <span className="text-neutral-900 dark:text-white font-medium">UGC-style videos</span> and <span className="text-neutral-900 dark:text-white font-medium">posters</span> for your brand. Order a $50 test ad and pay only if you like the preview.
                 </p>
 
                 {/* CTA row — bigger buttons, pushed down a touch to fill the gap below */}
@@ -109,7 +109,7 @@ export const Hero: React.FC<HeroProps> = ({
                     type="button"
                     id="hero-cta-start-project"
                     onClick={handleStartProjectClick}
-                    className="bg-white text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:bg-neutral-200 transition-colors duration-200 flex items-center justify-center gap-2 text-[15px] cursor-pointer"
+                    className="bg-neutral-900 dark:bg-white text-white dark:text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:bg-neutral-200 transition-colors duration-200 flex items-center justify-center gap-2 text-[15px] cursor-pointer"
                   >
                     <span>Get my $50 test ad</span>
                     <ArrowRight className="w-4 h-4" />
@@ -118,12 +118,12 @@ export const Hero: React.FC<HeroProps> = ({
                     type="button"
                     id="hero-cta-watch-reel"
                     onClick={onSelectFeaturedVideo}
-                    className="bg-transparent text-white px-8 py-[18px] rounded-full font-semibold text-[15px] border border-[#222833] hover:bg-neutral-800/60 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                    className="bg-transparent text-neutral-900 dark:text-white px-8 py-[18px] rounded-full font-semibold text-[15px] border border-neutral-200 dark:border-[#222833] hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Play className="w-4 h-4 fill-current" />
                     <span>Watch reel</span>
                   </button>
-                  <span className="inline-flex items-center gap-2 text-[13px] text-neutral-300">
+                  <span className="inline-flex items-center gap-2 text-[13px] text-neutral-700 dark:text-neutral-300">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
@@ -136,13 +136,13 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Bottom cluster: pills + stats, pinned to the bottom */}
               <div className="relative flex flex-col">
                 {/* Who we make ads for — slow scrolling marquee */}
-                <p className="text-[11px] text-neutral-500 mb-2">Who we make ads for</p>
+                <p className="text-[11px] text-neutral-600 dark:text-neutral-500 mb-2">Who we make ads for</p>
                 <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
                   <div className="flex gap-2 w-max animate-[marquee-scroll_24s_linear_infinite]">
                     {[...AUDIENCES, ...AUDIENCES].map((audience, i) => (
                       <span
                         key={`${audience}-${i}`}
-                        className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-[#222833] text-neutral-300 whitespace-nowrap"
+                        className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-[#222833] text-neutral-700 dark:text-neutral-300 whitespace-nowrap"
                       >
                         {audience}
                       </span>
@@ -152,17 +152,17 @@ export const Hero: React.FC<HeroProps> = ({
 
                 {/* Proof Metrics — flat cards, no divider line */}
                 <div className="grid grid-cols-3 gap-3 mt-5">
-                  <div className="group p-4 rounded-2xl bg-neutral-900 border border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
-                    <span className="text-[38px] leading-none font-bold text-white block group-hover:text-[#F5B544] transition-colors duration-200">48h</span>
-                    <span className="text-xs text-neutral-400 block mt-1.5">Turnaround</span>
+                  <div className="group p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
+                    <span className="text-[38px] leading-none font-bold text-neutral-900 dark:text-white block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">48h</span>
+                    <span className="text-xs text-neutral-600 dark:text-neutral-400 block mt-1.5">Turnaround</span>
                   </div>
-                  <div className="group p-4 rounded-2xl bg-neutral-900 border border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
-                    <span className="text-[38px] leading-none font-bold text-[#D9C7A0] block group-hover:text-[#F5B544] transition-colors duration-200">$50</span>
-                    <span className="text-xs text-neutral-400 block mt-1.5">Test ad · pay on approval</span>
+                  <div className="group p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
+                    <span className="text-[38px] leading-none font-bold text-[#D9C7A0] block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">$50</span>
+                    <span className="text-xs text-neutral-600 dark:text-neutral-400 block mt-1.5">Test ad · pay on approval</span>
                   </div>
-                  <div className="group p-4 rounded-2xl bg-neutral-900 border border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
-                    <span className="text-[38px] leading-none font-bold text-white block group-hover:text-[#F5B544] transition-colors duration-200">100%</span>
-                    <span className="text-xs text-neutral-400 block mt-1.5">Commercial rights included</span>
+                  <div className="group p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-[#222833] border-t-2 border-t-[#F5B544] transition-all duration-200 hover:-translate-y-1 hover:border-[#F5B544]">
+                    <span className="text-[38px] leading-none font-bold text-neutral-900 dark:text-white block group-hover:text-[#B45309] dark:group-hover:text-[#F5B544] transition-colors duration-200">100%</span>
+                    <span className="text-xs text-neutral-600 dark:text-neutral-400 block mt-1.5">Commercial rights included</span>
                   </div>
                 </div>
               </div>
@@ -170,14 +170,14 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* Bento Featured Preview Tile (Right, 35%) */}
-          <div className="bg-[#11141B] border border-[#222833] rounded-3xl p-5 sm:p-6 flex flex-col justify-between min-w-0">
+          <div className="bg-white dark:bg-[#11141B] border border-neutral-200 dark:border-[#222833] rounded-3xl p-5 sm:p-6 flex flex-col justify-between min-w-0">
             {/* Header */}
-            <div className="flex justify-between items-center px-1 pb-4 border-b border-[#222833]">
+            <div className="flex justify-between items-center px-1 pb-4 border-b border-neutral-200 dark:border-[#222833]">
               <div className="flex items-center gap-2">
-                <span className="text-white text-sm font-semibold">Featured Ad Drop</span>
+                <span className="text-neutral-900 dark:text-white text-sm font-semibold">Featured Ad Drop</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
               </div>
-              <span className="text-[10px] bg-neutral-800 px-2.5 py-1 rounded-full text-neutral-400 font-mono font-medium">
+              <span className="text-[10px] bg-neutral-200 dark:bg-neutral-800 px-2.5 py-1 rounded-full text-neutral-600 dark:text-neutral-400 font-mono font-medium">
                 {featured.aspectRatio} feed
               </span>
             </div>
@@ -190,7 +190,7 @@ export const Hero: React.FC<HeroProps> = ({
               onClick={onSelectFeaturedVideo}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="group relative my-4 aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-[#222833] flex flex-col justify-end p-4"
+              className="group relative my-4 aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-200 dark:border-[#222833] flex flex-col justify-end p-4"
             >
               {/* Pattern Grid */}
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
@@ -201,7 +201,7 @@ export const Hero: React.FC<HeroProps> = ({
                   src={featured.thumbnailUrl}
                   alt={featured.title}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover bg-neutral-950 brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
+                  className="absolute inset-0 w-full h-full object-cover bg-neutral-100 dark:bg-neutral-950 brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
                 />
               )}
 
@@ -215,20 +215,20 @@ export const Hero: React.FC<HeroProps> = ({
                   playsInline
                   loop
                   preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover bg-neutral-950 brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
+                  className="absolute inset-0 w-full h-full object-cover bg-neutral-100 dark:bg-neutral-950 brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
                 />
               )}
 
 
               {/* Bottom Captions Simulation */}
-              <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-[#222833]/80">
-                <span className="inline-block px-2 py-0.5 rounded bg-black border border-[#222833] text-[10px] font-mono text-blue-300 font-semibold">
+              <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-neutral-200/80 dark:border-[#222833]/80">
+                <span className="inline-block px-2 py-0.5 rounded bg-black border border-neutral-200 dark:border-[#222833] text-[10px] font-mono text-blue-700 dark:text-blue-300 font-semibold">
                   {featured.hookHeadline}
                 </span>
-                <p className="text-xs font-semibold text-white leading-snug">
+                <p className="text-xs font-semibold text-neutral-900 dark:text-white leading-snug">
                   {featured.title}
                 </p>
-                <div className="flex items-center gap-3 text-[10px] text-neutral-400 font-mono">
+                <div className="flex items-center gap-3 text-[10px] text-neutral-600 dark:text-neutral-400 font-mono">
                   <span>{featured.duration} · 48h turnaround</span>
                 </div>
               </div>

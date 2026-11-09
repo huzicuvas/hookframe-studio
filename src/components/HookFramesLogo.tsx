@@ -23,11 +23,11 @@ export const HookFramesLogo: React.FC<HookFramesLogoProps> = ({
     <div className={`flex items-center gap-3 ${className}`}>
       {/* Dark Squircle Logo Icon matching uploaded brand mark */}
       <div
-        className={`${iconDimensions} shrink-0 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center p-1.5 shadow-sm group-hover:border-neutral-700 transition-colors`}
+        className={`${iconDimensions} shrink-0 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex items-center justify-center p-1.5 shadow-sm group-hover:border-neutral-300 dark:group-hover:border-neutral-700 transition-colors`}
       >
         <svg
           viewBox="0 0 100 100"
-          className="w-full h-full text-white"
+          className="w-full h-full text-neutral-900 dark:text-white"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -66,10 +66,10 @@ export const HookFramesLogo: React.FC<HookFramesLogoProps> = ({
       {/* Brand Typography */}
       {showText && (
         <div className={`flex flex-col select-none ${textClassName}`}>
-          <span className="text-white text-base sm:text-lg font-extrabold tracking-[0.12em] uppercase leading-none font-['Plus_Jakarta_Sans',sans-serif]">
+          <span className="text-neutral-900 dark:text-white text-base sm:text-lg font-extrabold tracking-[0.12em] uppercase leading-none font-['Plus_Jakarta_Sans',sans-serif]">
             Hook Frames
           </span>
-          <span className="text-neutral-400 text-[10px] sm:text-[11px] font-bold tracking-[0.3em] uppercase leading-tight mt-0.5 font-['Plus_Jakarta_Sans',sans-serif]">
+          <span className="text-neutral-600 dark:text-neutral-400 text-[10px] sm:text-[11px] font-bold tracking-[0.3em] uppercase leading-tight mt-0.5 font-['Plus_Jakarta_Sans',sans-serif]">
             Studio
           </span>
         </div>

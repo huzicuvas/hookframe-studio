@@ -31,6 +31,23 @@ export default function App() {
   const [showChatTooltip, setShowChatTooltip] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // Theme (dark is the default; the navbar toggle flips it, and the choice
+  // is remembered in localStorage). The `.dark` class on <html> drives the
+  // dark: variants; without it the site renders its light theme.
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window === 'undefined') return 'dark';
+    return window.localStorage.getItem('hookframe-theme') === 'light'
+      ? 'light'
+      : 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    window.localStorage.setItem('hookframe-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+
   // Scroll progress bar (thin gold line at the very top of the page).
   useEffect(() => {
     const onScroll = () => {
@@ -183,11 +200,11 @@ export default function App() {
   const isNotFoundView = !isGalleryView && !isAboutView && !isWorkflowView && !isPrivacyView && !isHomeView;
 
   return (
-    <div className="min-h-screen bg-[#0A0A0B] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
+    <div className="min-h-screen bg-[#FAFAF9] dark:bg-[#0A0A0B] text-neutral-800 dark:text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-800 dark:selection:text-blue-200">
       {/* Skip to content — keyboard users jump straight to the page content */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-white focus:text-neutral-900 focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-semibold focus:outline-none"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-neutral-900 dark:focus:bg-white focus:text-white dark:focus:text-neutral-900 focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-semibold focus:outline-none"
       >
         Skip to content
       </a>
@@ -206,26 +223,30 @@ export default function App() {
       {isGalleryView ? (
         /* Full Gallery View at /gallery */
         <GalleryPage
+          theme={theme}
+          onToggleTheme={toggleTheme}
           onNavigateHome={navigateHome}
           onSelectVideo={(video) => setSelectedVideo(video)}
         />
       ) : isAboutView ? (
         /* About View at /about — the about panel moved off the homepage */
-        <AboutPage onNavigateHome={navigateHome} />
+        <AboutPage theme={theme} onToggleTheme={toggleTheme} onNavigateHome={navigateHome} />
       ) : isWorkflowView ? (
         /* Workflow View at /workflow — the workflow steps moved off the homepage */
-        <WorkflowPage onNavigateHome={navigateHome} />
+        <WorkflowPage theme={theme} onToggleTheme={toggleTheme} onNavigateHome={navigateHome} />
       ) : isPrivacyView ? (
         /* Privacy Policy at /privacy */
-        <PrivacyPage onNavigateHome={navigateHome} />
+        <PrivacyPage theme={theme} onToggleTheme={toggleTheme} onNavigateHome={navigateHome} />
       ) : isNotFoundView ? (
         /* Custom 404 — any URL that is not a real page */
-        <NotFoundPage onNavigateHome={navigateHome} />
+        <NotFoundPage theme={theme} onToggleTheme={toggleTheme} onNavigateHome={navigateHome} />
       ) : (
         /* Standard Homepage View */
         <>
           {/* Top Sticky Navigation */}
           <Navbar
+            theme={theme}
+            onToggleTheme={toggleTheme}
             onNavigateToGallery={navigateToGallery}
             onNavigateToAbout={navigateToAbout}
             onNavigateToWorkflow={navigateToWorkflow}
@@ -280,13 +301,13 @@ export default function App() {
           <div
             id="chat-tooltip-popup"
             onClick={handleOpenChat}
-            className="group relative cursor-pointer bg-neutral-900 text-white text-xs font-medium px-4 py-3 rounded-2xl border border-neutral-700 shadow-2xl backdrop-blur-md flex items-center gap-3 transition-colors hover:border-neutral-600 animate-in fade-in slide-in-from-bottom-2 duration-300 max-w-xs"
+            className="group relative cursor-pointer bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs font-medium px-4 py-3 rounded-2xl border border-neutral-300 dark:border-neutral-700 shadow-2xl backdrop-blur-md flex items-center gap-3 transition-colors hover:border-neutral-600 animate-in fade-in slide-in-from-bottom-2 duration-300 max-w-xs"
           >
-            <div className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+            <div className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
               <Sparkles className="w-3.5 h-3.5" />
             </div>
             <div className="flex-1 pr-1 leading-snug">
-              <p className="text-neutral-200">Ask a question? I'm here to help</p>
+              <p className="text-neutral-700 dark:text-neutral-200">Ask a question? I'm here to help</p>
             </div>
             <button
               type="button"
@@ -296,13 +317,13 @@ export default function App() {
                 setShowChatTooltip(false);
               }}
               title="Dismiss"
-              className="text-neutral-400 hover:text-white p-1 rounded-md hover:bg-neutral-800 transition-colors"
+              className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white p-1 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
             >
               <X className="w-3.5 h-3.5" />
             </button>
 
             {/* Speech bubble pointer arrow */}
-            <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-neutral-900 border-r border-b border-neutral-700 rotate-45 transform" />
+            <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-white dark:bg-neutral-900 border-r border-b border-neutral-300 dark:border-neutral-700 rotate-45 transform" />
           </div>
         )}
 
@@ -314,7 +335,7 @@ export default function App() {
             id="floating-circular-chat-btn"
             onClick={handleOpenChat}
             title="Ask a question? Open Studio Assistant"
-            className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-2xl flex items-center justify-center border border-blue-400/40 transition-colors duration-200 active:scale-95 group relative focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+            className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-500 text-neutral-900 dark:text-white shadow-2xl flex items-center justify-center border border-blue-400/40 transition-colors duration-200 active:scale-95 group relative focus:outline-none focus:ring-2 focus:ring-blue-400/50"
           >
             <Bot className="w-6 h-6 transition-transform group-hover:rotate-6" />
             {/* Live indicator dot */}

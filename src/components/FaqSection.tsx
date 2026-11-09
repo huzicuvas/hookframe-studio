@@ -37,19 +37,19 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-12 relative border-t border-neutral-800/80">
-      <div className="absolute inset-0 bg-neutral-950" />
+    <section id="faq" className="py-12 relative border-t border-neutral-200/80 dark:border-neutral-800/80">
+      <div className="absolute inset-0 bg-neutral-100 dark:bg-neutral-950" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300 mb-5">
-            <MessageCircleQuestion className="w-3.5 h-3.5 text-blue-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-[11px] font-mono text-neutral-700 dark:text-neutral-300 mb-5">
+            <MessageCircleQuestion className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>Common questions</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-neutral-900 dark:text-white tracking-tight leading-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 mt-4 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 max-w-2xl mx-auto">
             Everything you need to know about delivery, revisions and commercial terms.
           </p>
         </div>
@@ -61,8 +61,8 @@ export const FaqSection: React.FC = () => {
             return (
               <div 
                 key={faq.id} 
-                className={`border border-neutral-800 rounded-2xl overflow-hidden transition-colors duration-200 ${
-                  isOpen ? 'bg-neutral-900/60' : 'bg-neutral-900/20 hover:bg-neutral-900/40'
+                className={`border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden transition-colors duration-200 ${
+                  isOpen ? 'bg-white/60 dark:bg-neutral-900/60' : 'bg-white/20 dark:bg-neutral-900/20 hover:bg-white/40 dark:hover:bg-neutral-900/40'
                 }`}
               >
                 <button
@@ -71,11 +71,11 @@ export const FaqSection: React.FC = () => {
                   className="w-full flex items-center justify-between px-6 py-5 text-left focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-sm sm:text-base font-semibold text-white pr-8">
+                  <span className="text-sm sm:text-base font-semibold text-neutral-900 dark:text-white pr-8">
                     {faq.question}
                   </span>
-                  <div className={`shrink-0 w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-neutral-800' : 'bg-neutral-950'}`}>
-                    <ChevronDown className={`w-4 h-4 ${isOpen ? 'text-blue-400' : 'text-neutral-400'}`} />
+                  <div className={`shrink-0 w-8 h-8 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-neutral-200 dark:bg-neutral-800' : 'bg-neutral-100 dark:bg-neutral-950'}`}>
+                    <ChevronDown className={`w-4 h-4 ${isOpen ? 'text-blue-600 dark:text-blue-400' : 'text-neutral-600 dark:text-neutral-400'}`} />
                   </div>
                 </button>
                 
@@ -84,7 +84,7 @@ export const FaqSection: React.FC = () => {
                     isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <div className="px-6 pb-6 pt-2 text-sm sm:text-base text-neutral-300 leading-relaxed border-t border-neutral-800/50 mt-2">
+                  <div className="px-6 pb-6 pt-2 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed border-t border-neutral-200/50 dark:border-neutral-800/50 mt-2">
                     {faq.answer}
                   </div>
                 </div>
