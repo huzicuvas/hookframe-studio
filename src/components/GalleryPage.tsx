@@ -50,7 +50,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
             type="button"
             id="gallery-back-home-btn"
             onClick={onNavigateHome}
-            className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-xs font-semibold text-neutral-300 hover:text-white transition-colors shadow-md active:scale-95"
+            className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900 border border-neutral-800 hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] text-xs font-semibold text-neutral-300 hover:text-white transition-colors shadow-md active:scale-95"
           >
             <ArrowLeft className="w-4 h-4 text-blue-400 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
@@ -201,7 +201,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           <button
             type="button"
             onClick={onNavigateHome}
-            className="shrink-0 px-6 py-3.5 rounded-full bg-white hover:bg-blue-500 text-black hover:text-white text-xs font-bold transition-colors shadow-lg active:scale-95 flex items-center gap-2"
+            className="shrink-0 px-6 py-3.5 rounded-full bg-white text-black text-xs font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors shadow-lg active:scale-95 flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>

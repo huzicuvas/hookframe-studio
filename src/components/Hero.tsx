@@ -81,7 +81,7 @@ export const Hero: React.FC<HeroProps> = ({
                 type="button"
                 id="hero-cta-start-project"
                 onClick={handleStartProjectClick}
-                className="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-blue-500 hover:text-white transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg shadow-black/40 text-sm active:scale-95 cursor-pointer"
+                className="bg-white text-black px-8 py-4 rounded-full font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg shadow-black/40 text-sm active:scale-95 cursor-pointer"
               >
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4" />

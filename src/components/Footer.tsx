@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery }) => {
             <a
               href="#contact"
               id="footer-cta-next-ad"
-              className="group shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-sm font-bold hover:bg-blue-500 hover:text-white transition-colors duration-200 shadow-lg active:scale-95"
+              className="group shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >
               <span>Let's make your next ad.</span>
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

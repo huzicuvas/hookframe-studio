@@ -205,7 +205,7 @@ export const PricingSection: React.FC = () => {
               id={`pricing-card-${card.id}`}
               className={`group relative flex flex-col rounded-3xl bg-neutral-900 border p-6 sm:p-7 overflow-hidden shadow-xl transition-all duration-300 ${
                 card.isPopular
-                  ? 'border-blue-500/60 shadow-blue-500/10 lg:-translate-y-2 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/25'
+                  ? 'border-[#F5B544]/60 shadow-[#F5B544]/10 lg:-translate-y-2 hover:border-[#F5B544] hover:shadow-2xl hover:shadow-[#F5B544]/25'
                   : 'border-neutral-800 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10'
               }`}
             >
@@ -213,7 +213,7 @@ export const PricingSection: React.FC = () => {
               <div
                 className={`pointer-events-none absolute inset-x-0 bottom-0 ${
                   card.isPopular
-                    ? 'h-56 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.55),transparent_70%)]'
+                    ? 'h-56 bg-[radial-gradient(ellipse_at_bottom,rgba(245,181,68,0.45),transparent_70%)]'
                     : 'h-44 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.35),transparent_70%)]'
                 }`}
               />
@@ -221,8 +221,8 @@ export const PricingSection: React.FC = () => {
               {/* Featured Badge — inside the card (the card clips anything above its top edge) */}
               {card.isPopular && card.badge && (
                 <div className="flex justify-center mb-3">
-                  <span className="px-3 py-0.5 rounded-full bg-blue-500 text-white text-[11px] font-bold shadow-md flex items-center gap-1 whitespace-nowrap">
-                    <Zap className="w-3 h-3 fill-white" />
+                  <span className="px-3 py-0.5 rounded-full bg-[#F5B544] text-black text-[11px] font-bold shadow-md flex items-center gap-1 whitespace-nowrap">
+                    <Zap className="w-3 h-3 fill-black" />
                     <span>{card.badge}</span>
                   </span>
                 </div>
@@ -238,7 +238,7 @@ export const PricingSection: React.FC = () => {
 
                 {/* Price */}
                 <div className="mt-5">
-                  <span className="text-4xl font-extrabold text-white tracking-tight">
+                  <span className={card.isPopular ? 'text-4xl font-extrabold tracking-tight text-[#F5B544]' : 'text-4xl font-extrabold tracking-tight text-white'}>
                     {card.price}
                   </span>
                   <span className="text-xs text-neutral-500 font-mono ml-2">
@@ -282,7 +282,7 @@ export const PricingSection: React.FC = () => {
                   <a
                     href={mailto(card.ctaSubject, card.ctaBody)}
                     id={`cta-tier-${card.id}`}
-                    className="w-full py-3 px-4 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold flex items-center justify-center gap-2 transition-colors"
+                    className="w-full py-3 px-4 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] flex items-center justify-center gap-2 transition-colors"
                   >
                     <span>{card.ctaLabel}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -329,7 +329,7 @@ export const PricingSection: React.FC = () => {
                   <a
                     href={mailto(pack.ctaSubject, pack.ctaBody)}
                     id={`cta-tier-${pack.id}`}
-                    className="w-full py-3 px-4 rounded-full bg-white hover:bg-blue-500 hover:text-white text-black text-sm font-bold flex items-center justify-center gap-2 transition-colors"
+                    className="w-full py-3 px-4 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] flex items-center justify-center gap-2 transition-colors"
                   >
                     <span>{pack.ctaLabel}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -381,7 +381,7 @@ export const PricingSection: React.FC = () => {
                 'Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe%27re%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2015s%20UGC%20/%2020s%20UGC%20/%2030s%20UGC%20/%20Poster%20/%20CGI%2015s%20/%20CGI%2030s%20/%20Hook%20Pack%203%20/%20Hook%20Pack%205%20/%20Custom%20Pack%20/%20Over%2030s%20or%20monthly):%20%0ATarget%20Launch%20Date:%20%0A'
               )}
               id="contact-mailto-btn"
-              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold transition-colors duration-200 shadow-lg active:scale-95"
+              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 text-white text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >
               <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               <span>Email {recipientEmail}</span>
@@ -391,7 +391,7 @@ export const PricingSection: React.FC = () => {
                 'Quotation request — over 30 seconds or custom scope',
                 'Hi Hook Frames Studio Team,%0A%0AWe would like a quotation for over 30 seconds, monthly batches, or a fully custom scope.%0A%0ABrand Name: %0AProduct / Website Link: %0AWhat we need: %0A'
               )}
-              className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-white hover:bg-neutral-100 text-black text-sm font-bold transition-colors duration-200 shadow-lg active:scale-95"
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >
               <span>Ask for a quotation</span>
               <ArrowRight className="w-4 h-4" />

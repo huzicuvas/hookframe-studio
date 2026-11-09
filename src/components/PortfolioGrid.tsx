@@ -75,7 +75,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
             href="/gallery"
             id="view-full-gallery-btn"
             onClick={handleGalleryClick}
-            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-neutral-600 text-white text-sm font-bold shadow-xl transition-colors duration-200 active:scale-95"
+            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-neutral-900 border border-neutral-700 hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] text-white text-sm font-bold shadow-xl transition-colors duration-200 active:scale-95"
           >
             <Grid className="w-4 h-4 text-blue-400" />
             <span>View Full Gallery ({PORTFOLIO_VIDEOS.length}+ Styles)</span>
