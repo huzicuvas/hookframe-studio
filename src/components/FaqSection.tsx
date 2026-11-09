@@ -37,12 +37,12 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-12 relative border-t border-neutral-800/80">
+    <section id="faq" className="py-12 relative border-t border-[#222833]/80">
       <div className="absolute inset-0 bg-neutral-950" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300 mb-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#11141B] border border-[#222833] text-[11px] font-mono text-neutral-300 mb-5">
             <MessageCircleQuestion className="w-3.5 h-3.5 text-blue-400" />
             <span>Common questions</span>
           </div>
@@ -61,8 +61,8 @@ export const FaqSection: React.FC = () => {
             return (
               <div 
                 key={faq.id} 
-                className={`border border-neutral-800 rounded-2xl overflow-hidden transition-colors duration-200 ${
-                  isOpen ? 'bg-neutral-900/60' : 'bg-neutral-900/20 hover:bg-neutral-900/40'
+                className={`border border-[#222833] rounded-2xl overflow-hidden transition-colors duration-200 ${
+                  isOpen ? 'bg-[#11141B]/60' : 'bg-[#11141B]/20 hover:bg-[#11141B]/40'
                 }`}
               >
                 <button
@@ -74,7 +74,7 @@ export const FaqSection: React.FC = () => {
                   <span className="text-sm sm:text-base font-semibold text-white pr-8">
                     {faq.question}
                   </span>
-                  <div className={`shrink-0 w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-neutral-800' : 'bg-neutral-950'}`}>
+                  <div className={`shrink-0 w-8 h-8 rounded-full border border-[#222833] flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-neutral-800' : 'bg-neutral-950'}`}>
                     <ChevronDown className={`w-4 h-4 ${isOpen ? 'text-blue-400' : 'text-neutral-400'}`} />
                   </div>
                 </button>
@@ -84,7 +84,7 @@ export const FaqSection: React.FC = () => {
                     isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <div className="px-6 pb-6 pt-2 text-sm sm:text-base text-neutral-300 leading-relaxed border-t border-neutral-800/50 mt-2">
+                  <div className="px-6 pb-6 pt-2 text-sm sm:text-base text-neutral-300 leading-relaxed border-t border-[#222833]/50 mt-2">
                     {faq.answer}
                   </div>
                 </div>

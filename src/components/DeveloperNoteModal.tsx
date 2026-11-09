@@ -60,9 +60,9 @@ git push -u origin main
       <div
         id="dev-guide-modal-container"
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh] space-y-6 text-neutral-300"
+        className="relative w-full max-w-2xl bg-[#11141B] border border-[#222833] rounded-3xl p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh] space-y-6 text-neutral-300"
       >
-        <div className="flex items-center justify-between pb-4 border-b border-neutral-800">
+        <div className="flex items-center justify-between pb-4 border-b border-[#222833]">
           <div className="flex items-center gap-2">
             <Code2 className="w-5 h-5 text-blue-400" />
             <h3 className="text-base sm:text-lg font-bold text-white">
@@ -72,7 +72,7 @@ git push -u origin main
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-full bg-neutral-950 hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-800 transition-colors"
+            className="p-1.5 rounded-full bg-neutral-950 hover:bg-neutral-800 text-neutral-400 hover:text-white border border-[#222833] transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -93,7 +93,7 @@ git push -u origin main
               <span>{copiedCode === 'video' ? 'Copied' : 'Copy'}</span>
             </button>
           </div>
-          <pre className="p-3.5 bg-neutral-950 rounded-2xl border border-neutral-800 text-[11px] font-mono text-neutral-300 overflow-x-auto">
+          <pre className="p-3.5 bg-neutral-950 rounded-2xl border border-[#222833] text-[11px] font-mono text-neutral-300 overflow-x-auto">
             {swapVideoSnippet}
           </pre>
         </div>
@@ -113,7 +113,7 @@ git push -u origin main
               <span>{copiedCode === 'deploy' ? 'Copied' : 'Copy'}</span>
             </button>
           </div>
-          <pre className="p-3.5 bg-neutral-950 rounded-2xl border border-neutral-800 text-[11px] font-mono text-neutral-300 overflow-x-auto">
+          <pre className="p-3.5 bg-neutral-950 rounded-2xl border border-[#222833] text-[11px] font-mono text-neutral-300 overflow-x-auto">
             {deploySnippet}
           </pre>
         </div>

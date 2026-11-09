@@ -212,16 +212,16 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
     : `w-full max-w-7xl mx-auto`;
 
   const cardClasses = isFloatingModal
-    ? `relative w-full ${isExpanded ? 'max-w-6xl h-[92vh]' : 'max-w-4xl h-[85vh]'} bg-neutral-900 border border-neutral-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300`
-    : `w-full bg-neutral-900 border border-neutral-800 rounded-3xl shadow-2xl flex flex-col h-[750px] overflow-hidden`;
+    ? `relative w-full ${isExpanded ? 'max-w-6xl h-[92vh]' : 'max-w-4xl h-[85vh]'} bg-[#11141B] border border-[#222833] rounded-3xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300`
+    : `w-full bg-[#11141B] border border-[#222833] rounded-3xl shadow-2xl flex flex-col h-[750px] overflow-hidden`;
 
   return (
     <div className={containerClasses} id="gemini-chatbot-container">
       <div className={cardClasses}>
         {/* Top Chatbot Header */}
-        <div className="px-5 sm:px-7 py-4 bg-neutral-950 border-b border-neutral-800/90 flex items-center justify-between shrink-0">
+        <div className="px-5 sm:px-7 py-4 bg-neutral-950 border-b border-[#222833]/90 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-blue-400 shadow-inner">
+            <div className="w-10 h-10 rounded-2xl bg-[#11141B] border border-[#222833] flex items-center justify-center text-blue-400 shadow-inner">
               <Bot className="w-5 h-5" />
             </div>
             <div>
@@ -230,7 +230,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                   Hook Frames Studio Q&A & Pricing Desk
                   <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 </h3>
-                <span className="text-[10px] font-mono text-neutral-400 px-2 py-0.5 rounded-full bg-neutral-900 border border-neutral-800 hidden sm:inline-block">
+                <span className="text-[10px] font-mono text-neutral-400 px-2 py-0.5 rounded-full bg-[#11141B] border border-[#222833] hidden sm:inline-block">
                   {currentModeInfo.model}
                 </span>
               </div>
@@ -247,7 +247,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
               id="clear-chat-history-btn"
               onClick={clearChat}
               title="Reset conversation"
-              className="p-2 rounded-full bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-800 transition-colors text-xs flex items-center gap-1"
+              className="p-2 rounded-full bg-[#11141B] hover:bg-neutral-800 text-neutral-400 hover:text-white border border-[#222833] transition-colors text-xs flex items-center gap-1"
             >
               <Trash2 className="w-3.5 h-3.5" />
               <span className="hidden md:inline font-mono">Clear</span>
@@ -259,7 +259,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                   type="button"
                   onClick={() => setIsExpanded(!isExpanded)}
                   title={isExpanded ? 'Restore size' : 'Expand window'}
-                  className="p-2 rounded-full bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-800 transition-colors"
+                  className="p-2 rounded-full bg-[#11141B] hover:bg-neutral-800 text-neutral-400 hover:text-white border border-[#222833] transition-colors"
                 >
                   {isExpanded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
                 </button>
@@ -268,7 +268,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                   id="close-floating-chat-btn"
                   onClick={onClose}
                   title="Close chat"
-                  className="p-2 rounded-full bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-800 transition-colors"
+                  className="p-2 rounded-full bg-[#11141B] hover:bg-neutral-800 text-neutral-400 hover:text-white border border-[#222833] transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -278,7 +278,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
         </div>
 
         {/* Persona / Mode Selector Bar */}
-        <div className="px-4 sm:px-6 py-2.5 bg-neutral-900/90 border-b border-neutral-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
+        <div className="px-4 sm:px-6 py-2.5 bg-[#11141B]/90 border-b border-[#222833]/80 flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
           <span className="text-[11px] font-mono text-neutral-500 shrink-0 pl-1 hidden sm:inline">
             Role mode:
           </span>
@@ -294,7 +294,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors shrink-0 border ${
                     isActive
                       ? 'bg-blue-500/15 border-blue-500/40 text-blue-300 shadow-sm'
-                      : 'bg-neutral-950/60 border-neutral-800 text-neutral-400 hover:text-neutral-200 hover:border-neutral-700'
+                      : 'bg-neutral-950/60 border-[#222833] text-neutral-400 hover:text-neutral-200 hover:border-[#222833]'
                   }`}
                 >
                   {mode.icon}
@@ -311,7 +311,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
         {/* Scrollable Conversation Thread */}
         <div
           id="chat-messages-thread"
-          className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4 bg-[#0A0A0B]"
+          className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4 bg-[#0B0D12]"
         >
           {messages.map((msg) => {
             const isUser = msg.role === 'user';
@@ -326,7 +326,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                   className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 border ${
                     isUser
                       ? 'bg-blue-600 border-blue-500 text-white shadow-md'
-                      : 'bg-neutral-900 border-neutral-800 text-blue-400'
+                      : 'bg-[#11141B] border-[#222833] text-blue-400'
                   }`}
                 >
                   {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
@@ -337,12 +337,12 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                   className={`relative group rounded-3xl p-4 sm:p-5 text-xs sm:text-sm leading-relaxed border shadow-md ${
                     isUser
                       ? 'bg-blue-600 text-white border-blue-500 rounded-tr-none'
-                      : 'bg-neutral-900 text-neutral-200 border-neutral-800 rounded-tl-none'
+                      : 'bg-[#11141B] text-neutral-200 border-[#222833] rounded-tl-none'
                   }`}
                 >
                   {/* Message Metadata Header for AI */}
                   {!isUser && (
-                    <div className="flex items-center justify-between gap-4 mb-2 pb-1.5 border-b border-neutral-800 text-[10px] font-mono text-neutral-400">
+                    <div className="flex items-center justify-between gap-4 mb-2 pb-1.5 border-b border-[#222833] text-[10px] font-mono text-neutral-400">
                       <div className="flex items-center gap-1.5">
                         <span className="text-blue-400 font-semibold">
                           {msg.modeUsed ? MODES.find((m) => m.id === msg.modeUsed)?.name : 'Hook Frames Studio Advisor'}
@@ -367,7 +367,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
 
                   {/* Actions for Assistant */}
                   {!isUser && (
-                    <div className="mt-3 pt-2 flex items-center justify-between border-t border-neutral-800/80 text-[11px] font-mono text-neutral-400">
+                    <div className="mt-3 pt-2 flex items-center justify-between border-t border-[#222833]/80 text-[11px] font-mono text-neutral-400">
                       <button
                         type="button"
                         id={`copy-msg-btn-${msg.id}`}
@@ -414,10 +414,10 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
           {/* Loading Indicator */}
           {isLoading && (
             <div className="flex gap-3 max-w-2xl mr-auto">
-              <div className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 text-blue-400 flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#11141B] border border-[#222833] text-blue-400 flex items-center justify-center shrink-0">
                 <Bot className="w-4 h-4" />
               </div>
-              <div className="bg-neutral-900 border border-neutral-800 rounded-3xl rounded-tl-none p-4 text-xs font-mono text-neutral-300 flex items-center gap-3">
+              <div className="bg-[#11141B] border border-[#222833] rounded-3xl rounded-tl-none p-4 text-xs font-mono text-neutral-300 flex items-center gap-3">
                 <RefreshCw className="w-4 h-4 text-blue-400 animate-spin" />
                 <span>Thinking with {currentModeInfo.name} ({currentModeInfo.model})...</span>
               </div>
@@ -446,7 +446,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
         </div>
 
         {/* Quick Starter Chips */}
-        <div className="px-4 sm:px-6 py-2.5 bg-neutral-950 border-t border-neutral-800/80 shrink-0 overflow-x-auto no-scrollbar">
+        <div className="px-4 sm:px-6 py-2.5 bg-neutral-950 border-t border-[#222833]/80 shrink-0 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2">
             <span className="text-[10px] font-mono text-neutral-500 shrink-0">
               Suggested:
@@ -458,7 +458,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
                 type="button"
                 onClick={() => handleSendMessage(item.prompt, item.mode)}
                 disabled={isLoading}
-                className="px-3 py-1 rounded-full bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-800 text-xs font-medium transition-colors shrink-0 hover:border-neutral-700 disabled:opacity-50"
+                className="px-3 py-1 rounded-full bg-[#11141B] hover:bg-neutral-800 text-neutral-300 hover:text-white border border-[#222833] text-xs font-medium transition-colors shrink-0 hover:border-[#222833] disabled:opacity-50"
               >
                 {item.label}
               </button>
@@ -467,7 +467,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
         </div>
 
         {/* Input Bar */}
-        <div className="p-3 sm:p-5 bg-neutral-950 border-t border-neutral-800 shrink-0">
+        <div className="p-3 sm:p-5 bg-neutral-950 border-t border-[#222833] shrink-0">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -475,7 +475,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
             }}
             className="flex items-end gap-2 sm:gap-3"
           >
-            <div className="relative flex-1 bg-neutral-900 border border-neutral-800 focus-within:border-blue-500/70 rounded-2xl p-2 sm:p-3 transition-colors shadow-inner">
+            <div className="relative flex-1 bg-[#11141B] border border-[#222833] focus-within:border-blue-500/70 rounded-2xl p-2 sm:p-3 transition-colors shadow-inner">
               <textarea
                 ref={inputRef}
                 id="chatbot-input-textarea"

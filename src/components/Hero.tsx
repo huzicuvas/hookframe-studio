@@ -63,38 +63,37 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       id="hero"
-      className="relative pt-20 pb-8 md:pt-24 md:pb-10 overflow-hidden bg-[#0A0A0B]"
+      className="relative pt-20 pb-8 md:pt-24 md:pb-10 overflow-hidden bg-[#0B0D12]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Bento Grid Hero Layout — 65/35, locked so content cannot push
             the columns around (minmax(0, ...) + min-w-0 on both tiles). */}
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,13fr)_minmax(0,7fr)] gap-5 items-stretch">
 
-          {/* Bento Main Hero Tile (Left, 65%) — gradient border wrapper */}
-          <div className="rounded-3xl bg-gradient-to-br from-blue-500/65 via-[#F5B544]/55 to-blue-500/15 p-[1px] flex min-w-0 shadow-xl">
-            <div className="bg-neutral-900 rounded-[23px] p-6 sm:p-9 flex flex-col justify-between relative overflow-hidden flex-1 min-w-0">
+          {/* Bento Main Hero Tile (Left, 65%) — plain calm border */}
+          <div className="rounded-3xl border border-[#222833] bg-[#11141B] flex min-w-0">
+            <div className="rounded-3xl p-6 sm:p-9 flex flex-col justify-between relative overflow-hidden flex-1 min-w-0">
 
-              {/* Soft blue radial glow behind the headline + faint grid texture */}
-              <div className="pointer-events-none absolute -top-24 -left-16 h-80 w-80 rounded-full bg-blue-500/25 blur-3xl" />
+              {/* Faint grid texture */}
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:28px_28px]" />
 
               {/* Top cluster: badge, headline, subtext, CTA — tight gaps */}
               <div className="relative flex flex-col gap-7">
                 {/* Top Pill / Badge */}
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 bg-neutral-800 border border-neutral-700/60 rounded-full text-[11px] font-medium text-neutral-300 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F5B544]" />
+                  <span className="px-3 py-1 bg-neutral-800 border border-[#222833]/60 rounded-full text-[11px] font-medium text-neutral-300 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                     UGC · CGI · Posters
                   </span>
                 </div>
 
-                {/* Studio Headline — much bigger, "ready in 48h." in a blue-to-gold gradient */}
+                {/* Studio Headline — much bigger, "ready in 48h." in solid blue */}
                 <h1
                   id="hero-title"
                   className="text-[clamp(3rem,6vw,4.75rem)] font-bold text-white tracking-[-0.02em] leading-[1.02]"
                 >
                   Ads that stop the scroll, <br />
-                  <span className="bg-gradient-to-r from-[#3b82f6] to-[#F5B544] bg-clip-text text-transparent">ready in 48h.</span>
+                  <span className="text-[#3B82F6]">ready in 48h.</span>
                 </h1>
 
                 <p
@@ -110,7 +109,7 @@ export const Hero: React.FC<HeroProps> = ({
                     type="button"
                     id="hero-cta-start-project"
                     onClick={handleStartProjectClick}
-                    className="bg-white text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg shadow-black/40 text-[15px] active:scale-95 cursor-pointer"
+                    className="bg-white text-black px-9 py-[18px] rounded-full font-bold border border-transparent hover:bg-neutral-200 transition-colors duration-200 flex items-center justify-center gap-2 text-[15px] cursor-pointer"
                   >
                     <span>Get my $50 test ad</span>
                     <ArrowRight className="w-4 h-4" />
@@ -119,7 +118,7 @@ export const Hero: React.FC<HeroProps> = ({
                     type="button"
                     id="hero-cta-watch-reel"
                     onClick={onSelectFeaturedVideo}
-                    className="bg-transparent text-white px-8 py-[18px] rounded-full font-semibold text-[15px] border border-neutral-600 hover:border-[#F5B544] transition-colors duration-200 flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+                    className="bg-transparent text-white px-8 py-[18px] rounded-full font-semibold text-[15px] border border-[#222833] hover:bg-neutral-800/60 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Play className="w-4 h-4 fill-current" />
                     <span>Watch reel</span>
@@ -143,7 +142,7 @@ export const Hero: React.FC<HeroProps> = ({
                     {[...AUDIENCES, ...AUDIENCES].map((audience, i) => (
                       <span
                         key={`${audience}-${i}`}
-                        className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300 whitespace-nowrap"
+                        className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-[#222833] text-neutral-300 whitespace-nowrap"
                       >
                         {audience}
                       </span>
@@ -151,20 +150,17 @@ export const Hero: React.FC<HeroProps> = ({
                   </div>
                 </div>
 
-                {/* Proof Metrics — premium cards, no divider line */}
+                {/* Proof Metrics — flat cards, no divider line */}
                 <div className="grid grid-cols-3 gap-3 mt-5">
-                  <div className="relative overflow-hidden p-4 rounded-2xl bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-[#2e2e2e]">
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3b82f6] to-[#F5B544]" />
-                    <span className="text-[38px] leading-none font-bold text-[#F5B544] block">48h</span>
+                  <div className="p-4 rounded-2xl bg-[#11141B] border border-[#222833]">
+                    <span className="text-[38px] leading-none font-bold text-white block">48h</span>
                     <span className="text-xs text-neutral-400 block mt-1.5">Turnaround</span>
                   </div>
-                  <div className="relative overflow-hidden p-4 rounded-2xl bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-[#2e2e2e]">
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3b82f6] to-[#F5B544]" />
-                    <span className="text-[38px] leading-none font-bold text-[#F5B544] block">$50</span>
+                  <div className="p-4 rounded-2xl bg-[#11141B] border border-[#222833]">
+                    <span className="text-[38px] leading-none font-bold text-[#D9C7A0] block">$50</span>
                     <span className="text-xs text-neutral-400 block mt-1.5">Test ad · pay on approval</span>
                   </div>
-                  <div className="relative overflow-hidden p-4 rounded-2xl bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-[#2e2e2e]">
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3b82f6] to-[#F5B544]" />
+                  <div className="p-4 rounded-2xl bg-[#11141B] border border-[#222833]">
                     <span className="text-[38px] leading-none font-bold text-white block">100%</span>
                     <span className="text-xs text-neutral-400 block mt-1.5">Commercial rights included</span>
                   </div>
@@ -174,9 +170,9 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* Bento Featured Preview Tile (Right, 35%) */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-5 sm:p-6 flex flex-col justify-between shadow-xl min-w-0">
+          <div className="bg-[#11141B] border border-[#222833] rounded-3xl p-5 sm:p-6 flex flex-col justify-between min-w-0">
             {/* Header */}
-            <div className="flex justify-between items-center px-1 pb-4 border-b border-neutral-800">
+            <div className="flex justify-between items-center px-1 pb-4 border-b border-[#222833]">
               <div className="flex items-center gap-2">
                 <span className="text-white text-sm font-semibold">Featured Ad Drop</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
@@ -194,7 +190,7 @@ export const Hero: React.FC<HeroProps> = ({
               onClick={onSelectFeaturedVideo}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="group relative my-4 aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 flex flex-col justify-end p-4"
+              className="group relative my-4 aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border border-[#222833] flex flex-col justify-end p-4"
             >
               {/* Pattern Grid */}
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none group-hover:opacity-25 transition-opacity" />
@@ -225,8 +221,8 @@ export const Hero: React.FC<HeroProps> = ({
 
 
               {/* Bottom Captions Simulation */}
-              <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-neutral-800/80">
-                <span className="inline-block px-2 py-0.5 rounded bg-black border border-neutral-700 text-[10px] font-mono text-blue-300 font-semibold">
+              <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-[#222833]/80">
+                <span className="inline-block px-2 py-0.5 rounded bg-black border border-[#222833] text-[10px] font-mono text-blue-300 font-semibold">
                   {featured.hookHeadline}
                 </span>
                 <p className="text-xs font-semibold text-white leading-snug">

@@ -28,7 +28,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
   return (
     <section
       id="portfolio"
-      className="py-12 bg-[#0A0A0B]"
+      className="py-12 bg-[#0B0D12]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tile on the left, wide tile top-right, two posters bottom-right; then the mirror. Every tile is one media panel with its text overlaid, like the preview. */}
@@ -52,11 +52,11 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
             href="/gallery"
             id="view-full-gallery-btn"
             onClick={handleGalleryClick}
-            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-neutral-900 border border-neutral-700 hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] text-white text-sm font-bold shadow-xl transition-colors duration-200 active:scale-95"
+            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#11141B] border border-[#222833] hover:bg-neutral-800/60 text-white text-sm font-bold transition-colors duration-200"
           >
             <Grid className="w-4 h-4 text-blue-400" />
             <span>View Full Gallery ({PORTFOLIO_VIDEOS.length}+ Styles)</span>
-            <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-white group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
           </a>
           <p className="text-xs font-mono text-neutral-500 mt-3">
             Browse all ad formats and categories
