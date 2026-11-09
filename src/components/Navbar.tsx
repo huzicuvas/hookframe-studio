@@ -31,12 +31,12 @@ export const Navbar: React.FC<NavbarProps> = ({
  }, []);
 
  const navLinks = [
- { name: 'Portfolio', href: '#portfolio' },
+ { name: 'Portfolio', href: '#portfolio', sectionId: 'portfolio' },
  { name: 'Gallery', href: '/gallery', isGallery: true },
  { name: 'About & Services', href: '/about', isAbout: true },
  { name: 'Workflow', href: '/workflow', isWorkflow: true },
- { name: 'Pricing & Quotes', href: '#pricing' },
- { name: 'FAQ', href: '#faq' },
+ { name: 'Pricing & Quotes', href: '#pricing', sectionId: 'pricing' },
+ { name: 'FAQ', href: '#faq', sectionId: 'faq' },
  ];
 
  const handleLinkClick = (e: React.MouseEvent, link: typeof navLinks[0]) => {
@@ -51,6 +51,11 @@ export const Navbar: React.FC<NavbarProps> = ({
  } else if (link.isWorkflow && onNavigateToWorkflow) {
  e.preventDefault();
  onNavigateToWorkflow();
+ setMobileMenuOpen(false);
+ } else if (link.sectionId) {
+ // Same-page section: scroll without putting a hash in the URL bar.
+ e.preventDefault();
+ document.getElementById(link.sectionId)?.scrollIntoView({ behavior: 'smooth' });
  setMobileMenuOpen(false);
  }
  };

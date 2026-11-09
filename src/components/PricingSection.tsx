@@ -28,7 +28,7 @@ interface PricingCard {
   ctaBody: string;
 }
 
-// Three cards, matching the approved preview: test ad, UGC by length, CGI & posters.
+// Four cards: test ad, UGC by length, CGI, and posters — CGI and posters are separate niches.
 // The length rows are mailto links, so each price pre-fills its own email.
 const pricingCards: PricingCard[] = [
   {
@@ -91,12 +91,12 @@ const pricingCards: PricingCard[] = [
       'Hi Hook Frames Studio Team,%0A%0AWe want to order a UGC video ad.%0A%0ALength (15s $75 / 20s $99 / 30s $149): %0A%0ABrand Name: %0AProduct / Website Link: %0AKey Selling Point / Hook Angle: %0A',
   },
   {
-    id: 'cgi-poster-ads',
-    name: 'CGI & Poster Ads',
-    price: 'from $30',
-    priceSub: 'Per ad',
+    id: 'cgi-video-ads',
+    name: 'CGI Video Ads',
+    price: 'from $175',
+    priceSub: 'Per video',
     isPopular: false,
-    tagline: '3D product films and scroll-stopping posters.',
+    tagline: 'Studio-quality 3D product films.',
     priceRows: [
       {
         label: 'CGI 15-second',
@@ -110,6 +110,21 @@ const pricingCards: PricingCard[] = [
         subject: 'Order a CGI video — 30 seconds $299',
         body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a 30 second CGI video ($299).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
       },
+    ],
+    included: ['Studio-quality 3D render', '48-hour delivery'],
+    ctaLabel: 'Get a CGI ad',
+    ctaSubject: 'Order a CGI video ad',
+    ctaBody:
+      'Hi Hook Frames Studio Team,%0A%0AWe would like to order a CGI video ad.%0A%0ALength (15s $175 / 30s $299): %0A%0ABrand Name: %0AProduct / Website Link: %0A',
+  },
+  {
+    id: 'poster-ads',
+    name: 'Poster Ads',
+    price: '$30',
+    priceSub: 'Per poster',
+    isPopular: false,
+    tagline: 'Scroll-stopping poster ads for your brand.',
+    priceRows: [
       {
         label: 'Poster ad',
         price: '$30',
@@ -123,11 +138,11 @@ const pricingCards: PricingCard[] = [
         body: 'Hi Hook Frames Studio Team,%0A%0AWe would like to order a poster ad with a video ($20 with any video).%0A%0ABrand Name: %0AProduct / Website Link: %0A',
       },
     ],
-    included: ['Studio-quality 3D render', '48-hour delivery'],
-    ctaLabel: 'Get a CGI or poster',
-    ctaSubject: 'Order a CGI or poster ad',
+    included: ['High-res poster design', '48-hour delivery'],
+    ctaLabel: 'Get a poster',
+    ctaSubject: 'Order a poster ad',
     ctaBody:
-      'Hi Hook Frames Studio Team,%0A%0AWe would like to order a CGI video or poster ad.%0A%0AChoice (CGI 15s $175 / CGI 30s $299 / Poster $30 / Poster with video $20): %0A%0ABrand Name: %0AProduct / Website Link: %0A',
+      'Hi Hook Frames Studio Team,%0A%0AWe would like to order a poster ad.%0A%0AChoice (Poster $30 / Poster with a video $20): %0A%0ABrand Name: %0AProduct / Website Link: %0A',
   },
 ];
 
@@ -194,10 +209,10 @@ export const PricingSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Three cards — blue glow at the bottom of each, middle card featured */}
+        {/* Four cards — blue glow at the bottom of each, UGC card featured */}
         <div
           id="pricing-grid"
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto items-stretch"
         >
           {pricingCards.map((card) => (
             <div

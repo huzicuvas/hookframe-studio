@@ -36,6 +36,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
     }
   };
 
+  // Same-page section: scroll without putting a hash in the URL bar.
+  const handleSectionClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <footer id="footer" className="text-neutral-400 text-sm">
       {/* Wavy top edge — the footer colour rises into the FAQ in a gentle wave.
@@ -81,6 +87,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
             </div>
             <a
               href="#contact"
+              onClick={(e) => handleSectionClick(e, 'contact')}
               id="footer-cta-next-ad"
               className="group shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >
@@ -97,22 +104,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     UGC Video Ads
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     CGI Product Ads
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     Poster Ads
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     Hook Variation Packs
                   </a>
                 </li>
@@ -134,12 +141,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
                   </a>
                 </li>
                 <li>
-                  <a href="#faq" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#faq" onClick={(e) => handleSectionClick(e, 'faq')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     Pricing & Quotes
                   </a>
                 </li>
@@ -151,7 +158,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#portfolio" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#portfolio" onClick={(e) => handleSectionClick(e, 'portfolio')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     Portfolio
                   </a>
                 </li>
@@ -165,7 +172,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
                   </a>
                 </li>
                 <li>
-                  <a href="#pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     $50 Test Ad
                   </a>
                 </li>
@@ -190,7 +197,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-sm text-neutral-400 hover:text-white transition-colors">
+                  <a href="#contact" onClick={(e) => handleSectionClick(e, 'contact')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     Pricing & Quotes
                   </a>
                 </li>
