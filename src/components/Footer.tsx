@@ -6,11 +6,12 @@ interface FooterProps {
   onNavigateToGallery?: () => void;
   onNavigateToAbout?: () => void;
   onNavigateToWorkflow?: () => void;
+  onNavigateToPrivacy?: () => void;
 }
 
 const recipientEmail = 'kiramorganai@gmail.com';
 
-export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateToAbout, onNavigateToWorkflow }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateToAbout, onNavigateToWorkflow, onNavigateToPrivacy }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -33,6 +34,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
     if (onNavigateToWorkflow) {
       e.preventDefault();
       onNavigateToWorkflow();
+    }
+  };
+
+  const handlePrivacyClick = (e: React.MouseEvent) => {
+    if (onNavigateToPrivacy) {
+      e.preventDefault();
+      onNavigateToPrivacy();
     }
   };
 
@@ -148,6 +156,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
                 <li>
                   <a href="#pricing" onClick={(e) => handleSectionClick(e, 'pricing')} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     Pricing & Quotes
+                  </a>
+                </li>
+                <li>
+                  <a href="/privacy" onClick={handlePrivacyClick} className="text-sm text-neutral-400 hover:text-white transition-colors">
+                    Privacy Policy
                   </a>
                 </li>
               </ul>

@@ -11,6 +11,8 @@ import { DeveloperNoteModal } from './components/DeveloperNoteModal';
 import { GalleryPage } from './components/GalleryPage';
 import { AboutPage } from './components/AboutPage';
 import { WorkflowPage } from './components/WorkflowPage';
+import { PrivacyPage } from './components/PrivacyPage';
+import { NotFoundPage } from './components/NotFoundPage';
 import { PORTFOLIO_VIDEOS, FEATURED_VIDEO } from './data/portfolioData';
 import { VideoItem } from './types';
 import { Bot, MessageSquare, X, Sparkles } from 'lucide-react';
@@ -66,6 +68,48 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Per-page title + meta description (launch checklist: unique title and
+  // description on every page, so each page reads properly in search).
+  useEffect(() => {
+    const pages: Record<string, { title: string; description: string }> = {
+      '/': {
+        title: 'Hook Frames Studio | AI Content Studio — UGC & CGI Ads for Brands',
+        description:
+          'Hook Frames Studio is an AI content studio producing high-converting UGC and photorealistic CGI ad content for modern brands. Fast turnaround, no film crews.',
+      },
+      '/gallery': {
+        title: 'Gallery — Hook Frames Studio | AI Ad Portfolio',
+        description:
+          'Browse the Hook Frames Studio gallery: UGC video ads, CGI product films and poster ads made for brands.',
+      },
+      '/about': {
+        title: 'About & Services — Hook Frames Studio',
+        description:
+          'About Hook Frames Studio: a small, focused team making UGC, CGI and poster ads for brands — fast, without film crew overhead.',
+      },
+      '/workflow': {
+        title: 'Workflow — Hook Frames Studio | How We Work',
+        description:
+          'How Hook Frames Studio works: send the brief, we make the ads, you get the finished ads in 48 hours. Pay on approval for your first ad.',
+      },
+      '/privacy': {
+        title: 'Privacy Policy — Hook Frames Studio',
+        description:
+          'Privacy Policy for Hook Frames Studio: what we collect (almost nothing), what we do not collect, cookies, and your rights.',
+      },
+    };
+    const fallback = {
+      title: 'Page Not Found — Hook Frames Studio',
+      description: 'This page does not exist. Head back to the Hook Frames Studio homepage.',
+    };
+    const page = pages[currentPath] || pages[currentPath.replace(/\/$/, '')] || fallback;
+    document.title = page.title;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute('content', page.description);
+    }
+  }, [currentPath]);
+
   const navigateTo = (path: string) => {
     if (window.location.pathname !== path) {
       window.history.pushState({}, '', path);
@@ -88,6 +132,10 @@ export default function App() {
 
   const navigateToWorkflow = () => {
     navigateTo('/workflow');
+  };
+
+  const navigateToPrivacy = () => {
+    navigateTo('/privacy');
   };
 
   const handleExplorePortfolio = () => {
@@ -116,6 +164,10 @@ export default function App() {
   const isGalleryView = currentPath === '/gallery' || currentPath === '/gallery/';
   const isAboutView = currentPath === '/about' || currentPath === '/about/';
   const isWorkflowView = currentPath === '/workflow' || currentPath === '/workflow/';
+  const isPrivacyView = currentPath === '/privacy' || currentPath === '/privacy/';
+  const isHomeView = currentPath === '/' || currentPath === '';
+  // Any other path is a dead link — show the custom 404 page, not the homepage.
+  const isNotFoundView = !isGalleryView && !isAboutView && !isWorkflowView && !isPrivacyView && !isHomeView;
 
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
@@ -131,6 +183,12 @@ export default function App() {
       ) : isWorkflowView ? (
         /* Workflow View at /workflow — the workflow steps moved off the homepage */
         <WorkflowPage onNavigateHome={navigateHome} />
+      ) : isPrivacyView ? (
+        /* Privacy Policy at /privacy */
+        <PrivacyPage onNavigateHome={navigateHome} />
+      ) : isNotFoundView ? (
+        /* Custom 404 — any URL that is not a real page */
+        <NotFoundPage onNavigateHome={navigateHome} />
       ) : (
         /* Standard Homepage View */
         <>
@@ -168,6 +226,7 @@ export default function App() {
             onNavigateToGallery={navigateToGallery}
             onNavigateToAbout={navigateToAbout}
             onNavigateToWorkflow={navigateToWorkflow}
+            onNavigateToPrivacy={navigateToPrivacy}
           />
         </>
       )}
