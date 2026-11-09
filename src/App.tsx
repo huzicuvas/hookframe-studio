@@ -13,7 +13,7 @@ import { AboutPage } from './components/AboutPage';
 import { WorkflowPage } from './components/WorkflowPage';
 import { PORTFOLIO_VIDEOS, FEATURED_VIDEO } from './data/portfolioData';
 import { VideoItem } from './types';
-import { Bot, MessageSquare, X, Code2, Sparkles } from 'lucide-react';
+import { Bot, MessageSquare, X, Sparkles } from 'lucide-react';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -216,16 +216,6 @@ export default function App() {
         )}
 
         <div className="flex items-center gap-2">
-          {/* Discrete Dev Guide Trigger */}
-          <button
-            type="button"
-            onClick={() => setIsDevGuideOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-800 text-[11px] font-mono text-neutral-400 hover:text-white backdrop-blur-md shadow-lg transition-colors"
-            title="Developer asset swapping & build notes"
-          >
-            <Code2 className="w-3 h-3 text-blue-400" />
-            <span>Dev Guide</span>
-          </button>
 
           {/* Floating Circular Chat Button */}
           <button

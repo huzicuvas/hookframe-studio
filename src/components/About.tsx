@@ -15,12 +15,12 @@ export const About: React.FC = () => {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-800 border border-neutral-700/60 text-[11px] font-mono text-neutral-300 mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                <span>ABOUT THE STUDIO</span>
+                <span>About the studio</span>
               </div>
 
               <h2
                 id="about-title"
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-snug"
+                className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white leading-snug"
               >
                 High-converting ad creative, <br className="hidden sm:inline" />
                 <span className="text-neutral-400">built without film crew overhead.</span>
@@ -29,7 +29,7 @@ export const About: React.FC = () => {
               {/* 2-3 sentences explanation */}
               <div className="space-y-4 text-sm sm:text-base text-neutral-300 leading-relaxed font-normal mt-6">
                 <p>
-                  <strong className="text-white font-semibold">Nextframe</strong> makes high-converting UGC-style and photorealistic CGI-style ad content for modern brands using state-of-the-art generative AI pipelines.
+                  <strong className="text-white font-semibold">HookFrame Studio</strong> makes high-converting UGC-style and photorealistic CGI-style ad content for modern brands using state-of-the-art generative AI pipelines.
                 </p>
                 <p className="text-neutral-400">
                   By combining synthetic creator avatars, 3D volumetric rendering, and automated hook variation systems, we deliver broadcast-ready video ads with unprecedented 48-hour turnarounds.
@@ -68,20 +68,20 @@ export const About: React.FC = () => {
           <div className="lg:col-span-5 bg-neutral-900 border border-neutral-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-neutral-800">
-                <span className="text-xs font-mono tracking-wider text-neutral-400 uppercase">Production Benchmark</span>
+                <span className="text-xs font-mono tracking-wider text-neutral-400">Production Benchmark</span>
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30">
-                  Nextframe vs Legacy
+                  HookFrame Studio vs Legacy
                 </span>
               </div>
 
               <div className="divide-y divide-neutral-800/60 space-y-4 pt-4">
                 {/* Metric 1 */}
                 <div className="pt-3 space-y-1.5">
-                  <div className="text-xs font-mono text-neutral-400 uppercase">Turnaround Speed</div>
+                  <div className="text-xs font-mono text-neutral-400">Turnaround Speed</div>
                   <div className="grid grid-cols-2 gap-2">
                     <div className="p-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-xs font-bold text-blue-400 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                      <span>Nextframe: 48h</span>
+                      <span>HookFrame Studio: 48h</span>
                     </div>
                     <div className="p-2.5 rounded-xl bg-neutral-950/40 border border-neutral-800/50 text-xs text-neutral-500 line-through">
                       Legacy: 4-6 Wks
@@ -91,7 +91,7 @@ export const About: React.FC = () => {
 
                 {/* Metric 2 */}
                 <div className="pt-3 space-y-1.5">
-                  <div className="text-xs font-mono text-neutral-400 uppercase">Production Cost</div>
+                  <div className="text-xs font-mono text-neutral-400">Production Cost</div>
                   <div className="grid grid-cols-2 gap-2">
                     <div className="p-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-xs font-bold text-blue-400 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
@@ -105,7 +105,7 @@ export const About: React.FC = () => {
 
                 {/* Metric 3 */}
                 <div className="pt-3 space-y-1.5">
-                  <div className="text-xs font-mono text-neutral-400 uppercase">Hook Variations</div>
+                  <div className="text-xs font-mono text-neutral-400">Hook Variations</div>
                   <div className="grid grid-cols-2 gap-2">
                     <div className="p-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-xs font-bold text-blue-400 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
@@ -119,7 +119,7 @@ export const About: React.FC = () => {
 
                 {/* Metric 4 */}
                 <div className="pt-3 space-y-1.5">
-                  <div className="text-xs font-mono text-neutral-400 uppercase">Talent & Logistics</div>
+                  <div className="text-xs font-mono text-neutral-400">Talent & Logistics</div>
                   <div className="grid grid-cols-2 gap-2">
                     <div className="p-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-xs font-bold text-blue-400 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />

@@ -63,13 +63,6 @@ export const Hero: React.FC<HeroProps> = ({
           
           {/* Bento Main Hero Tile (Left 7 cols) */}
           <div className="lg:col-span-7 bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group shadow-xl">
-            {/* Background Decorative SVG Wireframe */}
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-25 transition-opacity pointer-events-none">
-              <svg width="130" height="130" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="0.5">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 8v8M8 12h8" />
-              </svg>
-            </div>
 
             {/* Top Pill / Badge */}
             <div className="flex items-center gap-2 mb-4">
@@ -77,16 +70,13 @@ export const Hero: React.FC<HeroProps> = ({
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F5B544]" />
                 AI Content Production Studio
               </span>
-              <span className="text-[11px] font-mono text-neutral-500 hidden sm:inline">
-                // Zero Film Crews
-              </span>
             </div>
 
             {/* Studio Headline */}
             <div className="space-y-4 my-auto py-2">
               <h1
                 id="hero-title"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.05]"
+                className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-[1.05]"
               >
                 Ad content for brands, <br />
                 <span className="text-neutral-500">delivered fast.</span>
@@ -111,6 +101,18 @@ export const Hero: React.FC<HeroProps> = ({
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
+            </div>
+
+            {/* Who we make ads for — fills the tile so it reads complete, not empty */}
+            <div className="pt-6 mt-4">
+              <p className="text-[11px] font-mono text-neutral-500 mb-3">Who we make ads for</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Beauty &amp; Skincare</span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Tech &amp; Gadgets</span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Food &amp; Cafes</span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Fashion</span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-300">Apps</span>
+              </div>
             </div>
 
             {/* Proof Metrics Bento Strip */}
@@ -162,7 +164,7 @@ export const Hero: React.FC<HeroProps> = ({
                   src={featured.thumbnailUrl}
                   alt={featured.title}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
+                  className="absolute inset-0 w-full h-full object-cover bg-neutral-950 brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
                 />
               )}
 
@@ -176,17 +178,10 @@ export const Hero: React.FC<HeroProps> = ({
                   playsInline
                   loop
                   preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
+                  className="absolute inset-0 w-full h-full object-cover bg-neutral-950 brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
                 />
               )}
 
-              {/* Top Badges */}
-              <div className="relative z-10 flex items-center justify-between pointer-events-none">
-                <span className="px-2.5 py-1 rounded-full bg-blue-500/20 border border-blue-500/40 text-[10px] font-bold text-blue-300 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                  Sample style
-                </span>
-              </div>
 
               {/* Bottom Captions Simulation */}
               <div className="relative z-10 text-left pointer-events-none space-y-1.5 bg-black/70 backdrop-blur-md p-3 rounded-xl border border-neutral-800/80">
@@ -202,18 +197,6 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </div>
 
-            {/* Action underneath */}
-            <div className="flex items-center justify-between pt-2 px-1">
-              <span className="text-xs text-neutral-500 font-mono">Click to preview style details</span>
-              <button
-                type="button"
-                onClick={onSelectFeaturedVideo}
-                className="text-xs font-bold text-white hover:text-blue-400 flex items-center gap-1.5 transition-colors"
-              >
-                <span>Preview Slot</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
           </div>
 
         </div>

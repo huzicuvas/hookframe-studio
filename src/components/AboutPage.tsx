@@ -50,7 +50,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome }) => {
 
           <h1
             id="about-page-title"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight"
           >
             About Hook Frames Studio
           </h1>

@@ -113,16 +113,12 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             loop
             preload="metadata"
             onLoadedMetadata={handleLoadedMetadata}
-            className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
+            className="absolute inset-0 w-full h-full object-cover bg-neutral-950 brightness-90 group-hover:brightness-100 transition-[filter] duration-300"
           />
         )}
 
-        {/* Top row: Sample style badge + duration (video) / Poster chip (poster) */}
-        <div className="relative z-10 flex items-center justify-between gap-2 p-3 shrink-0">
-          <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/40 text-[10px] font-bold text-blue-300 flex items-center gap-1 whitespace-nowrap shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-            Sample style
-          </span>
+        {/* Top row: duration (video) / Poster chip (poster) */}
+        <div className="relative z-10 flex items-center justify-end gap-2 p-3 shrink-0">
           {isPoster ? (
             <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-bold text-neutral-300 border border-neutral-800 whitespace-nowrap shrink-0">
               Poster
@@ -171,9 +167,6 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           <div className="flex items-center justify-between gap-2 pt-1">
             <span className="text-[10px] font-mono text-neutral-300 bg-neutral-950/80 px-2 py-0.5 rounded-full border border-neutral-800/60 whitespace-nowrap shrink-0">
               {video.tags[0]}
-            </span>
-            <span className="text-[11px] font-bold text-blue-400 group-hover:text-[#F5B544] transition-colors whitespace-nowrap shrink-0">
-              Preview style →
             </span>
           </div>
         </div>

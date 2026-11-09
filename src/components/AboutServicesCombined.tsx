@@ -20,7 +20,7 @@ export const AboutServicesCombined: React.FC = () => {
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-snug">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white leading-snug">
                 Ad creative, <br className="hidden sm:inline" />
                 <span className="text-neutral-400">built without film crew overhead.</span>
               </h2>

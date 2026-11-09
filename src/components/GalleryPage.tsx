@@ -85,7 +85,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
 
             <h1
               id="gallery-page-title"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight"
             >
               Creative Format Gallery
             </h1>

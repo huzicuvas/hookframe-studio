@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Sparkles, Send, Clock, ShieldCheck, Zap, Layers } from 'lucide-react';
+import { Mail, Sparkles, Send, ShieldCheck, Zap, Layers } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const email = 'kiramorganai@gmail.com';
@@ -7,7 +7,7 @@ export const Contact: React.FC = () => {
   return (
     <section
       id="contact"
-      className="py-16 sm:py-20 bg-[#0A0A0B]"
+      className="py-12 bg-[#0A0A0B]"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-12 lg:p-14 text-center shadow-2xl relative overflow-hidden">
@@ -19,7 +19,7 @@ export const Contact: React.FC = () => {
 
           <h2
             id="contact-title"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight max-w-2xl mx-auto"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight max-w-2xl mx-auto"
           >
             Ready to scale your ad creatives?
           </h2>
@@ -42,11 +42,6 @@ export const Contact: React.FC = () => {
 
           {/* Guarantee Badges: Response time, Commercial rights, Delivery time */}
           <div className="mt-8 pt-6 border-t border-neutral-800/80 flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-400 font-mono">
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-neutral-400" />
-              <span>Replies within 2 hours</span>
-            </div>
-            <span className="text-neutral-700 hidden sm:inline">•</span>
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-blue-400" />
               <span>Full commercial rights included</span>

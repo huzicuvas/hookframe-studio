@@ -65,7 +65,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectServiceInquiry }) =>
                     <span className="text-xs font-mono text-neutral-500">
                       {service.number}
                     </span>
-                    <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20 uppercase tracking-wider">
+                    <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20 tracking-wider">
                       {service.badge}
                     </span>
                   </div>
@@ -86,7 +86,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectServiceInquiry }) =>
 
                 {/* Deliverables List */}
                 <div className="pt-4 border-t border-neutral-800/80 space-y-2">
-                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider block">
+                  <span className="text-[10px] font-mono text-neutral-500 tracking-wider block">
                     Included Deliverables:
                   </span>
                   <ul className="space-y-2">
@@ -108,7 +108,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectServiceInquiry }) =>
                 </div>
 
                 <a
-                  href={`mailto:hello@nextframe.studio?subject=Inquiry%20for%20${encodeURIComponent(service.title)}%20-%20Nextframe&body=Hi%20Nextframe%20team,%0A%0AWe're%20interested%20in%20your%20${encodeURIComponent(service.title)}%20package.%0A%0ABrand%20Name:%20%0ATarget%20Platform%20(Meta/TikTok/Shorts):%20%0ANumber%20of%20Creatives:%20%0A`}
+                  href={`mailto:kiramorganai@gmail.com?subject=Inquiry%20for%20${encodeURIComponent(service.title)}%20-%20HookFrame%20Studio&body=Hi%20HookFrame%20Studio%20team,%0A%0AWe're%20interested%20in%20your%20${encodeURIComponent(service.title)}%20package.%0A%0ABrand%20Name:%20%0ATarget%20Platform%20(Meta/TikTok/Shorts):%20%0ANumber%20of%20Creatives:%20%0A`}
                   className="inline-flex items-center gap-1 text-xs font-bold text-white hover:text-blue-400 group-hover:translate-x-0.5 transition-all"
                 >
                   <span>Request Quote</span>

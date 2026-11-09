@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Zap, ArrowRight, Send, Clock, ShieldCheck, Sparkles } from 'lucide-react';
+import { Check, Zap, ArrowRight, Send, ShieldCheck, Sparkles } from 'lucide-react';
 
 const recipientEmail = 'kiramorganai@gmail.com';
 
@@ -181,9 +181,9 @@ export const PricingSection: React.FC = () => {
           </div>
           <h2
             id="pricing-title"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mt-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight mt-4"
           >
-            PRICING
+            Pricing
           </h2>
           <p className="text-sm sm:text-base text-neutral-400 mt-3">
             One price per ad. No hidden fees, no surprises.
@@ -238,7 +238,7 @@ export const PricingSection: React.FC = () => {
 
                 {/* Price */}
                 <div className="mt-5">
-                  <span className={card.isPopular ? 'text-4xl font-extrabold tracking-tight text-[#F5B544]' : 'text-4xl font-extrabold tracking-tight text-white'}>
+                  <span className={card.isPopular ? 'text-4xl font-bold tracking-tight text-[#F5B544]' : 'text-4xl font-bold tracking-tight text-white'}>
                     {card.price}
                   </span>
                   <span className="text-xs text-neutral-500 font-mono ml-2">
@@ -310,7 +310,7 @@ export const PricingSection: React.FC = () => {
                   {pack.tagline}
                 </p>
                 <div className="mt-4">
-                  <span className="text-xl font-extrabold text-white tracking-tight">
+                  <span className="text-xl font-bold text-white tracking-tight">
                     {pack.price}
                   </span>
                 </div>
@@ -362,7 +362,7 @@ export const PricingSection: React.FC = () => {
 
           <h2
             id="contact-title"
-            className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight max-w-2xl mx-auto"
+            className="text-xl sm:text-2xl font-semibold text-white tracking-tight leading-tight max-w-2xl mx-auto"
           >
             Ready to scale your ad creatives?
           </h2>
@@ -400,11 +400,6 @@ export const PricingSection: React.FC = () => {
 
           {/* Guarantee Badges: Response time, Commercial rights, Delivery time */}
           <div className="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-center gap-3 text-xs text-neutral-400 font-mono">
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-neutral-400" />
-              <span>Replies within 2 hours</span>
-            </div>
-            <span className="text-neutral-700 hidden sm:inline">•</span>
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-blue-400" />
               <span>Full commercial rights included</span>

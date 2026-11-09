@@ -40,7 +40,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
             </div>
             <h2
               id="portfolio-title"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight"
             >
               Sample ad styles.
             </h2>
@@ -49,10 +49,6 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
             </p>
           </div>
 
-          {/* Quick Notice */}
-          <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-full self-start md:self-auto">
-            <span>Made for your brand</span>
-          </div>
         </div>
 
         {/* 8 tiles in a bento grid: two mirrored blocks forming one clean rectangle — tall tile on the left, wide tile top-right, two posters bottom-right; then the mirror. Every tile is one media panel with its text overlaid, like the preview. */}

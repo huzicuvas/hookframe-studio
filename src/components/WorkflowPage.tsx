@@ -50,7 +50,7 @@ export const WorkflowPage: React.FC<WorkflowPageProps> = ({ onNavigateHome }) =>
 
           <h1
             id="workflow-page-title"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight"
           >
             Our Workflow
           </h1>

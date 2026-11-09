@@ -98,13 +98,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           ))}
         </nav>
 
-        {/* Status pill + Start a Project button (scrolls to the contact section — the email button lives there) */}
+        {/* Start a Project button (scrolls to the contact section — the email button lives there) */}
         <div className="hidden md:flex items-center gap-4">
-          <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 px-3 py-1.5 rounded-full">
-            <span className="w-2 h-2 rounded-full bg-green-500" />
-            <span className="text-[11px] font-semibold text-neutral-300">AI pipeline ready</span>
-          </div>
-
           <a
             href="#contact"
             id="nav-cta-contact"
@@ -151,10 +146,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="pt-3 border-t border-neutral-800 flex flex-col gap-3">
-            <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 px-1">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              <span>AI pipeline online · 48h turnaround</span>
-            </div>
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}

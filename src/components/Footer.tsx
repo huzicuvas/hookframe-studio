@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
           {/* Link columns */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10">
             <div>
-              <h4 className="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3">
+              <h4 className="text-xs font-semibold text-blue-400 mb-3">
                 Services
               </h4>
               <ul className="space-y-2">
@@ -103,7 +103,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </ul>
             </div>
             <div>
-              <h4 className="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3">
+              <h4 className="text-xs font-semibold text-blue-400 mb-3">
                 Studio
               </h4>
               <ul className="space-y-2">
@@ -130,7 +130,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </ul>
             </div>
             <div>
-              <h4 className="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3">
+              <h4 className="text-xs font-semibold text-blue-400 mb-3">
                 Work
               </h4>
               <ul className="space-y-2">
@@ -156,7 +156,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
               </ul>
             </div>
             <div>
-              <h4 className="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3">
+              <h4 className="text-xs font-semibold text-blue-400 mb-3">
                 Contact
               </h4>
               <ul className="space-y-2">

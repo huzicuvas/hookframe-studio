@@ -46,7 +46,7 @@ export const FaqSection: React.FC = () => {
             <MessageCircleQuestion className="w-3.5 h-3.5 text-blue-400" />
             <span>Common questions</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">
             Frequently Asked Questions
           </h2>
           <p className="text-sm sm:text-base text-neutral-400 mt-4 max-w-2xl mx-auto">
