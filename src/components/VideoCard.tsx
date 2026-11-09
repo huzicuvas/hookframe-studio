@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Play, Image } from 'lucide-react';
+import { Image } from 'lucide-react';
 import { VideoItem } from '../types';
 
 interface VideoCardProps {
@@ -111,18 +111,15 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           )}
         </div>
 
-        {/* Centre: play button (videos) or poster frame (posters) */}
-        {!video.thumbnailUrl && (
+        {/* Centre: poster frame only. Videos have no play button any more —
+            the video itself plays on hover, so a button sitting on top of it
+            is just clutter; the duration chip and 'Preview style' already
+            say it is a video. Posters keep their frame (they have no video). */}
+        {!video.thumbnailUrl && isPoster && (
           <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center px-3">
-            {isPoster ? (
-              <div className={`flex items-center justify-center rounded-xl border border-dashed border-neutral-600/80 bg-neutral-950/40 transition-transform duration-300 group-hover:scale-[1.05] ${posterFrameClass}`}>
-                <Image className="w-6 h-6 text-neutral-400" />
-              </div>
-            ) : (
-              <div className="w-12 h-12 rounded-2xl bg-neutral-950/80 backdrop-blur-md border border-neutral-700/80 text-white flex items-center justify-center shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:border-blue-500/60 group-hover:shadow-blue-500/20">
-                <Play className="w-5 h-5 fill-white text-white ml-0.5" />
-              </div>
-            )}
+            <div className={`flex items-center justify-center rounded-xl border border-dashed border-neutral-600/80 bg-neutral-950/40 transition-transform duration-300 group-hover:scale-[1.05] ${posterFrameClass}`}>
+              <Image className="w-6 h-6 text-neutral-400" />
+            </div>
           </div>
         )}
 
@@ -148,7 +145,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
             <span className="text-[10px] font-mono text-neutral-300 bg-neutral-950/80 px-2 py-0.5 rounded-full border border-neutral-800/60 whitespace-nowrap shrink-0">
               {video.tags[0]}
             </span>
-            <span className="text-[11px] font-bold text-blue-400 whitespace-nowrap shrink-0">
+            <span className="text-[11px] font-bold text-blue-400 group-hover:text-[#F5B544] transition-colors whitespace-nowrap shrink-0">
               Preview style →
             </span>
           </div>

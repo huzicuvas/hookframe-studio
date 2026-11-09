@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Play, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { FEATURED_VIDEO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -74,7 +74,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Top Pill / Badge */}
             <div className="flex items-center gap-2 mb-4">
               <span className="px-3 py-1 bg-neutral-800 border border-neutral-700/60 rounded-full text-[11px] font-mono font-medium text-neutral-300 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F5B544]" />
                 AI Content Production Studio
               </span>
               <span className="text-[11px] font-mono text-neutral-500 hidden sm:inline">
@@ -116,7 +116,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Proof Metrics Bento Strip */}
             <div className="grid grid-cols-3 gap-3 pt-6 mt-4 border-t border-neutral-800">
               <div className="p-3 bg-neutral-950/60 border border-neutral-800/80 rounded-2xl">
-                <span className="text-xl sm:text-2xl font-bold text-white font-mono block">48h</span>
+                <span className="text-xl sm:text-2xl font-bold text-[#F5B544] font-mono block">48h</span>
                 <span className="text-[11px] text-neutral-400 font-mono">Turnaround</span>
               </div>
               <div className="p-3 bg-neutral-950/60 border border-neutral-800/80 rounded-2xl">
@@ -182,16 +182,6 @@ export const Hero: React.FC<HeroProps> = ({
                 <span className="px-2.5 py-1 rounded-full bg-blue-500/20 border border-blue-500/40 text-[10px] font-bold text-blue-300 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
                   Sample style
-                </span>
-              </div>
-
-              {/* Center Play Button Overlay */}
-              <div className="relative z-10 flex flex-col items-center justify-center my-auto py-6">
-                <div className="w-14 h-14 bg-neutral-950/90 backdrop-blur-md border border-neutral-700/80 rounded-2xl flex items-center justify-center opacity-90 group-hover:opacity-100 transition-colors duration-200 group-hover:border-blue-500/60 shadow-2xl">
-                  <Play className="w-6 h-6 fill-white text-white ml-0.5" />
-                </div>
-                <span className="text-[11px] font-mono text-neutral-400 mt-2.5">
-                  {featured.tags[0]} · {featured.duration}
                 </span>
               </div>
 
