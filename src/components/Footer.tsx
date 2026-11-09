@@ -39,10 +39,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
   return (
     <footer id="footer" className="text-neutral-400 text-sm">
       {/* Wavy top edge — the footer colour rises into the FAQ in a gentle wave.
-          The footer is one shade lighter (#11141B) than the FAQ (neutral-950)
-          so the wave reads. No gold line on the wave in the calm palette. */}
+          The footer is one shade lighter (neutral-900) than the FAQ (neutral-950)
+          so the wave reads. */}
       <svg
-        className="block w-full h-12 text-[#11141B]"
+        className="block w-full h-12 text-neutral-900"
         viewBox="0 0 1440 48"
         preserveAspectRatio="none"
         aria-hidden="true"
@@ -51,9 +51,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
           d="M0,24 C120,40 240,8 360,24 C480,40 600,8 720,24 C840,40 960,8 1080,24 C1200,40 1320,8 1440,24 L1440,48 L0,48 Z"
           fill="currentColor"
         />
+        {/* Thin gold line tracing the wave's top edge, with a soft glow. */}
+        <path
+          d="M0,24 C120,40 240,8 360,24 C480,40 600,8 720,24 C840,40 960,8 1080,24 C1200,40 1320,8 1440,24"
+          fill="none"
+          stroke="#F5B544"
+          strokeWidth="5"
+          strokeOpacity="0.25"
+          vectorEffect="non-scaling-stroke"
+        />
+        <path
+          d="M0,24 C120,40 240,8 360,24 C480,40 600,8 720,24 C840,40 960,8 1080,24 C1200,40 1320,8 1440,24"
+          fill="none"
+          stroke="#F5B544"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+        />
       </svg>
 
-      <div className="bg-[#11141B] py-8">
+      <div className="bg-neutral-900 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top row: brand + CTA */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -66,10 +82,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
             <a
               href="#contact"
               id="footer-cta-next-ad"
-              className="group shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:bg-neutral-200 transition-colors duration-200"
+              className="group shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >
               <span>Let's make your next ad.</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
 
@@ -183,14 +199,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToGallery, onNavigateT
           </div>
 
           {/* Bottom row: copyright + back to top */}
-          <div className="mt-10 pt-6 border-t border-[#222833]/80 flex items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
+          <div className="mt-10 pt-6 border-t border-neutral-800/80 flex items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
             <span>© {new Date().getFullYear()} Hook Frames Studio. All rights reserved.</span>
             <button
               type="button"
               id="back-to-top-btn"
               onClick={scrollToTop}
               aria-label="Back to top"
-              className="flex items-center justify-center w-9 h-9 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-[#222833]/60 transition-colors shrink-0"
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-neutral-700/60 transition-colors shrink-0"
             >
               <ArrowUp className="w-4 h-4" />
             </button>

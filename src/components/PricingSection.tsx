@@ -170,12 +170,12 @@ export const PricingSection: React.FC = () => {
   return (
     <section
       id="pricing"
-      className="py-12 bg-[#0B0D12] border-t border-[#222833]/80"
+      className="py-12 bg-[#0A0A0B] border-t border-neutral-800/80"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header — centred, like the approved preview */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#11141B] border border-[#222833] text-[11px] font-mono text-neutral-300">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
             <span>Transparent pricing</span>
           </div>
@@ -194,7 +194,7 @@ export const PricingSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Three cards — plain grey border, middle card featured by label only */}
+        {/* Three cards — blue glow at the bottom of each, middle card featured */}
         <div
           id="pricing-grid"
           className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto items-stretch"
@@ -203,13 +203,26 @@ export const PricingSection: React.FC = () => {
             <div
               key={card.id}
               id={`pricing-card-${card.id}`}
-              className="group relative flex flex-col rounded-3xl bg-[#11141B] border border-[#222833] p-6 sm:p-7 overflow-hidden transition-colors duration-200 hover:border-[#2e2e2e]"
+              className={`group relative flex flex-col rounded-3xl bg-neutral-900 border p-6 sm:p-7 overflow-hidden shadow-xl transition-all duration-300 ${
+                card.isPopular
+                  ? 'border-[#F5B544]/60 shadow-[#F5B544]/10 lg:-translate-y-2 hover:border-[#F5B544] hover:shadow-2xl hover:shadow-[#F5B544]/25'
+                  : 'border-neutral-800 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10'
+              }`}
             >
-              {/* Featured Badge — small blue label inside the card */}
+              {/* Blue glow wash at the bottom — strongest on the featured card */}
+              <div
+                className={`pointer-events-none absolute inset-x-0 bottom-0 ${
+                  card.isPopular
+                    ? 'h-56 bg-[radial-gradient(ellipse_at_bottom,rgba(245,181,68,0.45),transparent_70%)]'
+                    : 'h-44 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.35),transparent_70%)]'
+                }`}
+              />
+
+              {/* Featured Badge — inside the card (the card clips anything above its top edge) */}
               {card.isPopular && card.badge && (
                 <div className="flex justify-center mb-3">
-                  <span className="px-3 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30 text-[11px] font-bold flex items-center gap-1 whitespace-nowrap">
-                    <Zap className="w-3 h-3 fill-blue-300" />
+                  <span className="px-3 py-0.5 rounded-full bg-[#F5B544] text-black text-[11px] font-bold shadow-md flex items-center gap-1 whitespace-nowrap">
+                    <Zap className="w-3 h-3 fill-black" />
                     <span>{card.badge}</span>
                   </span>
                 </div>
@@ -223,9 +236,9 @@ export const PricingSection: React.FC = () => {
                   {card.tagline}
                 </p>
 
-                {/* Price — sand on the $50 test ad only, white elsewhere */}
+                {/* Price */}
                 <div className="mt-5">
-                  <span className={card.id === 'first-ad-test' ? 'text-4xl font-bold tracking-tight text-[#D9C7A0]' : 'text-4xl font-bold tracking-tight text-white'}>
+                  <span className={card.isPopular ? 'text-4xl font-bold tracking-tight text-[#F5B544]' : 'text-4xl font-bold tracking-tight text-white'}>
                     {card.price}
                   </span>
                   <span className="text-xs text-neutral-500 font-mono ml-2">
@@ -269,7 +282,7 @@ export const PricingSection: React.FC = () => {
                   <a
                     href={mailto(card.ctaSubject, card.ctaBody)}
                     id={`cta-tier-${card.id}`}
-                    className="w-full py-3 px-4 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:bg-neutral-200 flex items-center justify-center gap-2 transition-colors"
+                    className="w-full py-3 px-4 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] flex items-center justify-center gap-2 transition-colors"
                   >
                     <span>{card.ctaLabel}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -286,8 +299,9 @@ export const PricingSection: React.FC = () => {
             <div
               key={pack.id}
               id={`pricing-card-${pack.id}`}
-              className="group relative flex flex-col rounded-3xl bg-[#11141B] border border-[#222833] p-6 overflow-hidden transition-colors duration-200 hover:border-[#2e2e2e]"
+              className="group relative flex flex-col rounded-3xl bg-neutral-900 border border-neutral-800 p-6 overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10"
             >
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.25),transparent_70%)]" />
               <div className="relative z-10 flex flex-col flex-1">
                 <h3 className="text-base font-bold text-white tracking-tight transition-colors group-hover:text-blue-400">
                   {pack.name}
@@ -315,7 +329,7 @@ export const PricingSection: React.FC = () => {
                   <a
                     href={mailto(pack.ctaSubject, pack.ctaBody)}
                     id={`cta-tier-${pack.id}`}
-                    className="w-full py-3 px-4 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:bg-neutral-200 flex items-center justify-center gap-2 transition-colors"
+                    className="w-full py-3 px-4 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] flex items-center justify-center gap-2 transition-colors"
                   >
                     <span>{pack.ctaLabel}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -328,7 +342,7 @@ export const PricingSection: React.FC = () => {
 
         {/* Pack discounts */}
         <div className="mt-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl bg-[#11141B]/60 border border-[#222833] px-6 py-4 text-center text-xs font-mono text-neutral-300">
+          <div className="rounded-3xl bg-neutral-900/60 border border-neutral-800 px-6 py-4 text-center text-xs font-mono text-neutral-300">
             Packs: 3 videos{' '}
             <span className="text-white font-bold">10% off</span> · 5 videos{' '}
             <span className="text-white font-bold">15% off</span>
@@ -339,9 +353,9 @@ export const PricingSection: React.FC = () => {
             Keeps id="contact" so the "Start a Project" buttons still land here. */}
         <div
           id="contact"
-          className="mt-10 max-w-5xl mx-auto bg-[#11141B] border border-[#222833] rounded-3xl p-5 sm:p-7 text-center relative overflow-hidden"
+          className="mt-10 max-w-5xl mx-auto bg-neutral-900 border border-neutral-800 rounded-3xl p-5 sm:p-7 text-center shadow-2xl relative overflow-hidden"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-950 border border-[#222833] text-[11px] font-mono text-neutral-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-950 border border-neutral-800 text-[11px] font-mono text-neutral-300 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
             <span>Direct pricing and inquiries</span>
           </div>
@@ -367,9 +381,9 @@ export const PricingSection: React.FC = () => {
                 'Hi%20Hook%20Frames%20Studio%20Team,%0A%0AWe%27re%20interested%20in%20creating%20performance%20ad%20content%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AWebsite%20/%20Product%20Link:%20%0AFormat%20Needed%20(Test%20ad%20/%2015s%20UGC%20/%2020s%20UGC%20/%2030s%20UGC%20/%20Poster%20/%20CGI%2015s%20/%20CGI%2030s%20/%20Hook%20Pack%203%20/%20Hook%20Pack%205%20/%20Custom%20Pack%20/%20Over%2030s%20or%20monthly):%20%0ATarget%20Launch%20Date:%20%0A'
               )}
               id="contact-mailto-btn"
-              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 text-white text-sm font-bold border border-transparent hover:bg-blue-600 transition-colors duration-200"
+              className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-full bg-blue-500 text-white text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               <span>Email {recipientEmail}</span>
             </a>
             <a
@@ -377,7 +391,7 @@ export const PricingSection: React.FC = () => {
                 'Quotation request — over 30 seconds or custom scope',
                 'Hi Hook Frames Studio Team,%0A%0AWe would like a quotation for over 30 seconds, monthly batches, or a fully custom scope.%0A%0ABrand Name: %0AProduct / Website Link: %0AWhat we need: %0A'
               )}
-              className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:bg-neutral-200 transition-colors duration-200"
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-full bg-white text-black text-sm font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors duration-200 shadow-lg active:scale-95"
             >
               <span>Ask for a quotation</span>
               <ArrowRight className="w-4 h-4" />
@@ -385,7 +399,7 @@ export const PricingSection: React.FC = () => {
           </div>
 
           {/* Guarantee Badges: Response time, Commercial rights, Delivery time */}
-          <div className="mt-5 pt-4 border-t border-[#222833]/80 flex flex-wrap items-center justify-center gap-3 text-xs text-neutral-400 font-mono">
+          <div className="mt-5 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-center gap-3 text-xs text-neutral-400 font-mono">
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-blue-400" />
               <span>Full commercial rights included</span>

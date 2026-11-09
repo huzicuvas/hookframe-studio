@@ -118,7 +118,7 @@ export default function App() {
   const isWorkflowView = currentPath === '/workflow' || currentPath === '/workflow/';
 
   return (
-    <div className="min-h-screen bg-[#0B0D12] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
+    <div className="min-h-screen bg-[#0A0A0B] text-[#E2E8F0] font-sans selection:bg-blue-500/30 selection:text-blue-200">
       {isGalleryView ? (
         /* Full Gallery View at /gallery */
         <GalleryPage
@@ -189,7 +189,7 @@ export default function App() {
           <div
             id="chat-tooltip-popup"
             onClick={handleOpenChat}
-            className="group relative cursor-pointer bg-[#11141B] text-white text-xs font-medium px-4 py-3 rounded-2xl border border-[#222833] shadow-2xl backdrop-blur-md flex items-center gap-3 transition-colors hover:border-[#222833] animate-in fade-in slide-in-from-bottom-2 duration-300 max-w-xs"
+            className="group relative cursor-pointer bg-neutral-900 text-white text-xs font-medium px-4 py-3 rounded-2xl border border-neutral-700 shadow-2xl backdrop-blur-md flex items-center gap-3 transition-colors hover:border-neutral-600 animate-in fade-in slide-in-from-bottom-2 duration-300 max-w-xs"
           >
             <div className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
               <Sparkles className="w-3.5 h-3.5" />
@@ -211,7 +211,7 @@ export default function App() {
             </button>
 
             {/* Speech bubble pointer arrow */}
-            <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-[#11141B] border-r border-b border-[#222833] rotate-45 transform" />
+            <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-neutral-900 border-r border-b border-neutral-700 rotate-45 transform" />
           </div>
         )}
 

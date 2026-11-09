@@ -111,14 +111,14 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
       <div
         id="video-modal-container"
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl bg-[#11141B] border border-[#222833] rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 max-h-[90vh]"
+        className="relative w-full max-w-4xl bg-neutral-900 border border-neutral-800 rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 max-h-[90vh]"
       >
         {/* Close Button */}
         <button
           type="button"
           id="close-video-modal"
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-neutral-950/80 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-[#222833] transition-colors focus:outline-none"
+          className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-neutral-950/80 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-800 transition-colors focus:outline-none"
           aria-label="Close video player"
         >
           <X className="w-4 h-4" />
@@ -170,7 +170,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
               onClick={togglePlay}
               className="absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer pointer-events-none"
             >
-              <div className="w-14 h-14 rounded-full bg-[#11141B]/80 text-white flex items-center justify-center backdrop-blur-md border border-[#222833]">
+              <div className="w-14 h-14 rounded-full bg-neutral-900/80 text-white flex items-center justify-center backdrop-blur-md border border-neutral-700">
                 {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-0.5" />}
               </div>
             </div>
@@ -236,7 +236,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
               <h3 className="text-2xl font-bold text-white leading-tight">
                 {video.title}
               </h3>
-              <p className="text-sm font-medium text-neutral-300 italic mt-2 bg-neutral-950 p-3 rounded-2xl border border-[#222833]">
+              <p className="text-sm font-medium text-neutral-300 italic mt-2 bg-neutral-950 p-3 rounded-2xl border border-neutral-800">
                 "{video.hookHeadline}"
               </p>
             </div>
@@ -253,7 +253,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
               {video.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-950 text-neutral-400 border border-[#222833]"
+                  className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-950 text-neutral-400 border border-neutral-800"
                 >
                   #{tag}
                 </span>
@@ -262,10 +262,10 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
           </div>
 
           {/* Direct CTA */}
-          <div className="pt-5 border-t border-[#222833] flex flex-col sm:flex-row items-center gap-2.5">
+          <div className="pt-5 border-t border-neutral-800 flex flex-col sm:flex-row items-center gap-2.5">
             <a
               href={`mailto:kiramorganai@gmail.com?subject=Request%20Creative%20in%20Style%20of%20${encodeURIComponent(video.title)}&body=Hi%20Hook%20Frames%20Studio%20team,%0A%0AWe%20love%20the%20${encodeURIComponent(video.title)}%20(${video.category})%20creative%20format%20and%20want%20to%20produce%20something%20similar%20for%20our%20brand.%0A%0ABrand%20Name:%20%0AOur%20Product%20Link:%20%0A`}
-              className="flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full bg-white text-black text-xs font-bold border border-transparent hover:bg-neutral-200 transition-colors"
+              className="flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full bg-white text-black text-xs font-bold border border-transparent hover:border-[#F5B544] hover:shadow-[0_0_24px_rgba(245,181,68,0.35)] transition-colors"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Request this ad style</span>
