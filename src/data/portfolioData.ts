@@ -108,17 +108,17 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
   },
   {
     id: 'berry-rush-energy-drink-cgi',
-    title: 'Berry Rush — Energy Drink CGI',
-    brand: 'Berry Rush',
+    title: 'Kingfisher Radler — Three Flavours, One Ad',
+    brand: 'Kingfisher Radler (concept ad)',
     category: 'Food',
     thumbnailUrl: '', // video itself is the cover — no thumbnail upload needed
     videoUrl: `${SUPABASE_BASE}/Drink%209%3A16.mp4`,
     duration: '0:11',
     aspectRatio: '9:16',
-    hookHeadline: '"Real fruit. Real rush."',
+    hookHeadline: '"Ginger & Lime. Mint. Strawberry. One Radler, three moods."',
     description:
-      'A red energy drink can in a burst of strawberries, raspberries and red splash.',
-    tags: ['3D CGI', 'Beverage', 'Energy Drink', 'Product Ad'],
+      'A Kingfisher Radler non-alcoholic drink ad: the yellow Ginger & Lime can in a splash of lime and ginger, the red strawberry can in berries, closing on all three cans — Ginger & Lime, Mint and Strawberry — together. A concept ad for the brand, not a paid client project.',
+    tags: ['3D CGI', 'Beverage', 'Concept Ad', 'Product Ad'],
   },
   {
     id: 'poster-black-arabic-watch',
