@@ -165,7 +165,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           id="gallery-grid-items"
           className={
             isFullSet
-              ? 'grid grid-cols-2 lg:grid-cols-3 auto-rows-[280px] lg:auto-rows-[400px] gap-6'
+              ? 'grid grid-cols-2 lg:grid-cols-3 auto-rows-[280px] lg:auto-rows-[440px] gap-6'
               : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[320px] gap-6'
           }
         >
