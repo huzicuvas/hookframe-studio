@@ -8,7 +8,7 @@ export interface VideoItem {
   thumbnailUrl: string;
   videoUrl: string;
   duration: string;
-  aspectRatio: '9:16' | '1:1' | '16:9' | '4:5';
+  aspectRatio: '9:16' | '1:1' | '16:9' | '4:5' | '3:4';
   kind?: 'video' | 'poster'; // poster tiles show a static poster frame, not a play button
   // Seconds into the video to use as the tile's still frame. By default the
   // first frame shows, but some videos open on a close-up that does not read

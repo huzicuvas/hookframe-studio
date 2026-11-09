@@ -124,9 +124,16 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
           <X className="w-4 h-4" />
         </button>
 
-        {/* Video Player Column */}
+        {/* Video Player Column — posters show the full poster image here
+            instead of a video player (they have no video to play). */}
         <div className="md:col-span-6 bg-black flex items-center justify-center relative overflow-hidden group min-h-[380px] sm:min-h-[500px]">
-          {!videoError ? (
+          {video.kind === 'poster' ? (
+            <img
+              src={video.thumbnailUrl}
+              alt={video.title}
+              className="w-full h-full object-contain max-h-[70vh]"
+            />
+          ) : !videoError ? (
             <video
               ref={videoRef}
               src={video.videoUrl}
@@ -157,18 +164,21 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
             </div>
           )}
 
-          {/* Floating Play/Pause Center Overlay on click */}
-          <div
-            onClick={togglePlay}
-            className="absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer pointer-events-none"
-          >
-            <div className="w-14 h-14 rounded-full bg-neutral-900/80 text-white flex items-center justify-center backdrop-blur-md border border-neutral-700">
-              {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-0.5" />}
+          {/* Floating Play/Pause Center Overlay on click — videos only. */}
+          {video.kind !== 'poster' && (
+            <div
+              onClick={togglePlay}
+              className="absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer pointer-events-none"
+            >
+              <div className="w-14 h-14 rounded-full bg-neutral-900/80 text-white flex items-center justify-center backdrop-blur-md border border-neutral-700">
+                {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-0.5" />}
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Custom Bottom Video Controls Bar */}
-          <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/90 via-black/60 to-transparent space-y-2">
+          {/* Custom Bottom Video Controls Bar — videos only. */}
+          {video.kind !== 'poster' && (
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/90 via-black/60 to-transparent space-y-2">
             {/* Progress / Seek Bar */}
             <div
               className="w-full h-1.5 bg-neutral-700/50 rounded-full cursor-pointer overflow-hidden"
@@ -206,7 +216,8 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
                 <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300">Loop</span>
               </div>
             </div>
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Video Info & Concept Breakdown Column */}
