@@ -87,10 +87,9 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           </div>
         )}
 
-        {/* Custom Thumbnail if available — videos only. Posters show their
-            image in the centred frame below, in their true shape, so the
-            headline is never cropped by the tile. */}
-        {video.thumbnailUrl && !isPoster && (
+        {/* Custom Thumbnail if available — fills the whole tile, like the
+            videos, so the poster is big and fills the container. */}
+        {video.thumbnailUrl && (
           <img
             src={video.thumbnailUrl}
             alt={video.title}
@@ -135,34 +134,18 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onSelect }) => {
           )}
         </div>
 
-        {/* Centre: poster frame only. Videos have no play button any more —
-            the video itself plays on hover, so a button sitting on top of it
-            is just clutter; the duration chip and 'Preview style' already
-            say it is a video. Posters keep their frame (they have no video):
-            a real poster image fills the frame in its true shape, otherwise
-            the dotted placeholder shows. */}
-        {isPoster && (
+        {/* Centre: poster frame only, and only when there is no poster image
+            yet. Videos have no play button any more — the video itself plays
+            on hover, so a button sitting on top of it is just clutter; the
+            duration chip and 'Preview style' already say it is a video.
+            Posters with a real image fill the whole tile above, so they need
+            no frame here. */}
+        {!video.thumbnailUrl && isPoster && (
           <div className="relative z-10 flex-1 min-h-0 flex items-center justify-center px-3">
             <div
-              className={`relative flex items-center justify-center rounded-xl border ${
-                video.thumbnailUrl
-                  ? 'border-neutral-800'
-                  : 'border-dashed border-neutral-600/80'
-              } bg-neutral-950/40 overflow-hidden transition-transform duration-300 group-hover:scale-[1.05] ${posterFrameClass}`}
+              className={`flex items-center justify-center rounded-xl border border-dashed border-neutral-600/80 bg-neutral-950/40 transition-transform duration-300 group-hover:scale-[1.05] ${posterFrameClass}`}
             >
-              {video.thumbnailUrl ? (
-                <img
-                  src={video.thumbnailUrl}
-                  alt={video.title}
-                  loading="lazy"
-                  onLoad={() => setImageLoaded(true)}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 brightness-90 group-hover:brightness-100 ${
-                    imageLoaded ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-              ) : (
-                <Image className="w-6 h-6 text-neutral-400" />
-              )}
+              <Image className="w-6 h-6 text-neutral-400" />
             </div>
           </div>
         )}
